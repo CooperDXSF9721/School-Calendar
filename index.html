@@ -3,91 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My School Dashboard</title>
+
+    <title>Dexter Assignment Dashboard</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #f4f6f9;
+            --card: #ffffff;
+            --text: #172033;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --blue: #2563eb;
+            --blue-light: #eff6ff;
+            --red: #dc2626;
+            --red-light: #fef2f2;
+            --orange: #ea580c;
+            --orange-light: #fff7ed;
+            --green: #16a34a;
+            --green-light: #f0fdf4;
+            --purple: #7c3aed;
+            --purple-light: #f5f3ff;
+            --shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            color: #1f2937;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         header {
-            background: #1f2937;
+            background: #172033;
             color: white;
-            padding: 24px;
+            padding: 28px 24px;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         header h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: 30px;
         }
 
         header p {
-            margin: 6px 0 0;
-            color: #d1d5db;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .card h2 {
-            margin-top: 0;
-        }
-
-        .status {
-            padding: 14px;
-            border-radius: 8px;
-            background: #eef2ff;
-            margin-top: 15px;
-        }
-
-        button {
-            border: none;
-            background: #2563eb;
-            color: white;
-            padding: 12px 18px;
-            border-radius: 8px;
-            cursor: pointer;
+            margin: 7px 0 0;
+            color: #cbd5e1;
             font-size: 15px;
         }
 
-        button:hover {
+        main {
+            max-width: 1200px;
+            margin: 28px auto;
+            padding: 0 20px 50px;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .status {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .status strong {
+            color: var(--text);
+        }
+
+        button {
+            border: 0;
+            cursor: pointer;
+            border-radius: 9px;
+            padding: 11px 16px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .refresh-btn {
+            background: var(--blue);
+            color: white;
+        }
+
+        .refresh-btn:hover {
             background: #1d4ed8;
         }
 
-        .assignment {
-            border-left: 4px solid #2563eb;
-            background: #f9fafb;
-            padding: 14px;
-            margin-top: 12px;
-            border-radius: 6px;
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 25px;
         }
 
-        .assignment strong {
-            display: block;
-            margin-bottom: 5px;
+        .stat {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: var(--shadow);
         }
 
-        .muted {
-            color: #6b7280;
+        .stat-label {
+            color: var(--muted);
             font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .stat-subtitle {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .section {
+            margin-top: 25px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 13px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .section-count {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .empty {
+            background: var(--card);
+            border: 1px dashed var(--border);
+            padding: 25px;
+            border-radius: 12px;
+            color: var(--muted);
+        }
+
+        .assignment-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .assignment {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 17px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+            border-left: 5px solid var(--blue);
+        }
+
+        .assignment:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 22px rgba(0, 0, 0, 0.10);
+        }
+
+        .assignment.overdue {
+            border-left-color: var(--red);
+        }
+
+        .assignment.today {
+            border-left-color: var(--orange);
+        }
+
+        .assignment.assessment {
+            border-left-color: var(--purple);
+        }
+
+        .assignment-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .assignment-title {
+            font-size: 17px;
+            font-weight: 750;
+            line-height: 1.35;
+        }
+
+        .assignment-class {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .due {
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .due.tomorrow {
+            color: var(--orange);
+        }
+
+        .due.overdue {
+            color: var(--red);
+        }
+
+        .badges {
+            margin-top: 11px;
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .badge-homework {
+            background: var(--blue-light);
+            color: #1d4ed8;
+        }
+
+        .badge-quiz {
+            background: var(--purple-light);
+            color: #6d28d9;
+        }
+
+        .badge-test {
+            background: var(--red-light);
+            color: #b91c1c;
+        }
+
+        .badge-assignment {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .details {
+            display: none;
+            margin-top: 14px;
+            padding-top: 13px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .assignment.open .details {
+            display: block;
+        }
+
+        .filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .filter {
+            background: white;
+            border: 1px solid var(--border);
+            color: #4b5563;
+            padding: 8px 13px;
+        }
+
+        .filter.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+        }
+
+        .setup {
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .setup h2 {
+            margin-top: 0;
+        }
+
+        .setup p {
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .setup code {
+            background: #f3f4f6;
+            padding: 3px 6px;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 750px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .assignment-top {
+                flex-direction: column;
+            }
+
+            .due {
+                white-space: normal;
+            }
         }
     </style>
 </head>
@@ -95,57 +341,725 @@
 <body>
 
 <header>
-    <h1>My School Dashboard</h1>
-    <p>Blackbaud assignment dashboard</p>
+    <div class="header-inner">
+        <h1>Dexter Assignment Dashboard</h1>
+        <p>Your Blackbaud homework, quizzes, tests, and upcoming assignments.</p>
+    </div>
 </header>
 
 <main>
 
-    <div class="card">
-        <h2>Blackbaud Connection</h2>
-
-        <p>
-            We're going to connect this dashboard to your Blackbaud
-            calendar feed.
-        </p>
-
-        <button onclick="testConnection()">
-            Test Connection
-        </button>
-
-        <div id="status" class="status">
-            Waiting to test the Blackbaud connection...
+    <div class="toolbar">
+        <div class="status" id="status">
+            Waiting for the Blackbaud connection...
         </div>
+
+        <button class="refresh-btn" id="refreshButton">
+            ↻ Refresh from Blackbaud
+        </button>
     </div>
 
-    <div class="card">
-        <h2>Upcoming Assignments</h2>
+    <div class="setup" id="setupBox">
+        <h2>Connecting to Blackbaud</h2>
+        <p>
+            Keep your Blackbaud account open in another Chrome tab.
+            The Dexter Assignment Dashboard extension will securely retrieve
+            your Assignment Center data from your logged-in browser session.
+        </p>
+    </div>
 
-        <div id="assignments">
+    <div id="dashboard" class="hidden">
 
-            <div class="assignment">
-                <strong>Example Assignment</strong>
-                <span class="muted">
-                    Your Blackbaud assignments will appear here.
-                </span>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">Due Tomorrow</div>
+                <div class="stat-number" id="tomorrowCount">0</div>
+                <div class="stat-subtitle">Assignments due next school day</div>
             </div>
 
-        </div>
-    </div>
+            <div class="stat">
+                <div class="stat-label">Next 7 Days</div>
+                <div class="stat-number" id="weekCount">0</div>
+                <div class="stat-subtitle">Upcoming assignments</div>
+            </div>
 
+            <div class="stat">
+                <div class="stat-label">Tests & Quizzes</div>
+                <div class="stat-number" id="assessmentCount">0</div>
+                <div class="stat-subtitle">Upcoming assessments</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2>Due Tomorrow</h2>
+                <span class="section-count" id="tomorrowLabel"></span>
+            </div>
+
+            <div id="tomorrowAssignments" class="assignment-list"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2>Next 7 Days</h2>
+                <span class="section-count" id="weekLabel"></span>
+            </div>
+
+            <div class="filters">
+                <button class="filter active" data-filter="all">All</button>
+                <button class="filter" data-filter="homework">Homework</button>
+                <button class="filter" data-filter="assessment">Tests / Quizzes</button>
+            </div>
+
+            <div id="weekAssignments" class="assignment-list"></div>
+        </div>
+
+        <div class="section" id="todaySection">
+            <div class="section-header">
+                <h2>Due Today</h2>
+                <span class="section-count" id="todayLabel"></span>
+            </div>
+
+            <div id="todayAssignments" class="assignment-list"></div>
+        </div>
+
+        <div class="section" id="overdueSection">
+            <div class="section-header">
+                <h2>Overdue</h2>
+                <span class="section-count" id="overdueLabel"></span>
+            </div>
+
+            <div id="overdueAssignments" class="assignment-list"></div>
+        </div>
+
+    </div>
 </main>
 
 <script>
+const BLACKBAUD_HOST =
+    "https://dextersouthfield.myschoolapp.com";
 
-function testConnection() {
+let currentData = null;
+let currentFilter = "all";
 
-    const status = document.getElementById("status");
+const statusElement = document.getElementById("status");
+const dashboardElement = document.getElementById("dashboard");
+const setupBox = document.getElementById("setupBox");
 
-    status.innerHTML =
-        "The dashboard is working. Next we'll connect your private Blackbaud calendar feed.";
+const tomorrowContainer =
+    document.getElementById("tomorrowAssignments");
 
+const todayContainer =
+    document.getElementById("todayAssignments");
+
+const overdueContainer =
+    document.getElementById("overdueAssignments");
+
+const weekContainer =
+    document.getElementById("weekAssignments");
+
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
+function dateKeyFromBlackbaud(value) {
+    if (!value) {
+        return null;
+    }
+
+    const match = String(value).match(
+        /^(\d{1,2})\/(\d{1,2})\/(\d{4})/
+    );
+
+    if (!match) {
+        return null;
+    }
+
+    const month = match[1].padStart(2, "0");
+    const day = match[2].padStart(2, "0");
+    const year = match[3];
+
+    return `${year}-${month}-${day}`;
+}
+
+function getTodaySchoolDateKey() {
+    const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    }).formatToParts(new Date());
+
+    const year = parts.find(p => p.type === "year").value;
+    const month = parts.find(p => p.type === "month").value;
+    const day = parts.find(p => p.type === "day").value;
+
+    return `${year}-${month}-${day}`;
+}
+
+function dayDifference(fromKey, toKey) {
+    const from = new Date(`${fromKey}T00:00:00Z`);
+    const to = new Date(`${toKey}T00:00:00Z`);
+
+    return Math.round(
+        (to.getTime() - from.getTime()) /
+        (1000 * 60 * 60 * 24)
+    );
+}
+
+function formatBlackbaudDate(value) {
+    if (!value) {
+        return "No due date";
+    }
+
+    const match = String(value).match(
+        /^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(.+)$/
+    );
+
+    if (!match) {
+        return value;
+    }
+
+    const month = Number(match[1]);
+    const day = Number(match[2]);
+    const year = Number(match[3]);
+    const time = match[4];
+
+    const date = new Date(
+        Date.UTC(year, month - 1, day)
+    );
+
+    const formattedDate =
+        new Intl.DateTimeFormat("en-US", {
+            timeZone: "UTC",
+            weekday: "short",
+            month: "short",
+            day: "numeric"
+        }).format(date);
+
+    return `${formattedDate} • ${time}`;
+}
+
+function cleanTitle(value) {
+    return String(value || "")
+        .replace(/&#160;/gi, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function getCategory(assignment) {
+    const type =
+        String(assignment.AssignmentType || "").toLowerCase();
+
+    const title =
+        String(assignment.ShortDescription || "").toLowerCase();
+
+    const combined = `${type} ${title}`;
+
+    if (/\bquiz\b/.test(combined)) {
+        return "quiz";
+    }
+
+    if (/\btest\b|\bexam\b/.test(combined)) {
+        return "test";
+    }
+
+    if (
+        type.includes("assessment") ||
+        Number(assignment.Major) === 1
+    ) {
+        return "assessment";
+    }
+
+    if (type.includes("homework")) {
+        return "homework";
+    }
+
+    return "assignment";
+}
+
+function categoryLabel(category) {
+    switch (category) {
+        case "quiz":
+            return "Quiz";
+
+        case "test":
+            return "Test";
+
+        case "assessment":
+            return "Assessment";
+
+        case "homework":
+            return "Homework";
+
+        default:
+            return "Assignment";
+    }
+}
+
+function collectAssignments(data) {
+    const categories = [
+        "Overdue",
+        "DueToday",
+        "DueTomorrow",
+        "DueThisWeek",
+        "DueNextWeek"
+    ];
+
+    const map = new Map();
+
+    for (const category of categories) {
+        const list = Array.isArray(data?.[category])
+            ? data[category]
+            : [];
+
+        for (const assignment of list) {
+            if (!assignment || !assignment.AssignmentId) {
+                continue;
+            }
+
+            map.set(
+                String(assignment.AssignmentId),
+                assignment
+            );
+        }
+    }
+
+    return Array.from(map.values());
+}
+
+function classifyByDate(assignments) {
+    const today = getTodaySchoolDateKey();
+
+    return assignments.map(assignment => {
+        const dueKey =
+            dateKeyFromBlackbaud(assignment.DateDue);
+
+        const difference =
+            dueKey
+                ? dayDifference(today, dueKey)
+                : null;
+
+        return {
+            ...assignment,
+            dueKey,
+            dayDifference: difference,
+            category: getCategory(assignment)
+        };
+    });
+}
+
+function sortByDueDate(assignments) {
+    return [...assignments].sort((a, b) => {
+        const aDate = a.dueKey || "9999-99-99";
+        const bDate = b.dueKey || "9999-99-99";
+
+        if (aDate !== bDate) {
+            return aDate.localeCompare(bDate);
+        }
+
+        return String(a.DateDue || "")
+            .localeCompare(String(b.DateDue || ""));
+    });
+}
+
+function renderAssignment(assignment, specialClass = "") {
+    const category = assignment.category;
+
+    const title =
+        escapeHtml(
+            cleanTitle(assignment.ShortDescription)
+        );
+
+    const className =
+        escapeHtml(
+            cleanTitle(assignment.GroupName)
+        );
+
+    const dueText =
+        formatBlackbaudDate(assignment.DateDue);
+
+    let dueClass = "";
+
+    if (assignment.dayDifference < 0) {
+        dueClass = "overdue";
+    } else if (assignment.dayDifference === 1) {
+        dueClass = "tomorrow";
+    }
+
+    const badgeClass =
+        category === "homework"
+            ? "badge-homework"
+            : category === "quiz"
+                ? "badge-quiz"
+                : category === "test" ||
+                  category === "assessment"
+                    ? "badge-test"
+                    : "badge-assignment";
+
+    const categoryText =
+        escapeHtml(categoryLabel(category));
+
+    const typeText =
+        escapeHtml(
+            cleanTitle(assignment.AssignmentType)
+        );
+
+    const points =
+        Number(assignment.MaxPoints) > 0
+            ? `${assignment.MaxPoints} points`
+            : "No point value";
+
+    return `
+        <div
+            class="assignment
+                   ${specialClass}
+                   ${category === "quiz" ||
+                     category === "test" ||
+                     category === "assessment"
+                        ? "assessment"
+                        : ""}"
+        >
+
+            <div class="assignment-top">
+
+                <div>
+                    <div class="assignment-title">
+                        ${title}
+                    </div>
+
+                    <div class="assignment-class">
+                        ${className}
+                    </div>
+                </div>
+
+                <div class="due ${dueClass}">
+                    ${escapeHtml(dueText)}
+                </div>
+
+            </div>
+
+            <div class="badges">
+                <span class="badge ${badgeClass}">
+                    ${categoryText}
+                </span>
+
+                ${
+                    typeText
+                        ? `
+                            <span class="badge badge-assignment">
+                                ${typeText}
+                            </span>
+                          `
+                        : ""
+                }
+            </div>
+
+            <div class="details">
+                <strong>Assigned:</strong>
+                ${escapeHtml(
+                    formatBlackbaudDate(
+                        assignment.DateAssigned
+                    )
+                )}
+                <br>
+
+                <strong>Points:</strong>
+                ${escapeHtml(points)}
+                <br>
+
+                <strong>Assignment ID:</strong>
+                ${escapeHtml(
+                    assignment.AssignmentId
+                )}
+            </div>
+
+        </div>
+    `;
+}
+
+function renderList(container, assignments, emptyText) {
+    if (!assignments.length) {
+        container.innerHTML = `
+            <div class="empty">
+                ${escapeHtml(emptyText)}
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML =
+        assignments
+            .map(assignment =>
+                renderAssignment(assignment)
+            )
+            .join("");
+
+    container
+        .querySelectorAll(".assignment")
+        .forEach(card => {
+            card.addEventListener("click", () => {
+                card.classList.toggle("open");
+            });
+        });
+}
+
+function updateStats(tomorrow, week, assessments) {
+    document.getElementById("tomorrowCount")
+        .textContent = tomorrow.length;
+
+    document.getElementById("weekCount")
+        .textContent = week.length;
+
+    document.getElementById("assessmentCount")
+        .textContent = assessments.length;
+}
+
+function renderDashboard(data, syncedAt) {
+    currentData = data;
+
+    const all = classifyByDate(
+        collectAssignments(data)
+    );
+
+    const tomorrow =
+        sortByDueDate(
+            all.filter(a =>
+                a.dayDifference === 1
+            )
+        );
+
+    const today =
+        sortByDueDate(
+            all.filter(a =>
+                a.dayDifference === 0
+            )
+        );
+
+    const overdue =
+        sortByDueDate(
+            all.filter(a =>
+                a.dayDifference < 0
+            )
+        );
+
+    const week =
+        sortByDueDate(
+            all.filter(a =>
+                a.dayDifference >= 1 &&
+                a.dayDifference <= 7
+            )
+        );
+
+    const assessments =
+        week.filter(a =>
+            a.category === "quiz" ||
+            a.category === "test" ||
+            a.category === "assessment"
+        );
+
+    updateStats(
+        tomorrow,
+        week,
+        assessments
+    );
+
+    document.getElementById("tomorrowLabel")
+        .textContent =
+            `${tomorrow.length} item${tomorrow.length === 1 ? "" : "s"}`;
+
+    document.getElementById("weekLabel")
+        .textContent =
+            `${week.length} item${week.length === 1 ? "" : "s"}`;
+
+    document.getElementById("todayLabel")
+        .textContent =
+            `${today.length} item${today.length === 1 ? "" : "s"}`;
+
+    document.getElementById("overdueLabel")
+        .textContent =
+            `${overdue.length} item${overdue.length === 1 ? "" : "s"}`;
+
+    renderList(
+        tomorrowContainer,
+        tomorrow,
+        "Nothing due tomorrow."
+    );
+
+    renderList(
+        todayContainer,
+        today,
+        "Nothing due today."
+    );
+
+    renderList(
+        overdueContainer,
+        overdue,
+        "Nothing overdue."
+    );
+
+    renderWeek(week);
+
+    dashboardElement.classList.remove("hidden");
+    setupBox.classList.add("hidden");
+
+    if (syncedAt) {
+        const syncDate = new Date(syncedAt);
+
+        statusElement.innerHTML =
+            `<strong>Connected.</strong> Last synced ${syncDate.toLocaleString()}`;
+    } else {
+        statusElement.innerHTML =
+            "<strong>Connected.</strong> Blackbaud assignments loaded.";
+    }
+}
+
+function renderWeek(week) {
+    let filtered = week;
+
+    if (currentFilter === "homework") {
+        filtered =
+            week.filter(a =>
+                a.category === "homework" ||
+                a.category === "assignment"
+            );
+    }
+
+    if (currentFilter === "assessment") {
+        filtered =
+            week.filter(a =>
+                a.category === "quiz" ||
+                a.category === "test" ||
+                a.category === "assessment"
+            );
+    }
+
+    renderList(
+        weekContainer,
+        filtered,
+        currentFilter === "assessment"
+            ? "No tests or quizzes in the next 7 days."
+            : currentFilter === "homework"
+                ? "No homework in the next 7 days."
+                : "Nothing due in the next 7 days."
+    );
+}
+
+function requestFreshData() {
+    statusElement.textContent =
+        "Refreshing from Blackbaud...";
+
+    window.postMessage(
+        {
+            source: "dexter-assignment-dashboard",
+            type: "REQUEST_ASSIGNMENTS"
+        },
+        window.location.origin
+    );
+}
+
+window.addEventListener("message", event => {
+    if (event.source !== window) {
+        return;
+    }
+
+    if (event.origin !== window.location.origin) {
+        return;
+    }
+
+    if (
+        !event.data ||
+        event.data.source !==
+            "dexter-assignment-extension"
+    ) {
+        return;
+    }
+
+    if (
+        event.data.type !==
+        "BLACKBAUD_ASSIGNMENTS_DATA"
+    ) {
+        return;
+    }
+
+    const result = event.data.payload;
+
+    if (!result || !result.ok) {
+        statusElement.textContent =
+            result?.message ||
+            result?.error ||
+            "Could not connect to Blackbaud.";
+
+        setupBox.classList.remove("hidden");
+        dashboardElement.classList.add("hidden");
+
+        return;
+    }
+
+    if (!result.assignments) {
+        statusElement.textContent =
+            "No assignment data is available yet.";
+
+        setupBox.classList.remove("hidden");
+        dashboardElement.classList.add("hidden");
+
+        return;
+    }
+
+    renderDashboard(
+        result.assignments,
+        result.syncedAt
+    );
+});
+
+document.getElementById("refreshButton")
+    .addEventListener("click", requestFreshData);
+
+document.querySelectorAll(".filter")
+    .forEach(button => {
+        button.addEventListener("click", () => {
+            document
+                .querySelectorAll(".filter")
+                .forEach(item => {
+                    item.classList.remove("active");
+                });
+
+            button.classList.add("active");
+
+            currentFilter =
+                button.dataset.filter;
+
+            if (currentData) {
+                const all =
+                    classifyByDate(
+                        collectAssignments(currentData)
+                    );
+
+                const week =
+                    sortByDueDate(
+                        all.filter(a =>
+                            a.dayDifference >= 1 &&
+                            a.dayDifference <= 7
+                        )
+                    );
+
+                renderWeek(week);
+            }
+        });
+    });
+
+window.postMessage(
+    {
+        source: "dexter-assignment-dashboard",
+        type: "REQUEST_ASSIGNMENTS"
+    },
+    window.location.origin
+);
 </script>
 
 </body>
