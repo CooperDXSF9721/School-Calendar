@@ -15,134 +15,210 @@
         }
 
         :root {
-            --bg: #f4f6fa;
-            --card: #ffffff;
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --surface-soft: #f8fafc;
+
             --text: #172033;
-            --muted: #6b7280;
-            --border: #e5e7eb;
+            --text-soft: #475569;
+            --muted: #64748b;
+
+            --border: #e2e8f0;
 
             --blue: #2563eb;
             --blue-dark: #1d4ed8;
-            --blue-light: #eff6ff;
-
-            --red: #dc2626;
-            --red-light: #fef2f2;
-
-            --orange: #ea580c;
-            --orange-light: #fff7ed;
-
-            --green: #16a34a;
-            --green-light: #f0fdf4;
+            --blue-soft: #eff6ff;
 
             --purple: #7c3aed;
-            --purple-light: #f5f3ff;
+            --purple-soft: #f5f3ff;
 
-            --shadow:
-                0 4px 18px rgba(0, 0, 0, 0.07);
+            --red: #dc2626;
+            --red-soft: #fef2f2;
 
-            --radius: 14px;
+            --orange: #ea580c;
+            --orange-soft: #fff7ed;
+
+            --green: #16a34a;
+            --green-soft: #f0fdf4;
+
+            --shadow-sm:
+                0 2px 8px rgba(15, 23, 42, 0.05);
+
+            --shadow-md:
+                0 6px 20px rgba(15, 23, 42, 0.07);
+
+            --radius-sm: 9px;
+            --radius-md: 13px;
+            --radius-lg: 18px;
         }
 
-        body.compact {
-            --radius: 10px;
-        }
+        /* =========================
+           GLOBAL
+        ========================== */
 
         body {
             margin: 0;
             background: var(--bg);
             color: var(--text);
             font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
                 Arial,
-                Helvetica,
                 sans-serif;
         }
 
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
         header {
-            background: #172033;
+            background:
+                linear-gradient(
+                    135deg,
+                    #172033 0%,
+                    #202c42 100%
+                );
+
             color: white;
-            padding: 22px 24px;
         }
 
         .header-inner {
-            max-width: 1250px;
+            max-width: 1320px;
             margin: 0 auto;
+            padding: 26px 24px 28px;
         }
 
-        header h1 {
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .header-title h1 {
             margin: 0;
-            font-size: 29px;
+            font-size: 30px;
+            line-height: 1.15;
+            letter-spacing: -0.4px;
         }
 
-        header p {
-            margin: 6px 0 0;
+        .header-title p {
+            margin: 7px 0 0;
             color: #cbd5e1;
             font-size: 14px;
         }
 
-        main {
-            max-width: 1250px;
-            margin: 22px auto;
-            padding: 0 20px 60px;
+        .header-date {
+            text-align: right;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        .header-date strong {
+            display: block;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 3px;
         }
 
         /* =========================
-           TOP BAR
+           MAIN
         ========================== */
 
-        .topbar {
+        main {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 20px 24px 60px;
+        }
+
+        /* =========================
+           TOOLBAR
+        ========================== */
+
+        .toolbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 12px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
-            margin-bottom: 18px;
         }
 
-        .status {
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             color: var(--muted);
-            font-size: 14px;
+            font-size: 13px;
         }
 
-        .status strong {
-            color: var(--text);
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #94a3b8;
         }
 
-        .top-actions {
+        .status-dot.connected {
+            background: var(--green);
+        }
+
+        .status-dot.error {
+            background: var(--red);
+        }
+
+        .toolbar-actions {
             display: flex;
             gap: 8px;
-            flex-wrap: wrap;
         }
 
-        button {
-            border: none;
-            cursor: pointer;
-            border-radius: 9px;
-            padding: 10px 14px;
-            font-size: 14px;
+        .button {
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--text-soft);
+            border-radius: var(--radius-sm);
+            padding: 9px 13px;
+            font-size: 13px;
             font-weight: 700;
+            transition:
+                background 0.15s ease,
+                border-color 0.15s ease,
+                transform 0.1s ease;
         }
 
-        button:active {
+        .button:hover {
+            background: #f8fafc;
+        }
+
+        .button:active {
             transform: translateY(1px);
         }
 
-        .primary-btn {
+        .button.primary {
             background: var(--blue);
             color: white;
+            border-color: var(--blue);
         }
 
-        .primary-btn:hover {
+        .button.primary:hover {
             background: var(--blue-dark);
-        }
-
-        .secondary-btn {
-            background: white;
-            color: #374151;
-            border: 1px solid var(--border);
-        }
-
-        .secondary-btn:hover {
-            background: #f9fafb;
+            border-color: var(--blue-dark);
         }
 
         /* =========================
@@ -151,78 +227,87 @@
 
         .tabs {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             background: white;
             border: 1px solid var(--border);
             padding: 5px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
             overflow-x: auto;
+            margin-bottom: 16px;
         }
 
         .tab {
             flex: 0 0 auto;
+            border: 0;
             background: transparent;
             color: var(--muted);
             padding: 10px 15px;
-            border-radius: 8px;
+            border-radius: 9px;
+            font-weight: 750;
+            font-size: 13px;
         }
 
         .tab:hover {
-            background: #f3f4f6;
+            background: var(--surface-soft);
         }
 
         .tab.active {
-            background: var(--blue);
+            background: var(--text);
             color: white;
         }
 
         /* =========================
-           SEARCH / FILTER BAR
+           SEARCH
         ========================== */
 
-        .control-bar {
+        .filters-bar {
             display: flex;
+            align-items: center;
             gap: 10px;
+            margin-bottom: 18px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
         }
 
-        .search-wrap {
+        .search {
             flex: 1;
-            min-width: 220px;
+            min-width: 240px;
+            position: relative;
         }
 
-        .search-input {
+        .search input {
             width: 100%;
             border: 1px solid var(--border);
             background: white;
             border-radius: 10px;
             padding: 11px 13px;
-            font-size: 14px;
             outline: none;
+            color: var(--text);
         }
 
-        .search-input:focus {
+        .search input:focus {
             border-color: var(--blue);
             box-shadow:
-                0 0 0 3px rgba(37, 99, 235, 0.12);
+                0 0 0 3px rgba(37, 99, 235, 0.11);
         }
 
-        .filter-group {
+        .filter-buttons {
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
         }
 
-        .small-filter {
-            background: white;
-            color: #4b5563;
+        .filter-button {
             border: 1px solid var(--border);
+            background: white;
+            color: var(--text-soft);
+            border-radius: 9px;
+            padding: 9px 12px;
+            font-size: 12px;
+            font-weight: 750;
         }
 
-        .small-filter.active {
+        .filter-button.active {
             background: var(--blue);
             border-color: var(--blue);
             color: white;
@@ -234,33 +319,37 @@
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 13px;
-            margin-bottom: 22px;
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 18px;
         }
 
-        .stat {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 18px;
-            box-shadow: var(--shadow);
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            box-shadow: var(--shadow-sm);
         }
 
         .stat-label {
-            font-size: 13px;
             color: var(--muted);
-            margin-bottom: 7px;
+            font-size: 12px;
+            font-weight: 700;
         }
 
         .stat-number {
-            font-size: 30px;
-            font-weight: 800;
+            margin-top: 7px;
+            font-size: 29px;
+            line-height: 1;
+            font-weight: 850;
         }
 
-        .stat-description {
-            margin-top: 4px;
-            font-size: 12px;
+        .stat-subtitle {
+            margin-top: 6px;
             color: var(--muted);
+            font-size: 11px;
         }
 
         /* =========================
@@ -275,77 +364,203 @@
             display: block;
         }
 
-        .section {
-            margin-bottom: 24px;
-        }
+        /* =========================
+           SECTION HEADERS
+        ========================== */
 
-        .section-title-row {
+        .section-heading {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             gap: 10px;
-            margin-bottom: 11px;
-            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
 
-        .section-title-left {
+        .section-heading-left {
             display: flex;
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
         }
 
-        .section-title-row h2 {
+        .section-heading h2 {
             margin: 0;
-            font-size: 21px;
+            font-size: 20px;
+            letter-spacing: -0.2px;
         }
 
         .section-count {
             color: var(--muted);
-            font-size: 13px;
+            font-size: 12px;
         }
 
-        .subsection-title {
-            margin: 20px 0 10px;
-            font-size: 17px;
-        }
-
-        .empty {
-            background: white;
-            border: 1px dashed var(--border);
-            border-radius: var(--radius);
-            padding: 22px;
+        .section-note {
+            margin-top: -5px;
+            margin-bottom: 12px;
             color: var(--muted);
+            font-size: 12px;
         }
 
         /* =========================
-           TODAY TOGGLE
+           TODAY LAYOUT
         ========================== */
 
-        .past-toggle {
-            padding: 8px 11px;
-            font-size: 12px;
+        .today-layout {
+            display: grid;
+            grid-template-columns:
+                minmax(0, 1.55fr)
+                minmax(330px, 1fr);
+            gap: 16px;
+            align-items: start;
+        }
+
+        .planner-panel {
             background: white;
-            color: #374151;
             border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            padding: 18px;
         }
 
-        .past-toggle:hover {
-            background: #f9fafb;
+        .planner-panel.tomorrow {
+            background:
+                linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #fcfcff 100%
+                );
         }
 
-        .past-section {
-            margin-top: 30px;
-            padding-top: 24px;
-            border-top: 2px solid var(--border);
+        .panel-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
         }
 
-        .past-section .section-title-row h2 {
-            color: #6b7280;
+        .panel-title {
+            font-size: 18px;
+            font-weight: 850;
         }
 
-        .past-section .assignment {
-            opacity: 0.9;
+        .panel-subtitle {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .time-indicator {
+            white-space: nowrap;
+            color: var(--orange);
+            background: var(--orange-soft);
+            border-radius: 999px;
+            padding: 5px 8px;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .tomorrow-indicator {
+            color: var(--purple);
+            background: var(--purple-soft);
+        }
+
+        .today-subsection {
+            margin-top: 15px;
+        }
+
+        .today-subsection:first-of-type {
+            margin-top: 0;
+        }
+
+        .today-subsection-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-soft);
+            font-size: 12px;
+            font-weight: 850;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .subsection-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* =========================
+           PAST TODAY
+        ========================== */
+
+        .past-today-panel {
+            margin-top: 16px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .past-today-header {
+            width: 100%;
+            border: 0;
+            background: white;
+            padding: 14px 17px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text);
+        }
+
+        .past-today-header:hover {
+            background: #fafafa;
+        }
+
+        .past-today-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .past-icon {
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .past-title {
+            text-align: left;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .past-subtitle {
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .past-chevron {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .past-today-content {
+            display: none;
+            border-top: 1px solid var(--border);
+            padding: 15px 17px 17px;
+        }
+
+        .past-today-content.open {
+            display: block;
         }
 
         /* =========================
@@ -354,154 +569,262 @@
 
         .assignment-list {
             display: grid;
-            gap: 10px;
+            gap: 8px;
         }
 
         .assignment {
-            background: white;
-            border-radius: var(--radius);
-            padding: 15px 16px;
-            box-shadow: var(--shadow);
-            border-left: 5px solid var(--blue);
-            cursor: pointer;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--blue);
+            border-radius: 10px;
+            padding: 11px 12px;
             transition:
-                transform 0.12s ease,
-                box-shadow 0.12s ease;
-        }
-
-        .compact .assignment {
-            padding: 11px 13px;
+                border-color 0.15s ease,
+                box-shadow 0.15s ease,
+                transform 0.12s ease;
+            cursor: pointer;
         }
 
         .assignment:hover {
+            box-shadow: var(--shadow-sm);
             transform: translateY(-1px);
-            box-shadow:
-                0 7px 20px rgba(0, 0, 0, 0.1);
         }
 
         .assignment.assessment {
             border-left-color: var(--purple);
         }
 
-        .assignment.overdue {
-            border-left-color: var(--red);
-        }
-
         .assignment.today {
             border-left-color: var(--orange);
         }
 
-        .assignment.past-today {
-            border-left-color: #9ca3af;
+        .assignment.overdue {
+            border-left-color: var(--red);
         }
 
-        .assignment-top {
+        .assignment.past-today {
+            border-left-color: #94a3b8;
+            background: #fcfcfd;
+        }
+
+        .assignment-main {
             display: flex;
             justify-content: space-between;
-            gap: 14px;
+            gap: 12px;
+        }
+
+        .assignment-primary {
+            min-width: 0;
         }
 
         .assignment-title {
-            font-size: 16px;
-            font-weight: 750;
-            line-height: 1.35;
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.4;
+            font-weight: 800;
         }
 
         .assignment-class {
-            margin-top: 5px;
+            margin-top: 3px;
             color: var(--muted);
-            font-size: 13px;
+            font-size: 11px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .assignment-due {
+            flex: 0 0 auto;
             white-space: nowrap;
-            font-size: 13px;
-            font-weight: 700;
-            color: #374151;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-soft);
         }
 
-        .assignment-due.tomorrow {
+        .assignment-due.today-time {
             color: var(--orange);
         }
 
-        .assignment-due.overdue {
+        .assignment-due.tomorrow-time {
+            color: var(--purple);
+        }
+
+        .assignment-due.overdue-time {
             color: var(--red);
         }
 
-        .assignment-due.past {
-            color: #6b7280;
+        .assignment-due.past-time {
+            color: var(--muted);
         }
 
-        .badges {
+        .assignment-meta {
             display: flex;
+            align-items: center;
             gap: 6px;
+            margin-top: 8px;
             flex-wrap: wrap;
-            margin-top: 10px;
         }
 
         .badge {
-            display: inline-block;
             border-radius: 999px;
-            padding: 4px 8px;
-            font-size: 11px;
-            font-weight: 750;
+            padding: 3px 7px;
+            font-size: 9px;
+            font-weight: 850;
         }
 
         .badge-homework {
-            background: var(--blue-light);
+            background: var(--blue-soft);
             color: #1d4ed8;
         }
 
         .badge-quiz {
-            background: var(--purple-light);
+            background: var(--purple-soft);
             color: #6d28d9;
         }
 
         .badge-test {
-            background: var(--red-light);
+            background: var(--red-soft);
             color: #b91c1c;
         }
 
         .badge-other {
-            background: #f3f4f6;
-            color: #4b5563;
+            background: #f1f5f9;
+            color: #475569;
         }
 
-        .details {
+        .assignment-expand-hint {
+            margin-left: auto;
+            color: #94a3b8;
+            font-size: 10px;
+        }
+
+        .assignment-details {
             display: none;
-            margin-top: 13px;
-            padding-top: 12px;
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px solid var(--border);
-            color: var(--muted);
-            font-size: 12px;
-            line-height: 1.65;
+            color: var(--text-soft);
+            font-size: 11px;
+            line-height: 1.6;
         }
 
-        .assignment.open .details {
+        .assignment.open .assignment-details {
             display: block;
         }
 
+        .detail-row {
+            margin-bottom: 3px;
+        }
+
+        .detail-label {
+            font-weight: 800;
+            color: var(--text);
+        }
+
         /* =========================
-           CLASS GROUPS
+           EMPTY
         ========================== */
 
-        .class-group {
+        .empty {
+            border: 1px dashed var(--border);
+            background: var(--surface-soft);
+            border-radius: 10px;
+            padding: 15px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* =========================
+           UPCOMING
+        ========================== */
+
+        .upcoming-day {
+            margin-bottom: 17px;
+        }
+
+        .upcoming-day-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .upcoming-day-date {
+            font-size: 14px;
+            font-weight: 850;
+        }
+
+        .upcoming-day-count {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .day-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .overdue-panel {
+            margin-top: 24px;
             background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 12px;
+            border: 1px solid #fecaca;
+            border-radius: var(--radius-lg);
             overflow: hidden;
+        }
+
+        .overdue-header {
+            padding: 14px 17px;
+            background: var(--red-soft);
+            border-bottom: 1px solid #fee2e2;
+        }
+
+        .overdue-header h2 {
+            margin: 0;
+            color: #991b1b;
+            font-size: 17px;
+        }
+
+        .overdue-header p {
+            margin: 3px 0 0;
+            color: #b91c1c;
+            font-size: 11px;
+        }
+
+        .overdue-body {
+            padding: 14px;
+        }
+
+        /* =========================
+           BY CLASS
+        ========================== */
+
+        .class-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+            gap: 12px;
+        }
+
+        .class-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
         }
 
         .class-header {
             width: 100%;
-            padding: 15px 16px;
+            border: 0;
             background: white;
+            padding: 15px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid transparent;
             text-align: left;
         }
 
@@ -509,44 +832,49 @@
             background: #fafafa;
         }
 
-        .class-header.open {
-            border-bottom-color: var(--border);
-        }
-
-        .class-left {
+        .class-info {
             display: flex;
             align-items: center;
             gap: 10px;
+            min-width: 0;
         }
 
         .class-color {
-            width: 11px;
-            height: 11px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            flex: 0 0 11px;
+            flex: 0 0 10px;
+        }
+
+        .class-name-wrap {
+            min-width: 0;
         }
 
         .class-name {
-            font-size: 16px;
-            font-weight: 800;
+            font-size: 14px;
+            font-weight: 850;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .class-count {
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .class-chevron {
             color: var(--muted);
             font-size: 12px;
         }
 
-        .class-arrow {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .class-content {
+        .class-body {
             display: none;
-            padding: 12px;
+            padding: 0 12px 12px;
         }
 
-        .class-content.open {
+        .class-body.open {
             display: block;
         }
 
@@ -554,18 +882,26 @@
            CALENDAR
         ========================== */
 
-        .calendar-toolbar {
+        .calendar-shell {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .calendar-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
+            gap: 12px;
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .calendar-month-title {
-            font-size: 22px;
-            font-weight: 800;
+        .calendar-title {
+            font-size: 19px;
+            font-weight: 850;
         }
 
         .calendar-nav {
@@ -575,140 +911,175 @@
 
         .calendar-grid {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
+            grid-template-columns:
+                repeat(7, minmax(0, 1fr));
         }
 
-        .calendar-day-name {
-            padding: 10px;
+        .calendar-weekday {
+            padding: 10px 7px;
             background: #f8fafc;
             border-right: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            font-size: 11px;
-            font-weight: 800;
             color: var(--muted);
             text-align: center;
+            font-size: 10px;
+            font-weight: 850;
+            text-transform: uppercase;
         }
 
         .calendar-cell {
-            min-height: 125px;
+            min-height: 120px;
             padding: 7px;
+            background: white;
             border-right: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            background: white;
             overflow: hidden;
         }
 
         .calendar-cell:nth-child(7n) {
-            border-right: none;
+            border-right: 0;
         }
 
-        .calendar-cell.muted-day {
+        .calendar-cell.muted {
             background: #fafafa;
-            color: #9ca3af;
+        }
+
+        .calendar-cell.today {
+            background:
+                linear-gradient(
+                    180deg,
+                    #f8fbff 0%,
+                    #ffffff 100%
+                );
         }
 
         .calendar-date {
-            font-size: 12px;
-            font-weight: 800;
-            margin-bottom: 6px;
-        }
-
-        .calendar-cell.today-cell .calendar-date {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 25px;
-            height: 25px;
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
             border-radius: 50%;
+            font-size: 11px;
+            font-weight: 850;
+        }
+
+        .calendar-cell.today .calendar-date {
             background: var(--blue);
             color: white;
         }
 
-        .calendar-assignment {
+        .calendar-event {
             display: block;
             width: 100%;
-            border: none;
+            border: 0;
             margin-bottom: 4px;
             padding: 5px 6px;
             border-radius: 6px;
-            font-size: 10px;
-            font-weight: 700;
             text-align: left;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            cursor: pointer;
+            font-size: 9px;
+            font-weight: 750;
         }
 
-        .calendar-assignment.homework {
-            background: var(--blue-light);
+        .calendar-event.homework {
+            background: var(--blue-soft);
             color: #1d4ed8;
         }
 
-        .calendar-assignment.assessment {
-            background: var(--purple-light);
+        .calendar-event.assessment {
+            background: var(--purple-soft);
             color: #6d28d9;
+        }
+
+        .calendar-event:hover {
+            filter: brightness(0.98);
+        }
+
+        /* =========================
+           CONNECTION
+        ========================== */
+
+        .connection-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .connection-card h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .connection-card p {
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
         }
 
         /* =========================
            SETTINGS
         ========================== */
 
-        .settings-panel {
-            position: fixed;
-            top: 0;
-            right: -380px;
-            width: 360px;
-            max-width: 90vw;
-            height: 100vh;
-            background: white;
-            box-shadow:
-                -8px 0 25px rgba(0, 0, 0, 0.14);
-            z-index: 1000;
-            transition: right 0.25s ease;
-            padding: 22px;
-            overflow-y: auto;
-        }
-
-        .settings-panel.open {
-            right: 0;
-        }
-
         .settings-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.25);
-            z-index: 999;
+            background: rgba(15, 23, 42, 0.28);
             display: none;
+            z-index: 999;
         }
 
         .settings-overlay.open {
             display: block;
         }
 
-        .settings-header {
+        .settings-panel {
+            position: fixed;
+            top: 0;
+            right: -390px;
+            width: 370px;
+            max-width: 90vw;
+            height: 100vh;
+            background: white;
+            z-index: 1000;
+            box-shadow:
+                -10px 0 30px rgba(15, 23, 42, 0.14);
+            transition:
+                right 0.24s ease;
+            overflow-y: auto;
+            padding: 22px;
+        }
+
+        .settings-panel.open {
+            right: 0;
+        }
+
+        .settings-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 22px;
+            margin-bottom: 18px;
         }
 
-        .settings-header h2 {
+        .settings-top h2 {
             margin: 0;
+            font-size: 20px;
         }
 
-        .close-button {
-            background: #f3f4f6;
-            color: #374151;
-            width: 36px;
-            height: 36px;
-            padding: 0;
+        .close-settings {
+            width: 34px;
+            height: 34px;
+            border: 0;
             border-radius: 8px;
+            background: #f1f5f9;
+            color: #475569;
             font-size: 20px;
         }
 
@@ -718,39 +1089,38 @@
         }
 
         .setting-title {
-            font-weight: 800;
-            margin-bottom: 5px;
+            font-size: 13px;
+            font-weight: 850;
         }
 
         .setting-description {
-            font-size: 12px;
+            margin: 4px 0 10px;
             color: var(--muted);
-            margin-bottom: 10px;
+            font-size: 11px;
             line-height: 1.45;
         }
 
-        .toggle-row {
+        .setting-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .toggle {
-            width: 45px;
-            height: 25px;
-            padding: 3px;
+            width: 44px;
+            height: 24px;
+            border: 0;
             border-radius: 999px;
-            background: #d1d5db;
-            transition:
-                background 0.15s ease;
+            background: #cbd5e1;
+            padding: 3px;
         }
 
         .toggle::after {
             content: "";
             display: block;
-            width: 19px;
-            height: 19px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: white;
             transition:
@@ -767,60 +1137,79 @@
 
         .setting-select {
             width: 100%;
-            padding: 9px;
             border: 1px solid var(--border);
             border-radius: 8px;
+            padding: 9px;
             background: white;
         }
 
         /* =========================
-           CONNECTION CARD
+           COMPACT MODE
         ========================== */
 
-        .connection-card {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 22px;
-            margin-bottom: 22px;
+        body.compact .assignment {
+            padding: 8px 10px;
         }
 
-        .connection-card h2 {
-            margin-top: 0;
+        body.compact .assignment-meta {
+            margin-top: 5px;
         }
 
-        .connection-card p {
-            color: var(--muted);
-            line-height: 1.5;
+        body.compact .calendar-cell {
+            min-height: 100px;
         }
 
         /* =========================
-           MOBILE
+           RESPONSIVE
         ========================== */
 
-        @media (max-width: 900px) {
+        @media (max-width: 1050px) {
+            .today-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .class-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
             .stats {
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .header-top {
+                flex-direction: column;
+            }
+
+            .header-date {
+                text-align: left;
             }
 
             .calendar-cell {
-                min-height: 100px;
+                min-height: 90px;
             }
         }
 
-        @media (max-width: 650px) {
-            header h1 {
-                font-size: 24px;
+        @media (max-width: 600px) {
+            main {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            .header-inner {
+                padding-left: 16px;
+                padding-right: 16px;
             }
 
             .stats {
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: 1fr 1fr;
             }
 
-            .assignment-top {
+            .assignment-main {
                 flex-direction: column;
+                gap: 5px;
             }
 
             .assignment-due {
@@ -828,17 +1217,23 @@
             }
 
             .calendar-cell {
-                min-height: 85px;
-                padding: 5px;
+                min-height: 72px;
+                padding: 4px;
             }
 
-            .calendar-assignment {
-                font-size: 9px;
+            .calendar-weekday {
+                font-size: 8px;
+                padding: 8px 2px;
             }
 
-            .calendar-day-name {
-                font-size: 9px;
-                padding: 7px 2px;
+            .calendar-event {
+                font-size: 8px;
+                padding: 4px;
+            }
+
+            .calendar-date {
+                width: 22px;
+                height: 22px;
             }
         }
     </style>
@@ -848,37 +1243,66 @@
 
 <header>
     <div class="header-inner">
-        <h1>Dexter Assignment Dashboard</h1>
-        <p>
-            Homework, tests, quizzes, and upcoming work from Blackbaud.
-        </p>
+
+        <div class="header-top">
+
+            <div class="header-title">
+                <h1>
+                    Dexter Assignment Dashboard
+                </h1>
+
+                <p>
+                    Your Blackbaud work, organized for you.
+                </p>
+            </div>
+
+            <div
+                class="header-date"
+                id="headerDate"
+            >
+                <strong>
+                    Today
+                </strong>
+                Loading...
+            </div>
+
+        </div>
+
     </div>
 </header>
 
 <main>
 
-    <!-- TOP BAR -->
+    <!-- =========================
+         TOOLBAR
+    ========================== -->
 
-    <div class="topbar">
+    <div class="toolbar">
 
-        <div
-            class="status"
-            id="status"
-        >
-            Waiting for Blackbaud...
+        <div class="connection-status">
+
+            <span
+                class="status-dot"
+                id="statusDot"
+            ></span>
+
+            <span id="status">
+                Waiting for Blackbaud...
+            </span>
+
         </div>
 
-        <div class="top-actions">
+        <div class="toolbar-actions">
 
             <button
-                class="secondary-btn"
+                class="button"
                 id="settingsButton"
             >
                 ⚙ Settings
             </button>
 
             <button
-                class="primary-btn"
+                class="button primary"
                 id="refreshButton"
             >
                 ↻ Refresh
@@ -888,26 +1312,31 @@
 
     </div>
 
-    <!-- CONNECTION -->
+    <!-- =========================
+         CONNECTION CARD
+    ========================== -->
 
     <div
         class="connection-card"
         id="connectionCard"
     >
-        <h2>Connecting to Blackbaud</h2>
+
+        <h2>
+            Connecting to Blackbaud
+        </h2>
 
         <p>
             Keep your Blackbaud Assignment Center open in another
-            Chrome tab. Click Refresh after your assignments have loaded.
+            Chrome tab, then click Refresh.
         </p>
+
     </div>
 
-    <!-- TABS -->
+    <!-- =========================
+         TABS
+    ========================== -->
 
-    <div
-        class="tabs"
-        id="tabs"
-    >
+    <div class="tabs">
 
         <button
             class="tab active"
@@ -939,14 +1368,15 @@
 
     </div>
 
-    <!-- SEARCH / FILTER -->
+    <!-- =========================
+         SEARCH / FILTERS
+    ========================== -->
 
-    <div class="control-bar">
+    <div class="filters-bar">
 
-        <div class="search-wrap">
+        <div class="search">
 
             <input
-                class="search-input"
                 id="searchInput"
                 type="text"
                 placeholder="Search assignments or classes..."
@@ -954,24 +1384,24 @@
 
         </div>
 
-        <div class="filter-group">
+        <div class="filter-buttons">
 
             <button
-                class="small-filter active"
+                class="filter-button active"
                 data-filter="all"
             >
                 All
             </button>
 
             <button
-                class="small-filter"
+                class="filter-button"
                 data-filter="homework"
             >
                 Homework
             </button>
 
             <button
-                class="small-filter"
+                class="filter-button"
                 data-filter="assessment"
             >
                 Tests / Quizzes
@@ -981,11 +1411,13 @@
 
     </div>
 
-    <!-- STATS -->
+    <!-- =========================
+         STATS
+    ========================== -->
 
     <div class="stats">
 
-        <div class="stat">
+        <div class="stat-card">
 
             <div class="stat-label">
                 Still Due Today
@@ -998,13 +1430,13 @@
                 0
             </div>
 
-            <div class="stat-description">
+            <div class="stat-subtitle">
                 Due later today
             </div>
 
         </div>
 
-        <div class="stat">
+        <div class="stat-card">
 
             <div class="stat-label">
                 Due Tomorrow
@@ -1017,13 +1449,13 @@
                 0
             </div>
 
-            <div class="stat-description">
+            <div class="stat-subtitle">
                 Everything due tomorrow
             </div>
 
         </div>
 
-        <div class="stat">
+        <div class="stat-card">
 
             <div class="stat-label">
                 Next 7 Days
@@ -1036,13 +1468,13 @@
                 0
             </div>
 
-            <div class="stat-description">
+            <div class="stat-subtitle">
                 Upcoming work
             </div>
 
         </div>
 
-        <div class="stat">
+        <div class="stat-card">
 
             <div class="stat-label">
                 Assessments
@@ -1055,7 +1487,7 @@
                 0
             </div>
 
-            <div class="stat-description">
+            <div class="stat-subtitle">
                 Tests and quizzes
             </div>
 
@@ -1064,7 +1496,7 @@
     </div>
 
     <!-- =====================================================
-         TODAY
+         TODAY VIEW
     ====================================================== -->
 
     <section
@@ -1072,150 +1504,299 @@
         id="view-today"
     >
 
-        <!-- STILL DUE TODAY -->
+        <div class="today-layout">
 
-        <div class="section">
+            <!-- =========================
+                 STILL DUE TODAY
+            ========================== -->
 
-            <div class="section-title-row">
+            <div class="planner-panel">
 
-                <div class="section-title-left">
+                <div class="panel-heading">
 
-                    <h2>
-                        Still Due Today
-                    </h2>
+                    <div>
 
-                    <span
-                        class="section-count"
-                        id="todayTotalCount"
-                    ></span>
+                        <div class="panel-title">
+                            Still Due Today
+                        </div>
+
+                        <div class="panel-subtitle">
+                            Only assignments whose due time hasn't passed.
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="time-indicator"
+                        id="todayTimeIndicator"
+                    >
+                        Due later
+                    </div>
 
                 </div>
 
-                <button
-                    class="past-toggle"
-                    id="pastToggleButton"
-                >
-                    Show Earlier Today
-                </button>
+                <!-- HOMEWORK -->
+
+                <div class="today-subsection">
+
+                    <div class="today-subsection-title">
+
+                        <span>
+                            Homework & Assignments
+                        </span>
+
+                        <span class="subsection-line"></span>
+
+                        <span
+                            class="section-count"
+                            id="todayHomeworkCount"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="assignment-list"
+                        id="todayHomework"
+                    ></div>
+
+                </div>
+
+                <!-- ASSESSMENTS -->
+
+                <div class="today-subsection">
+
+                    <div class="today-subsection-title">
+
+                        <span>
+                            Assessments
+                        </span>
+
+                        <span class="subsection-line"></span>
+
+                        <span
+                            class="section-count"
+                            id="todayAssessmentCount"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="assignment-list"
+                        id="todayAssessments"
+                    ></div>
+
+                </div>
 
             </div>
 
-            <h3 class="subsection-title">
-                Homework & Assignments
-            </h3>
+            <!-- =========================
+                 TOMORROW
+            ========================== -->
 
             <div
-                class="assignment-list"
-                id="todayHomework"
-            ></div>
+                class="planner-panel tomorrow"
+            >
 
-            <h3 class="subsection-title">
-                Assessments
-            </h3>
+                <div class="panel-heading">
 
-            <div
-                class="assignment-list"
-                id="todayAssessments"
-            ></div>
+                    <div>
 
-        </div>
+                        <div class="panel-title">
+                            Tomorrow
+                        </div>
 
-        <!-- TOMORROW -->
+                        <div class="panel-subtitle">
+                            Everything currently scheduled for tomorrow.
+                        </div>
 
-        <div class="section">
+                    </div>
 
-            <div class="section-title-row">
-
-                <div class="section-title-left">
-
-                    <h2>
+                    <div
+                        class="
+                            time-indicator
+                            tomorrow-indicator
+                        "
+                    >
                         Tomorrow
-                    </h2>
+                    </div>
 
-                    <span
-                        class="section-count"
-                        id="tomorrowOnTodayCount"
-                    ></span>
+                </div>
+
+                <!-- TOMORROW HOMEWORK -->
+
+                <div class="today-subsection">
+
+                    <div class="today-subsection-title">
+
+                        <span>
+                            Homework & Assignments
+                        </span>
+
+                        <span class="subsection-line"></span>
+
+                        <span
+                            class="section-count"
+                            id="tomorrowHomeworkCount"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="assignment-list"
+                        id="tomorrowHomework"
+                    ></div>
+
+                </div>
+
+                <!-- TOMORROW ASSESSMENTS -->
+
+                <div class="today-subsection">
+
+                    <div class="today-subsection-title">
+
+                        <span>
+                            Assessments
+                        </span>
+
+                        <span class="subsection-line"></span>
+
+                        <span
+                            class="section-count"
+                            id="tomorrowAssessmentCount"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="assignment-list"
+                        id="tomorrowAssessments"
+                    ></div>
 
                 </div>
 
             </div>
 
-            <h3 class="subsection-title">
-                Homework & Assignments
-            </h3>
-
-            <div
-                class="assignment-list"
-                id="tomorrowHomeworkToday"
-            ></div>
-
-            <h3 class="subsection-title">
-                Assessments
-            </h3>
-
-            <div
-                class="assignment-list"
-                id="tomorrowAssessmentsToday"
-            ></div>
-
         </div>
 
-        <!-- EARLIER TODAY -->
+        <!-- =========================
+             EARLIER TODAY
+        ========================== -->
 
         <div
-            class="past-section"
-            id="pastTodaySection"
+            class="past-today-panel"
+            id="pastTodayPanel"
         >
 
-            <div class="section-title-row">
+            <button
+                class="past-today-header"
+                id="pastTodayHeader"
+            >
 
-                <div class="section-title-left">
+                <div class="past-today-left">
 
-                    <h2>
-                        Earlier Today
-                    </h2>
+                    <div class="past-icon">
+                        ↶
+                    </div>
 
-                    <span
-                        class="section-count"
-                        id="pastTodayCount"
-                    ></span>
+                    <div>
+
+                        <div class="past-title">
+                            Earlier Today
+                        </div>
+
+                        <div
+                            class="past-subtitle"
+                            id="pastTodaySummary"
+                        >
+                            Assignments whose due time has passed.
+                        </div>
+
+                    </div>
 
                 </div>
 
-                <button
-                    class="past-toggle"
-                    id="pastToggleButton2"
+                <div
+                    class="past-chevron"
+                    id="pastChevron"
                 >
-                    Hide Earlier Today
-                </button>
+                    ▼
+                </div>
+
+            </button>
+
+            <div
+                class="past-today-content"
+                id="pastTodayContent"
+            >
+
+                <div class="today-subsection">
+
+                    <div class="today-subsection-title">
+
+                        <span>
+                            Homework & Assignments
+                        </span>
+
+                        <span class="subsection-line"></span>
+
+                        <span
+                            class="section-count"
+                            id="pastHomeworkCount"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="assignment-list"
+                        id="pastTodayHomework"
+                    ></div>
+
+                </div>
+
+                <div class="today-subsection">
+
+                    <div class="today-subsection-title">
+
+                        <span>
+                            Assessments
+                        </span>
+
+                        <span class="subsection-line"></span>
+
+                        <span
+                            class="section-count"
+                            id="pastAssessmentCount"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="assignment-list"
+                        id="pastTodayAssessments"
+                    ></div>
+
+                </div>
 
             </div>
-
-            <h3 class="subsection-title">
-                Homework & Assignments
-            </h3>
-
-            <div
-                class="assignment-list"
-                id="pastTodayHomework"
-            ></div>
-
-            <h3 class="subsection-title">
-                Assessments
-            </h3>
-
-            <div
-                class="assignment-list"
-                id="pastTodayAssessments"
-            ></div>
 
         </div>
 
     </section>
 
     <!-- =====================================================
-         UPCOMING
+         UPCOMING VIEW
     ====================================================== -->
 
     <section
@@ -1223,48 +1804,29 @@
         id="view-upcoming"
     >
 
-        <div class="section">
-
-            <div class="section-title-row">
-
-                <h2>
-                    Next 7 Days
-                </h2>
-
-                <span
-                    class="section-count"
-                    id="upcomingCount"
-                ></span>
-
-            </div>
-
-            <div
-                class="assignment-list"
-                id="upcomingAssignments"
-            ></div>
-
-        </div>
+        <div
+            id="upcomingDays"
+        ></div>
 
         <div
-            class="section"
-            id="overdueSection"
+            class="overdue-panel"
+            id="overduePanel"
         >
 
-            <div class="section-title-row">
+            <div class="overdue-header">
 
                 <h2>
                     Overdue
                 </h2>
 
-                <span
-                    class="section-count"
-                    id="overdueCount"
-                ></span>
+                <p>
+                    Assignments from earlier dates.
+                </p>
 
             </div>
 
             <div
-                class="assignment-list"
+                class="overdue-body"
                 id="overdueAssignments"
             ></div>
 
@@ -1273,7 +1835,7 @@
     </section>
 
     <!-- =====================================================
-         BY CLASS
+         BY CLASS VIEW
     ====================================================== -->
 
     <section
@@ -1281,12 +1843,15 @@
         id="view-classes"
     >
 
-        <div id="classGroups"></div>
+        <div
+            class="class-grid"
+            id="classGroups"
+        ></div>
 
     </section>
 
     <!-- =====================================================
-         CALENDAR
+         CALENDAR VIEW
     ====================================================== -->
 
     <section
@@ -1294,73 +1859,77 @@
         id="view-calendar"
     >
 
-        <div class="calendar-toolbar">
+        <div class="calendar-shell">
+
+            <div class="calendar-top">
+
+                <div
+                    class="calendar-title"
+                    id="calendarMonthTitle"
+                >
+                    Month
+                </div>
+
+                <div class="calendar-nav">
+
+                    <button
+                        class="button"
+                        id="previousMonth"
+                    >
+                        ←
+                    </button>
+
+                    <button
+                        class="button"
+                        id="todayMonth"
+                    >
+                        Today
+                    </button>
+
+                    <button
+                        class="button"
+                        id="nextMonth"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+            </div>
 
             <div
-                class="calendar-month-title"
-                id="calendarMonthTitle"
-            >
-                Month
-            </div>
-
-            <div class="calendar-nav">
-
-                <button
-                    class="secondary-btn"
-                    id="previousMonth"
-                >
-                    ←
-                </button>
-
-                <button
-                    class="secondary-btn"
-                    id="todayMonth"
-                >
-                    Today
-                </button>
-
-                <button
-                    class="secondary-btn"
-                    id="nextMonth"
-                >
-                    →
-                </button>
-
-            </div>
+                class="calendar-grid"
+                id="calendarGrid"
+            ></div>
 
         </div>
-
-        <div
-            class="calendar-grid"
-            id="calendarGrid"
-        ></div>
 
     </section>
 
 </main>
 
-<!-- SETTINGS OVERLAY -->
+<!-- =========================================================
+     SETTINGS
+========================================================== -->
 
 <div
     class="settings-overlay"
     id="settingsOverlay"
 ></div>
 
-<!-- SETTINGS PANEL -->
-
 <aside
     class="settings-panel"
     id="settingsPanel"
 >
 
-    <div class="settings-header">
+    <div class="settings-top">
 
         <h2>
             Customize Dashboard
         </h2>
 
         <button
-            class="close-button"
+            class="close-settings"
             id="closeSettings"
         >
             ×
@@ -1377,10 +1946,10 @@
         </div>
 
         <div class="setting-description">
-            Show more assignments on the screen at once.
+            Fit more assignments on screen.
         </div>
 
-        <div class="toggle-row">
+        <div class="setting-row">
 
             <span>
                 Compact layout
@@ -1404,10 +1973,10 @@
         </div>
 
         <div class="setting-description">
-            Show or hide the overdue section.
+            Show or hide overdue assignments.
         </div>
 
-        <div class="toggle-row">
+        <div class="setting-row">
 
             <span>
                 Show overdue
@@ -1431,10 +2000,10 @@
         </div>
 
         <div class="setting-description">
-            Show point values when an assignment is expanded.
+            Show point values when an assignment is opened.
         </div>
 
-        <div class="toggle-row">
+        <div class="setting-row">
 
             <span>
                 Show points
@@ -1458,14 +2027,13 @@
         </div>
 
         <div class="setting-description">
-            Show assignments on the Today tab after their due
-            time has passed.
+            Choose whether the Earlier Today section starts open.
         </div>
 
-        <div class="toggle-row">
+        <div class="setting-row">
 
             <span>
-                Show earlier today
+                Start expanded
             </span>
 
             <button
@@ -1486,7 +2054,7 @@
         </div>
 
         <div class="setting-description">
-            Choose which tab opens when you visit the dashboard.
+            Choose which tab opens when the dashboard loads.
         </div>
 
         <select
@@ -1563,164 +2131,48 @@
 
         localStorage.setItem(
             "dexterDashboardSettings",
-            JSON.stringify(settings)
+            JSON.stringify(
+                settings
+            )
         );
 
     }
 
-    function applySettings() {
-
-        document.body.classList.toggle(
-            "compact",
-            settings.compact
-        );
-
-        document
-            .getElementById("compactToggle")
-            .classList.toggle(
-                "on",
-                settings.compact
-            );
-
-        document
-            .getElementById("overdueToggle")
-            .classList.toggle(
-                "on",
-                settings.showOverdue
-            );
-
-        document
-            .getElementById("pointsToggle")
-            .classList.toggle(
-                "on",
-                settings.showPoints
-            );
-
-        document
-            .getElementById("pastTodayToggle")
-            .classList.toggle(
-                "on",
-                settings.showPastToday
-            );
-
-        document
-            .getElementById("defaultViewSelect")
-            .value =
-                settings.defaultView;
-
-        document
-            .getElementById("overdueSection")
-            .style.display =
-                settings.showOverdue
-                    ? ""
-                    : "none";
-
-        document
-            .getElementById("pastTodaySection")
-            .style.display =
-                settings.showPastToday
-                    ? ""
-                    : "none";
-
-        updatePastToggleButton();
-
-    }
-
-    function updatePastToggleButton() {
-
-        const button1 =
-            document.getElementById(
-                "pastToggleButton"
-            );
-
-        const button2 =
-            document.getElementById(
-                "pastToggleButton2"
-            );
-
-        if (settings.showPastToday) {
-
-            button1.textContent =
-                "Hide Earlier Today";
-
-            button2.textContent =
-                "Hide Earlier Today";
-
-        } else {
-
-            button1.textContent =
-                "Show Earlier Today";
-
-            button2.textContent =
-                "Show Earlier Today";
-
-        }
-
-    }
-
     /* =========================================================
-       STATE
-    ========================================================== */
-
-    let rawData = null;
-    let assignments = [];
-
-    let currentFilter = "all";
-    let searchText = "";
-
-    let currentCalendarDate =
-        new Date();
-
-    const classColors = [
-        "#2563eb",
-        "#7c3aed",
-        "#059669",
-        "#ea580c",
-        "#db2777",
-        "#0891b2",
-        "#65a30d",
-        "#9333ea",
-        "#dc2626",
-        "#4f46e5"
-    ];
-
-    /* =========================================================
-       DOM
-    ========================================================== */
-
-    const statusElement =
-        document.getElementById(
-            "status"
-        );
-
-    const connectionCard =
-        document.getElementById(
-            "connectionCard"
-        );
-
-    const refreshButton =
-        document.getElementById(
-            "refreshButton"
-        );
-
-    /* =========================================================
-       HTML SAFETY
+       BASIC HELPERS
     ========================================================== */
 
     function escapeHtml(value) {
 
         return String(value ?? "")
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
 
     }
 
     function cleanText(value) {
 
-        return String(value || "")
+        return String(
+            value || ""
+        )
             .replace(
                 /&#160;/gi,
                 " "
@@ -1744,7 +2196,9 @@
         }
 
         const match =
-            String(value).match(
+            String(
+                value
+            ).match(
                 /^(\d{1,2})\/(\d{1,2})\/(\d{4})/
             );
 
@@ -1755,9 +2209,15 @@
         return (
             match[3] +
             "-" +
-            match[1].padStart(2, "0") +
+            match[1].padStart(
+                2,
+                "0"
+            ) +
             "-" +
-            match[2].padStart(2, "0")
+            match[2].padStart(
+                2,
+                "0"
+            )
         );
 
     }
@@ -1782,17 +2242,23 @@
 
         const year =
             parts.find(
-                p => p.type === "year"
+                p =>
+                    p.type ===
+                    "year"
             ).value;
 
         const month =
             parts.find(
-                p => p.type === "month"
+                p =>
+                    p.type ===
+                    "month"
             ).value;
 
         const day =
             parts.find(
-                p => p.type === "day"
+                p =>
+                    p.type ===
+                    "day"
             ).value;
 
         return (
@@ -1801,7 +2267,7 @@
 
     }
 
-    function getCurrentEasternClock() {
+    function getEasternClock() {
 
         const parts =
             new Intl.DateTimeFormat(
@@ -1811,32 +2277,42 @@
                         "America/New_York",
                     hour: "numeric",
                     minute: "numeric",
+                    second: "numeric",
                     hour12: false
                 }
             ).formatToParts(
                 new Date()
             );
 
-        const hour =
-            Number(
-                parts.find(
-                    p => p.type === "hour"
-                ).value
-            );
-
-        const minute =
-            Number(
-                parts.find(
-                    p => p.type === "minute"
-                ).value
-            );
-
         return {
-            hour,
-            minute,
-            totalMinutes:
-                (hour * 60) +
-                minute
+
+            hour:
+                Number(
+                    parts.find(
+                        p =>
+                            p.type ===
+                            "hour"
+                    ).value
+                ),
+
+            minute:
+                Number(
+                    parts.find(
+                        p =>
+                            p.type ===
+                            "minute"
+                    ).value
+                ),
+
+            second:
+                Number(
+                    parts.find(
+                        p =>
+                            p.type ===
+                            "second"
+                    ).value
+                )
+
         };
 
     }
@@ -1909,10 +2385,16 @@
             `${date.getUTCFullYear()}-` +
             `${String(
                 date.getUTCMonth() + 1
-            ).padStart(2, "0")}-` +
+            ).padStart(
+                2,
+                "0"
+            )}-` +
             `${String(
                 date.getUTCDate()
-            ).padStart(2, "0")}`
+            ).padStart(
+                2,
+                "0"
+            )}`
         );
 
     }
@@ -1926,7 +2408,9 @@
         }
 
         const match =
-            String(value).match(
+            String(
+                value
+            ).match(
                 /^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{2})\s*(AM|PM)?$/i
             );
 
@@ -1935,10 +2419,14 @@
         }
 
         let hour =
-            Number(match[4]);
+            Number(
+                match[4]
+            );
 
         const minute =
-            Number(match[5]);
+            Number(
+                match[5]
+            );
 
         const meridiem =
             match[6]
@@ -1963,7 +2451,7 @@
             hour,
             minute,
             totalMinutes:
-                (hour * 60) +
+                hour * 60 +
                 minute
         };
 
@@ -1990,11 +2478,15 @@
         }
 
         const now =
-            getCurrentEasternClock();
+            getEasternClock();
+
+        const nowMinutes =
+            now.hour * 60 +
+            now.minute;
 
         return (
             dueTime.totalMinutes <
-            now.totalMinutes
+            nowMinutes
         );
 
     }
@@ -2020,23 +2512,31 @@
         }
 
         const now =
-            getCurrentEasternClock();
+            getEasternClock();
+
+        const nowMinutes =
+            now.hour * 60 +
+            now.minute;
 
         return (
             dueTime.totalMinutes >=
-            now.totalMinutes
+            nowMinutes
         );
 
     }
 
-    function formatDueDate(value) {
+    function formatDueDate(
+        value
+    ) {
 
         if (!value) {
             return "No due date";
         }
 
         const match =
-            String(value).match(
+            String(
+                value
+            ).match(
                 /^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(.+)$/
             );
 
@@ -2047,9 +2547,15 @@
         const date =
             new Date(
                 Date.UTC(
-                    Number(match[3]),
-                    Number(match[1]) - 1,
-                    Number(match[2])
+                    Number(
+                        match[3]
+                    ),
+                    Number(
+                        match[1]
+                    ) - 1,
+                    Number(
+                        match[2]
+                    )
                 )
             );
 
@@ -2072,8 +2578,55 @@
 
     }
 
+    function formatDateHeading(
+        dateKey
+    ) {
+
+        const date =
+            keyToDate(
+                dateKey
+            );
+
+        return new Intl.DateTimeFormat(
+            "en-US",
+            {
+                timeZone: "UTC",
+                weekday: "long",
+                month: "long",
+                day: "numeric"
+            }
+        ).format(
+            date
+        );
+
+    }
+
+    function formatHeaderDate() {
+
+        const date =
+            new Intl.DateTimeFormat(
+                "en-US",
+                {
+                    timeZone:
+                        "America/New_York",
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric"
+                }
+            ).format(
+                new Date()
+            );
+
+        document.getElementById(
+            "headerDate"
+        ).innerHTML =
+            `<strong>Today</strong>${escapeHtml(date)}`;
+
+    }
+
     /* =========================================================
-       ASSIGNMENT CLASSIFICATION
+       CLASSIFICATION
     ========================================================== */
 
     function getCategory(
@@ -2152,7 +2705,7 @@
 
     }
 
-    function categoryLabel(
+    function getCategoryLabel(
         assignment
     ) {
 
@@ -2179,7 +2732,7 @@
 
     }
 
-    function categoryBadgeClass(
+    function getBadgeClass(
         assignment
     ) {
 
@@ -2211,7 +2764,7 @@
     }
 
     /* =========================================================
-       COLLECT + NORMALIZE
+       ASSIGNMENT DATA
     ========================================================== */
 
     function collectAssignments(
@@ -2277,53 +2830,52 @@
 
         return collectAssignments(
             data
-        ).map(item => {
+        ).map(
+            item => {
 
-            const dueKey =
-                getDateKey(
-                    item.DateDue
-                );
+                const dueKey =
+                    getDateKey(
+                        item.DateDue
+                    );
 
-            const difference =
-                dueKey
-                    ? dayDifference(
-                        today,
+                return {
+
+                    ...item,
+
+                    title:
+                        cleanText(
+                            item.ShortDescription
+                        ),
+
+                    className:
+                        cleanText(
+                            item.GroupName
+                        ),
+
+                    category:
+                        getCategory(
+                            item
+                        ),
+
+                    dueKey,
+
+                    dayDifference:
                         dueKey
-                    )
-                    : null;
+                            ? dayDifference(
+                                today,
+                                dueKey
+                            )
+                            : null
 
-            return {
+                };
 
-                ...item,
-
-                title:
-                    cleanText(
-                        item.ShortDescription
-                    ),
-
-                className:
-                    cleanText(
-                        item.GroupName
-                    ),
-
-                category:
-                    getCategory(
-                        item
-                    ),
-
-                dueKey,
-
-                dayDifference:
-                    difference
-
-            };
-
-        });
+            }
+        );
 
     }
 
     /* =========================================================
-       FILTERING
+       FILTERS
     ========================================================== */
 
     function filteredAssignments(
@@ -2335,7 +2887,7 @@
 
                 if (
                     currentFilter ===
-                    "homework" &&
+                        "homework" &&
                     isAssessment(
                         assignment
                     )
@@ -2345,7 +2897,7 @@
 
                 if (
                     currentFilter ===
-                    "assessment" &&
+                        "assessment" &&
                     !isAssessment(
                         assignment
                     )
@@ -2430,40 +2982,52 @@
         options = {}
     ) {
 
-        const isPast =
+        const pastToday =
             Boolean(
                 options.pastToday
             );
 
-        let dueClass = "";
+        let dueClass =
+            "";
 
         if (
             assignment.dayDifference <
             0
         ) {
 
-            dueClass = "overdue";
+            dueClass =
+                "overdue-time";
 
         } else if (
-            isPast
+            pastToday
         ) {
 
-            dueClass = "past";
+            dueClass =
+                "past-time";
+
+        } else if (
+            assignment.dayDifference ===
+            0
+        ) {
+
+            dueClass =
+                "today-time";
 
         } else if (
             assignment.dayDifference ===
             1
         ) {
 
-            dueClass = "tomorrow";
+            dueClass =
+                "tomorrow-time";
 
         }
 
-        const extraClass =
+        const cardClass =
             assignment.dayDifference <
-            0
+                0
                 ? "overdue"
-                : isPast
+                : pastToday
                     ? "past-today"
                     : assignment.dayDifference ===
                       0
@@ -2477,56 +3041,54 @@
                 ? `${assignment.MaxPoints} points`
                 : "No point value";
 
-        const detailsPoints =
-            settings.showPoints
-                ? `
-                    <strong>
-                        Points:
-                    </strong>
+        const details =
+            `
+                <div class="detail-row">
+                    <span class="detail-label">
+                        Assigned:
+                    </span>
                     ${escapeHtml(
-                        points
+                        formatDueDate(
+                            assignment.DateAssigned
+                        )
                     )}
-                    <br>
-                  `
-                : "";
+                </div>
 
-        /*
-         * Blackbaud's assignment-center
-         * response can sometimes include
-         * a description field. Show it
-         * automatically when available.
-         */
-        const possibleDescription =
-            assignment.Description ||
-            assignment.DescriptionText ||
-            assignment.LongDescription ||
-            assignment.AssignmentDescription ||
-            "";
+                ${
+                    settings.showPoints
+                        ? `
+                            <div class="detail-row">
+                                <span class="detail-label">
+                                    Points:
+                                </span>
+                                ${escapeHtml(
+                                    points
+                                )}
+                            </div>
+                          `
+                        : ""
+                }
 
-        const description =
-            cleanText(
-                possibleDescription
-            );
-
-        const descriptionHtml =
-            description
-                ? `
-                    <strong>
-                        Description:
-                    </strong>
-                    <br>
+                <div class="detail-row">
+                    <span class="detail-label">
+                        Type:
+                    </span>
                     ${escapeHtml(
-                        description
+                        cleanText(
+                            assignment.AssignmentType
+                        ) ||
+                        getCategoryLabel(
+                            assignment
+                        )
                     )}
-                    <br><br>
-                  `
-                : "";
+                </div>
+            `;
 
         return `
             <div
                 class="
                     assignment
-                    ${extraClass}
+                    ${cardClass}
                     ${
                         isAssessment(
                             assignment
@@ -2537,9 +3099,9 @@
                 "
             >
 
-                <div class="assignment-top">
+                <div class="assignment-main">
 
-                    <div>
+                    <div class="assignment-primary">
 
                         <div
                             class="assignment-title"
@@ -2574,75 +3136,48 @@
 
                 </div>
 
-                <div class="badges">
+                <div class="assignment-meta">
 
                     <span
                         class="
                             badge
-                            ${categoryBadgeClass(
+                            ${getBadgeClass(
                                 assignment
                             )}
                         "
                     >
                         ${escapeHtml(
-                            categoryLabel(
+                            getCategoryLabel(
                                 assignment
                             )
                         )}
                     </span>
 
-                    ${
-                        assignment.AssignmentType
-                            ? `
-                                <span
-                                    class="
-                                        badge
-                                        badge-other
-                                    "
-                                >
-                                    ${escapeHtml(
-                                        cleanText(
-                                            assignment.AssignmentType
-                                        )
-                                    )}
-                                </span>
-                              `
-                            : ""
-                    }
+                    <span
+                        class="
+                            badge
+                            badge-other
+                        "
+                    >
+                        ${escapeHtml(
+                            cleanText(
+                                assignment.AssignmentType
+                            )
+                        )}
+                    </span>
+
+                    <span
+                        class="assignment-expand-hint"
+                    >
+                        Click for details
+                    </span>
 
                 </div>
 
-                <div class="details">
-
-                    ${descriptionHtml}
-
-                    <strong>
-                        Assigned:
-                    </strong>
-                    ${escapeHtml(
-                        formatDueDate(
-                            assignment.DateAssigned
-                        )
-                    )}
-                    <br>
-
-                    ${detailsPoints}
-
-                    <strong>
-                        Class:
-                    </strong>
-                    ${escapeHtml(
-                        assignment.className
-                    )}
-                    <br>
-
-                    <strong>
-                        Assignment ID:
-                    </strong>
-                    ${escapeHtml(
-                        assignment.AssignmentId
-                    )}
-
+                <div
+                    class="assignment-details"
+                >
+                    ${details}
                 </div>
 
             </div>
@@ -2659,13 +3194,14 @@
 
         if (!list.length) {
 
-            container.innerHTML = `
-                <div class="empty">
-                    ${escapeHtml(
-                        emptyMessage
-                    )}
-                </div>
-            `;
+            container.innerHTML =
+                `
+                    <div class="empty">
+                        ${escapeHtml(
+                            emptyMessage
+                        )}
+                    </div>
+                `;
 
             return;
 
@@ -2716,7 +3252,7 @@
     }
 
     /* =========================================================
-       TODAY VIEW
+       TODAY
     ========================================================== */
 
     function renderToday() {
@@ -2729,49 +3265,42 @@
                 todayKey
             );
 
-        const todayAssignments =
-            assignments.filter(
-                assignment =>
-                    assignment.dueKey ===
-                    todayKey
+        const todayList =
+            filteredAssignments(
+                sortByDueDate(
+                    assignments.filter(
+                        assignment =>
+                            assignment.dueKey ===
+                            todayKey
+                    )
+                )
             );
 
-        const tomorrowAssignments =
-            assignments.filter(
-                assignment =>
-                    assignment.dueKey ===
-                    tomorrowKey
+        const tomorrowList =
+            filteredAssignments(
+                sortByDueDate(
+                    assignments.filter(
+                        assignment =>
+                            assignment.dueKey ===
+                            tomorrowKey
+                    )
+                )
             );
 
         const stillToday =
-            filteredAssignments(
-                sortByDueDate(
-                    todayAssignments.filter(
-                        assignment =>
-                            isStillDueToday(
-                                assignment
-                            )
+            todayList.filter(
+                assignment =>
+                    isStillDueToday(
+                        assignment
                     )
-                )
             );
 
         const pastToday =
-            filteredAssignments(
-                sortByDueDate(
-                    todayAssignments.filter(
-                        assignment =>
-                            isEarlierToday(
-                                assignment
-                            )
+            todayList.filter(
+                assignment =>
+                    isEarlierToday(
+                        assignment
                     )
-                )
-            );
-
-        const tomorrow =
-            filteredAssignments(
-                sortByDueDate(
-                    tomorrowAssignments
-                )
             );
 
         const todayHomework =
@@ -2791,7 +3320,7 @@
             );
 
         const tomorrowHomework =
-            tomorrow.filter(
+            tomorrowList.filter(
                 assignment =>
                     !isAssessment(
                         assignment
@@ -2799,7 +3328,7 @@
             );
 
         const tomorrowAssessments =
-            tomorrow.filter(
+            tomorrowList.filter(
                 assignment =>
                     isAssessment(
                         assignment
@@ -2827,7 +3356,7 @@
                 "todayHomework"
             ),
             todayHomework,
-            "Nothing else due today."
+            "Nothing else due later today."
         );
 
         renderCards(
@@ -2840,7 +3369,7 @@
 
         renderCards(
             document.getElementById(
-                "tomorrowHomeworkToday"
+                "tomorrowHomework"
             ),
             tomorrowHomework,
             "No homework or assignments due tomorrow."
@@ -2848,7 +3377,7 @@
 
         renderCards(
             document.getElementById(
-                "tomorrowAssessmentsToday"
+                "tomorrowAssessments"
             ),
             tomorrowAssessments,
             "No assessments due tomorrow."
@@ -2859,7 +3388,7 @@
                 "pastTodayHomework"
             ),
             pastHomework,
-            "No homework or assignments were due earlier today.",
+            "None earlier today.",
             {
                 pastToday: true
             }
@@ -2870,106 +3399,237 @@
                 "pastTodayAssessments"
             ),
             pastAssessments,
-            "No assessments were due earlier today.",
+            "None earlier today.",
             {
                 pastToday: true
             }
         );
 
         document.getElementById(
-            "todayTotalCount"
+            "todayHomeworkCount"
         ).textContent =
-            `${stillToday.length} item${
-                stillToday.length === 1
-                    ? ""
-                    : "s"
-            }`;
+            todayHomework.length;
 
         document.getElementById(
-            "tomorrowOnTodayCount"
+            "todayAssessmentCount"
         ).textContent =
-            `${tomorrow.length} item${
-                tomorrow.length === 1
-                    ? ""
-                    : "s"
-            }`;
+            todayAssessments.length;
 
         document.getElementById(
-            "pastTodayCount"
+            "tomorrowHomeworkCount"
         ).textContent =
-            `${pastToday.length} item${
-                pastToday.length === 1
-                    ? ""
-                    : "s"
-            }`;
+            tomorrowHomework.length;
 
-        updatePastToggleButton();
+        document.getElementById(
+            "tomorrowAssessmentCount"
+        ).textContent =
+            tomorrowAssessments.length;
+
+        document.getElementById(
+            "pastHomeworkCount"
+        ).textContent =
+            pastHomework.length;
+
+        document.getElementById(
+            "pastAssessmentCount"
+        ).textContent =
+            pastAssessments.length;
+
+        document.getElementById(
+            "pastTodaySummary"
+        ).textContent =
+            pastToday.length
+                ? `${pastToday.length} assignment${
+                    pastToday.length === 1
+                        ? ""
+                        : "s"
+                  } due earlier today.`
+                : "Nothing was due earlier today.";
 
     }
 
     /* =========================================================
-       UPCOMING VIEW
+       UPCOMING
     ========================================================== */
 
     function renderUpcoming() {
 
         const upcoming =
-            sortByDueDate(
-                filteredAssignments(
-                    assignments.filter(
-                        assignment =>
-                            assignment.dayDifference >=
-                                1 &&
-                            assignment.dayDifference <=
-                                7
-                    )
+            filteredAssignments(
+                assignments.filter(
+                    assignment =>
+                        assignment.dayDifference >=
+                            1 &&
+                        assignment.dayDifference <=
+                            7
                 )
             );
 
         const overdue =
-            sortByDueDate(
-                filteredAssignments(
-                    assignments.filter(
-                        assignment =>
-                            assignment.dayDifference <
-                            0
-                    )
+            filteredAssignments(
+                assignments.filter(
+                    assignment =>
+                        assignment.dayDifference <
+                        0
                 )
             );
 
-        renderCards(
+        const grouped =
+            new Map();
+
+        for (
+            const assignment of upcoming
+        ) {
+
+            if (
+                !grouped.has(
+                    assignment.dueKey
+                )
+            ) {
+
+                grouped.set(
+                    assignment.dueKey,
+                    []
+                );
+
+            }
+
+            grouped
+                .get(
+                    assignment.dueKey
+                )
+                .push(
+                    assignment
+                );
+
+        }
+
+        const upcomingContainer =
             document.getElementById(
-                "upcomingAssignments"
-            ),
-            upcoming,
-            "Nothing due in the next 7 days."
-        );
+                "upcomingDays"
+            );
+
+        if (
+            !grouped.size
+        ) {
+
+            upcomingContainer.innerHTML =
+                `
+                    <div class="empty">
+                        Nothing scheduled in the next 7 days.
+                    </div>
+                `;
+
+        } else {
+
+            upcomingContainer.innerHTML =
+                Array.from(
+                    grouped.entries()
+                )
+                .sort(
+                    (a, b) =>
+                        a[0].localeCompare(
+                            b[0]
+                        )
+                )
+                .map(
+                    (
+                        [
+                            dateKey,
+                            items
+                        ]
+                    ) => {
+
+                        const sorted =
+                            sortByDueDate(
+                                items
+                            );
+
+                        return `
+                            <div
+                                class="upcoming-day"
+                            >
+
+                                <div
+                                    class="
+                                        upcoming-day-header
+                                    "
+                                >
+
+                                    <div
+                                        class="
+                                            upcoming-day-date
+                                        "
+                                    >
+                                        ${escapeHtml(
+                                            formatDateHeading(
+                                                dateKey
+                                            )
+                                        )}
+                                    </div>
+
+                                    <div
+                                        class="
+                                            upcoming-day-count
+                                        "
+                                    >
+                                        ${items.length}
+                                        item${
+                                            items.length === 1
+                                                ? ""
+                                                : "s"
+                                        }
+                                    </div>
+
+                                    <div
+                                        class="day-line"
+                                    ></div>
+
+                                </div>
+
+                                <div
+                                    class="assignment-list"
+                                >
+                                    ${sorted
+                                        .map(
+                                            assignment =>
+                                                assignmentCard(
+                                                    assignment
+                                                )
+                                        )
+                                        .join("")
+                                    }
+                                </div>
+
+                            </div>
+                        `;
+
+                    }
+                )
+                .join("");
+
+            addAssignmentClickHandlers(
+                upcomingContainer
+            );
+
+        }
 
         renderCards(
             document.getElementById(
                 "overdueAssignments"
             ),
-            overdue,
+            sortByDueDate(
+                overdue
+            ),
             "Nothing overdue."
         );
 
         document.getElementById(
-            "upcomingCount"
-        ).textContent =
-            `${upcoming.length} item${
-                upcoming.length === 1
-                    ? ""
-                    : "s"
-            }`;
-
-        document.getElementById(
-            "overdueCount"
-        ).textContent =
-            `${overdue.length} item${
-                overdue.length === 1
-                    ? ""
-                    : "s"
-            }`;
+            "overduePanel"
+        ).style.display =
+            settings.showOverdue
+                ? ""
+                : "none";
 
     }
 
@@ -2979,7 +3639,7 @@
 
     function renderClasses() {
 
-        const filtered =
+        const list =
             filteredAssignments(
                 assignments.filter(
                     assignment =>
@@ -2994,24 +3654,30 @@
             new Map();
 
         for (
-            const assignment of filtered
+            const assignment of list
         ) {
 
-            const name =
+            const className =
                 assignment.className ||
                 "Unknown Class";
 
             if (
-                !groups.has(name)
+                !groups.has(
+                    className
+                )
             ) {
+
                 groups.set(
-                    name,
+                    className,
                     []
                 );
+
             }
 
             groups
-                .get(name)
+                .get(
+                    className
+                )
                 .push(
                     assignment
                 );
@@ -3037,15 +3703,29 @@
             !sortedGroups.length
         ) {
 
-            container.innerHTML = `
-                <div class="empty">
-                    No assignments match your filters.
-                </div>
-            `;
+            container.innerHTML =
+                `
+                    <div class="empty">
+                        No assignments match your filters.
+                    </div>
+                `;
 
             return;
 
         }
+
+        const colors = [
+            "#2563eb",
+            "#7c3aed",
+            "#059669",
+            "#ea580c",
+            "#db2777",
+            "#0891b2",
+            "#65a30d",
+            "#9333ea",
+            "#dc2626",
+            "#4f46e5"
+        ];
 
         container.innerHTML =
             sortedGroups
@@ -3059,9 +3739,9 @@
                     ) => {
 
                         const color =
-                            classColors[
+                            colors[
                                 index %
-                                classColors.length
+                                colors.length
                             ];
 
                         const sorted =
@@ -3071,7 +3751,7 @@
 
                         return `
                             <div
-                                class="class-group"
+                                class="class-card"
                             >
 
                                 <button
@@ -3086,7 +3766,9 @@
                                 >
 
                                     <div
-                                        class="class-left"
+                                        class="
+                                            class-info
+                                        "
                                     >
 
                                         <span
@@ -3098,30 +3780,44 @@
                                             "
                                         ></span>
 
-                                        <span
-                                            class="class-name"
+                                        <div
+                                            class="
+                                                class-name-wrap
+                                            "
                                         >
-                                            ${escapeHtml(
-                                                className
-                                            )}
-                                        </span>
 
-                                        <span
-                                            class="class-count"
-                                        >
-                                            ${items.length}
-                                            item${
-                                                items.length ===
-                                                1
-                                                    ? ""
-                                                    : "s"
-                                            }
-                                        </span>
+                                            <div
+                                                class="
+                                                    class-name
+                                                "
+                                            >
+                                                ${escapeHtml(
+                                                    className
+                                                )}
+                                            </div>
+
+                                            <div
+                                                class="
+                                                    class-count
+                                                "
+                                            >
+                                                ${items.length}
+                                                item${
+                                                    items.length === 1
+                                                        ? ""
+                                                        : "s"
+                                                }
+                                                in next 7 days
+                                            </div>
+
+                                        </div>
 
                                     </div>
 
                                     <span
-                                        class="class-arrow"
+                                        class="
+                                            class-chevron
+                                        "
                                     >
                                         ${
                                             index === 0
@@ -3134,7 +3830,7 @@
 
                                 <div
                                     class="
-                                        class-content
+                                        class-body
                                         ${
                                             index === 0
                                                 ? "open"
@@ -3144,9 +3840,10 @@
                                 >
 
                                     <div
-                                        class="assignment-list"
+                                        class="
+                                            assignment-list
+                                        "
                                     >
-
                                         ${sorted
                                             .map(
                                                 assignment =>
@@ -3156,7 +3853,6 @@
                                             )
                                             .join("")
                                         }
-
                                     </div>
 
                                 </div>
@@ -3179,16 +3875,16 @@
                         "click",
                         () => {
 
-                            const content =
+                            const body =
                                 header.nextElementSibling;
 
                             const arrow =
                                 header.querySelector(
-                                    ".class-arrow"
+                                    ".class-chevron"
                                 );
 
                             const open =
-                                content.classList.toggle(
+                                body.classList.toggle(
                                     "open"
                                 );
 
@@ -3218,6 +3914,9 @@
        CALENDAR
     ========================================================== */
 
+    let currentCalendarDate =
+        new Date();
+
     function renderCalendar() {
 
         const year =
@@ -3226,7 +3925,7 @@
         const month =
             currentCalendarDate.getMonth();
 
-        const monthName =
+        const monthTitle =
             new Intl.DateTimeFormat(
                 "en-US",
                 {
@@ -3244,7 +3943,7 @@
         document.getElementById(
             "calendarMonthTitle"
         ).textContent =
-            monthName;
+            monthTitle;
 
         const firstDay =
             new Date(
@@ -3276,10 +3975,8 @@
                 )
             ).getUTCDate();
 
-        const grid =
-            document.getElementById(
-                "calendarGrid"
-            );
+        const todayKey =
+            getSchoolDateKey();
 
         let html = "";
 
@@ -3294,16 +3991,19 @@
         ];
 
         for (
-            const dayName of weekdays
+            const weekday of weekdays
         ) {
 
-            html += `
-                <div
-                    class="calendar-day-name"
-                >
-                    ${dayName}
-                </div>
-            `;
+            html +=
+                `
+                    <div
+                        class="
+                            calendar-weekday
+                        "
+                    >
+                        ${weekday}
+                    </div>
+                `;
 
         }
 
@@ -3318,27 +4018,27 @@
                 previousMonthDays -
                 i;
 
-            html += `
-                <div
-                    class="
-                        calendar-cell
-                        muted-day
-                    "
-                >
-
+            html +=
+                `
                     <div
-                        class="calendar-date"
+                        class="
+                            calendar-cell
+                            muted
+                        "
                     >
-                        ${day}
-                    </div>
 
-                </div>
-            `;
+                        <div
+                            class="
+                                calendar-date
+                            "
+                        >
+                            ${day}
+                        </div>
+
+                    </div>
+                `;
 
         }
-
-        const todayKey =
-            getSchoolDateKey();
 
         for (
             let day = 1;
@@ -3360,132 +4060,127 @@
                 )}`;
 
             const dayAssignments =
-                sortByDueDate(
+                filteredAssignments(
                     assignments.filter(
                         assignment =>
                             assignment.dueKey ===
-                                key &&
-                            (
-                                currentFilter ===
-                                    "all" ||
-
-                                (
-                                    currentFilter ===
-                                        "homework" &&
-                                    !isAssessment(
-                                        assignment
-                                    )
-                                ) ||
-
-                                (
-                                    currentFilter ===
-                                        "assessment" &&
-                                    isAssessment(
-                                        assignment
-                                    )
-                                )
-                            )
+                            key
                     )
                 );
 
-            html += `
-                <div
-                    class="
-                        calendar-cell
-                        ${
-                            key === todayKey
-                                ? "today-cell"
-                                : ""
-                        }
-                    "
-                >
-
+            html +=
+                `
                     <div
-                        class="calendar-date"
+                        class="
+                            calendar-cell
+                            ${
+                                key ===
+                                todayKey
+                                    ? "today"
+                                    : ""
+                            }
+                        "
                     >
-                        ${day}
-                    </div>
 
-                    ${
-                        dayAssignments
+                        <div
+                            class="
+                                calendar-date
+                            "
+                        >
+                            ${day}
+                        </div>
+
+                        ${
+                            sortByDueDate(
+                                dayAssignments
+                            )
                             .map(
-                                assignment => `
-                                    <button
-                                        class="
-                                            calendar-assignment
-                                            ${
-                                                isAssessment(
-                                                    assignment
-                                                )
-                                                    ? "assessment"
-                                                    : "homework"
-                                            }
-                                        "
-                                        title="${escapeHtml(
-                                            assignment.title
-                                        )}"
-                                        data-assignment-id="${escapeHtml(
-                                            assignment.AssignmentId
-                                        )}"
-                                    >
-                                        ${escapeHtml(
-                                            assignment.title
-                                        )}
-                                    </button>
-                                `
+                                assignment =>
+                                    `
+                                        <button
+                                            class="
+                                                calendar-event
+                                                ${
+                                                    isAssessment(
+                                                        assignment
+                                                    )
+                                                        ? "assessment"
+                                                        : "homework"
+                                                }
+                                            "
+                                            title="${escapeHtml(
+                                                assignment.title
+                                            )}"
+                                            data-assignment-id="${escapeHtml(
+                                                assignment.AssignmentId
+                                            )}"
+                                        >
+                                            ${escapeHtml(
+                                                assignment.title
+                                            )}
+                                        </button>
+                                    `
                             )
                             .join("")
-                    }
+                        }
 
-                </div>
-            `;
+                    </div>
+                `;
 
         }
 
-        const totalCells =
+        const usedCells =
             firstWeekday +
             daysInMonth;
 
-        const trailingCells =
-            totalCells % 7 === 0
+        const trailing =
+            usedCells % 7 === 0
                 ? 0
                 : 7 -
-                  (
-                      totalCells %
-                      7
-                  );
+                    (
+                        usedCells %
+                        7
+                    );
 
         for (
             let day = 1;
-            day <= trailingCells;
+            day <= trailing;
             day++
         ) {
 
-            html += `
-                <div
-                    class="
-                        calendar-cell
-                        muted-day
-                    "
-                >
-
+            html +=
+                `
                     <div
-                        class="calendar-date"
+                        class="
+                            calendar-cell
+                            muted
+                        "
                     >
-                        ${day}
-                    </div>
 
-                </div>
-            `;
+                        <div
+                            class="
+                                calendar-date
+                            "
+                        >
+                            ${day}
+                        </div>
+
+                    </div>
+                `;
 
         }
+
+        const grid =
+            document.getElementById(
+                "calendarGrid"
+            );
 
         grid.innerHTML =
             html;
 
         grid
             .querySelectorAll(
-                ".calendar-assignment"
+                ".calendar-event"
             )
             .forEach(
                 button => {
@@ -3507,7 +4202,9 @@
                                         String(
                                             item.AssignmentId
                                         ) ===
-                                        String(id)
+                                        String(
+                                            id
+                                        )
                                 );
 
                             if (!assignment) {
@@ -3520,7 +4217,7 @@
                                 `${formatDueDate(
                                     assignment.DateDue
                                 )}\n\n` +
-                                `${categoryLabel(
+                                `${getCategoryLabel(
                                     assignment
                                 )}`
                             );
@@ -3603,29 +4300,282 @@
     }
 
     /* =========================================================
-       RENDER EVERYTHING
+       SETTINGS UI
     ========================================================== */
 
-    function renderAll() {
+    function applySettings() {
 
-        assignments =
-            normalizeAssignments(
-                rawData
+        document.body.classList.toggle(
+            "compact",
+            settings.compact
+        );
+
+        document
+            .getElementById(
+                "compactToggle"
+            )
+            .classList.toggle(
+                "on",
+                settings.compact
             );
 
-        updateStats();
+        document
+            .getElementById(
+                "overdueToggle"
+            )
+            .classList.toggle(
+                "on",
+                settings.showOverdue
+            );
 
-        renderToday();
+        document
+            .getElementById(
+                "pointsToggle"
+            )
+            .classList.toggle(
+                "on",
+                settings.showPoints
+            );
 
-        renderUpcoming();
+        document
+            .getElementById(
+                "pastTodayToggle"
+            )
+            .classList.toggle(
+                "on",
+                settings.showPastToday
+            );
 
-        renderClasses();
+        document
+            .getElementById(
+                "defaultViewSelect"
+            )
+            .value =
+                settings.defaultView;
 
-        renderCalendar();
+        if (
+            rawData
+        ) {
+            document
+                .getElementById(
+                    "overduePanel"
+                )
+                .style.display =
+                    settings.showOverdue
+                        ? ""
+                        : "none";
 
-        applySettings();
+            updatePastTodayVisibility();
+        }
 
     }
+
+    function updatePastTodayVisibility() {
+
+        const content =
+            document.getElementById(
+                "pastTodayContent"
+            );
+
+        const chevron =
+            document.getElementById(
+                "pastChevron"
+            );
+
+        content.classList.toggle(
+            "open",
+            settings.showPastToday
+        );
+
+        chevron.textContent =
+            settings.showPastToday
+                ? "▲"
+                : "▼";
+
+    }
+
+    /* =========================================================
+       SETTINGS PANEL
+    ========================================================== */
+
+    const settingsPanel =
+        document.getElementById(
+            "settingsPanel"
+        );
+
+    const settingsOverlay =
+        document.getElementById(
+            "settingsOverlay"
+        );
+
+    function openSettings() {
+
+        settingsPanel.classList.add(
+            "open"
+        );
+
+        settingsOverlay.classList.add(
+            "open"
+        );
+
+    }
+
+    function closeSettings() {
+
+        settingsPanel.classList.remove(
+            "open"
+        );
+
+        settingsOverlay.classList.remove(
+            "open"
+        );
+
+    }
+
+    document
+        .getElementById(
+            "settingsButton"
+        )
+        .addEventListener(
+            "click",
+            openSettings
+        );
+
+    document
+        .getElementById(
+            "closeSettings"
+        )
+        .addEventListener(
+            "click",
+            closeSettings
+        );
+
+    settingsOverlay.addEventListener(
+        "click",
+        closeSettings
+    );
+
+    /* =========================================================
+       SETTING TOGGLES
+    ========================================================== */
+
+    document
+        .getElementById(
+            "compactToggle"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.compact =
+                    !settings.compact;
+
+                saveSettings();
+                applySettings();
+
+            }
+        );
+
+    document
+        .getElementById(
+            "overdueToggle"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.showOverdue =
+                    !settings.showOverdue;
+
+                saveSettings();
+                applySettings();
+
+                if (
+                    rawData
+                ) {
+                    renderUpcoming();
+                }
+
+            }
+        );
+
+    document
+        .getElementById(
+            "pointsToggle"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.showPoints =
+                    !settings.showPoints;
+
+                saveSettings();
+
+                if (
+                    rawData
+                ) {
+                    renderAll();
+                }
+
+            }
+        );
+
+    document
+        .getElementById(
+            "pastTodayToggle"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.showPastToday =
+                    !settings.showPastToday;
+
+                saveSettings();
+
+                applySettings();
+
+            }
+        );
+
+    document
+        .getElementById(
+            "defaultViewSelect"
+        )
+        .addEventListener(
+            "change",
+            event => {
+
+                settings.defaultView =
+                    event.target.value;
+
+                saveSettings();
+
+            }
+        );
+
+    /* =========================================================
+       PAST TODAY HEADER
+    ========================================================== */
+
+    document
+        .getElementById(
+            "pastTodayHeader"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.showPastToday =
+                    !settings.showPastToday;
+
+                saveSettings();
+
+                updatePastTodayVisibility();
+
+            }
+        );
 
     /* =========================================================
        TABS
@@ -3703,12 +4653,18 @@
         );
 
     /* =========================================================
-       FILTER BUTTONS
+       FILTERS
     ========================================================== */
+
+    let currentFilter =
+        "all";
+
+    let searchText =
+        "";
 
     document
         .querySelectorAll(
-            ".small-filter"
+            ".filter-button"
         )
         .forEach(
             button => {
@@ -3719,14 +4675,13 @@
 
                         document
                             .querySelectorAll(
-                                ".small-filter"
+                                ".filter-button"
                             )
                             .forEach(
-                                item => {
+                                item =>
                                     item.classList.remove(
                                         "active"
-                                    );
-                                }
+                                    )
                             );
 
                         button.classList.add(
@@ -3748,10 +4703,6 @@
             }
         );
 
-    /* =========================================================
-       SEARCH
-    ========================================================== */
-
     document
         .getElementById(
             "searchInput"
@@ -3761,7 +4712,8 @@
             event => {
 
                 searchText =
-                    event.target.value.trim();
+                    event.target.value
+                        .trim();
 
                 if (
                     rawData
@@ -3837,237 +4789,23 @@
         );
 
     /* =========================================================
-       PAST TODAY TOGGLE
-    ========================================================== */
-
-    function togglePastToday() {
-
-        settings.showPastToday =
-            !settings.showPastToday;
-
-        saveSettings();
-
-        applySettings();
-
-        if (
-            rawData
-        ) {
-            renderToday();
-        }
-
-    }
-
-    document
-        .getElementById(
-            "pastToggleButton"
-        )
-        .addEventListener(
-            "click",
-            togglePastToday
-        );
-
-    document
-        .getElementById(
-            "pastToggleButton2"
-        )
-        .addEventListener(
-            "click",
-            togglePastToday
-        );
-
-    /* =========================================================
-       SETTINGS PANEL
-    ========================================================== */
-
-    const settingsPanel =
-        document.getElementById(
-            "settingsPanel"
-        );
-
-    const settingsOverlay =
-        document.getElementById(
-            "settingsOverlay"
-        );
-
-    function openSettings() {
-
-        settingsPanel.classList.add(
-            "open"
-        );
-
-        settingsOverlay.classList.add(
-            "open"
-        );
-
-    }
-
-    function closeSettingsPanel() {
-
-        settingsPanel.classList.remove(
-            "open"
-        );
-
-        settingsOverlay.classList.remove(
-            "open"
-        );
-
-    }
-
-    document
-        .getElementById(
-            "settingsButton"
-        )
-        .addEventListener(
-            "click",
-            openSettings
-        );
-
-    document
-        .getElementById(
-            "closeSettings"
-        )
-        .addEventListener(
-            "click",
-            closeSettingsPanel
-        );
-
-    settingsOverlay.addEventListener(
-        "click",
-        closeSettingsPanel
-    );
-
-    /* =========================================================
-       COMPACT SETTING
-    ========================================================== */
-
-    document
-        .getElementById(
-            "compactToggle"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                settings.compact =
-                    !settings.compact;
-
-                saveSettings();
-
-                applySettings();
-
-                if (
-                    rawData
-                ) {
-                    renderAll();
-                }
-
-            }
-        );
-
-    /* =========================================================
-       OVERDUE SETTING
-    ========================================================== */
-
-    document
-        .getElementById(
-            "overdueToggle"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                settings.showOverdue =
-                    !settings.showOverdue;
-
-                saveSettings();
-
-                applySettings();
-
-            }
-        );
-
-    /* =========================================================
-       POINTS SETTING
-    ========================================================== */
-
-    document
-        .getElementById(
-            "pointsToggle"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                settings.showPoints =
-                    !settings.showPoints;
-
-                saveSettings();
-
-                if (
-                    rawData
-                ) {
-                    renderAll();
-                }
-
-            }
-        );
-
-    /* =========================================================
-       PAST TODAY SETTING
-    ========================================================== */
-
-    document
-        .getElementById(
-            "pastTodayToggle"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                settings.showPastToday =
-                    !settings.showPastToday;
-
-                saveSettings();
-
-                applySettings();
-
-                if (
-                    rawData
-                ) {
-                    renderToday();
-                }
-
-            }
-        );
-
-    /* =========================================================
-       DEFAULT VIEW
-    ========================================================== */
-
-    document
-        .getElementById(
-            "defaultViewSelect"
-        )
-        .addEventListener(
-            "change",
-            event => {
-
-                settings.defaultView =
-                    event.target.value;
-
-                saveSettings();
-
-            }
-        );
-
-    /* =========================================================
        REFRESH
     ========================================================== */
 
     function requestFreshData() {
 
         statusElement.innerHTML =
-            "<strong>Refreshing...</strong>";
+            "Refreshing...";
+
+        const dot =
+            document.getElementById(
+                "statusDot"
+            );
+
+        dot.classList.remove(
+            "connected",
+            "error"
+        );
 
         window.postMessage(
             {
@@ -4081,13 +4819,17 @@
 
     }
 
-    refreshButton.addEventListener(
-        "click",
-        requestFreshData
-    );
+    document
+        .getElementById(
+            "refreshButton"
+        )
+        .addEventListener(
+            "click",
+            requestFreshData
+        );
 
     /* =========================================================
-       EXTENSION MESSAGE
+       MESSAGE FROM EXTENSION
     ========================================================== */
 
     window.addEventListener(
@@ -4126,27 +4868,44 @@
             const result =
                 event.data.payload;
 
+            const dot =
+                document.getElementById(
+                    "statusDot"
+                );
+
             if (
                 !result ||
                 !result.ok ||
                 !result.assignments
             ) {
 
+                dot.classList.remove(
+                    "connected"
+                );
+
+                dot.classList.add(
+                    "error"
+                );
+
+                statusElement.textContent =
+                    result?.message ||
+                    result?.error ||
+                    "Could not connect to Blackbaud.";
+
                 connectionCard.style.display =
                     "";
-
-                statusElement.innerHTML =
-                    `
-                        <strong>
-                            Not connected.
-                        </strong>
-                        Keep Blackbaud open and
-                        click Refresh.
-                    `;
 
                 return;
 
             }
+
+            dot.classList.remove(
+                "error"
+            );
+
+            dot.classList.add(
+                "connected"
+            );
 
             rawData =
                 result.assignments;
@@ -4158,26 +4917,15 @@
                 result.syncedAt
             ) {
 
-                statusElement.innerHTML =
-                    `
-                        <strong>
-                            Connected.
-                        </strong>
-                        Last synced
-                        ${new Date(
-                            result.syncedAt
-                        ).toLocaleString()}
-                    `;
+                statusElement.textContent =
+                    `Connected • Last synced ${new Date(
+                        result.syncedAt
+                    ).toLocaleString()}`;
 
             } else {
 
-                statusElement.innerHTML =
-                    `
-                        <strong>
-                            Connected.
-                        </strong>
-                        Blackbaud data loaded.
-                    `;
+                statusElement.textContent =
+                    "Connected • Blackbaud data loaded";
 
             }
 
@@ -4187,8 +4935,35 @@
     );
 
     /* =========================================================
+       RENDER ALL
+    ========================================================== */
+
+    function renderAll() {
+
+        assignments =
+            normalizeAssignments(
+                rawData
+            );
+
+        updateStats();
+
+        renderToday();
+
+        renderUpcoming();
+
+        renderClasses();
+
+        renderCalendar();
+
+        applySettings();
+
+    }
+
+    /* =========================================================
        INITIALIZE
     ========================================================== */
+
+    formatHeaderDate();
 
     applySettings();
 
