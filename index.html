@@ -1,52 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Dexter Assignment Dashboard</title>
+    <title>
+        Dexter Assignment Dashboard
+    </title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
 
         :root {
+
             --bg: #f1f5f9;
+
             --surface: #ffffff;
+
             --surface-soft: #f8fafc;
 
             --text: #172033;
+
             --text-soft: #475569;
+
             --muted: #64748b;
 
             --border: #e2e8f0;
 
             --blue: #2563eb;
+
             --blue-dark: #1d4ed8;
+
             --blue-soft: #eff6ff;
 
             --purple: #7c3aed;
+
             --purple-soft: #f5f3ff;
 
             --red: #dc2626;
+
             --red-soft: #fef2f2;
 
             --orange: #ea580c;
+
             --orange-soft: #fff7ed;
 
             --green: #16a34a;
-            --green-soft: #f0fdf4;
 
-            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
-            --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.07);
+            --shadow-sm:
+                0 2px 8px
+                rgba(15, 23, 42, 0.05);
 
             --radius-sm: 9px;
+
             --radius-md: 13px;
+
             --radius-lg: 18px;
+
         }
 
         body.compact {
@@ -55,9 +73,15 @@
         }
 
         body {
+
             margin: 0;
-            background: var(--bg);
-            color: var(--text);
+
+            background:
+                var(--bg);
+
+            color:
+                var(--text);
+
             font-family:
                 Inter,
                 -apple-system,
@@ -65,1137 +89,2444 @@
                 "Segoe UI",
                 Arial,
                 sans-serif;
+
         }
 
         button,
         input,
         select {
+
             font: inherit;
+
         }
 
         button {
+
             cursor: pointer;
+
         }
 
-        /* =========================
+        /* =====================================================
            HEADER
-        ========================== */
+        ====================================================== */
 
         header {
+
             background:
                 linear-gradient(
                     135deg,
                     #172033 0%,
                     #202c42 100%
                 );
+
             color: white;
+
         }
 
         .header-inner {
+
             max-width: 1320px;
+
             margin: 0 auto;
-            padding: 26px 24px 28px;
+
+            padding:
+                26px
+                24px
+                28px;
+
         }
 
         .header-top {
+
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
             gap: 20px;
+
         }
 
         .header-title h1 {
+
             margin: 0;
+
             font-size: 30px;
+
             line-height: 1.15;
-            letter-spacing: -0.4px;
+
+            letter-spacing:
+                -0.4px;
+
         }
 
         .header-title p {
-            margin: 7px 0 0;
-            color: #cbd5e1;
+
+            margin:
+                7px 0 0;
+
+            color:
+                #cbd5e1;
+
             font-size: 14px;
+
         }
 
         .header-date {
-            text-align: right;
-            color: #cbd5e1;
+
+            text-align:
+                right;
+
+            color:
+                #cbd5e1;
+
             font-size: 13px;
+
         }
 
         .header-date strong {
+
             display: block;
-            color: white;
+
+            color:
+                white;
+
             font-size: 14px;
-            margin-bottom: 3px;
+
+            margin-bottom:
+                3px;
+
         }
 
-        /* =========================
+        /* =====================================================
            MAIN
-        ========================== */
+        ====================================================== */
 
         main {
+
             max-width: 1320px;
+
             margin: 0 auto;
-            padding: 20px 24px 60px;
+
+            padding:
+                20px
+                24px
+                60px;
+
         }
 
-        /* =========================
+        /* =====================================================
            TOOLBAR
-        ========================== */
+        ====================================================== */
 
         .toolbar {
+
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
             gap: 12px;
-            margin-bottom: 16px;
+
+            margin-bottom:
+                16px;
+
             flex-wrap: wrap;
+
         }
 
         .connection-status {
+
             display: flex;
-            align-items: center;
+
+            align-items:
+                center;
+
             gap: 8px;
-            color: var(--muted);
+
+            color:
+                var(--muted);
+
             font-size: 13px;
+
         }
 
         .status-dot {
+
             width: 9px;
+
             height: 9px;
-            border-radius: 50%;
-            background: #94a3b8;
+
+            border-radius:
+                50%;
+
+            background:
+                #94a3b8;
+
         }
 
         .status-dot.connected {
-            background: var(--green);
+
+            background:
+                var(--green);
+
         }
 
         .status-dot.error {
-            background: var(--red);
+
+            background:
+                var(--red);
+
         }
 
         .toolbar-actions {
+
             display: flex;
+
             gap: 8px;
+
         }
 
         .button {
-            border: 1px solid var(--border);
-            background: white;
-            color: var(--text-soft);
-            border-radius: var(--radius-sm);
-            padding: 9px 13px;
-            font-size: 13px;
-            font-weight: 700;
-            transition:
-                background 0.15s ease,
-                border-color 0.15s ease,
-                transform 0.1s ease;
+
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                white;
+
+            color:
+                var(--text-soft);
+
+            border-radius:
+                var(--radius-sm);
+
+            padding:
+                9px
+                13px;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
         }
 
         .button:hover {
-            background: #f8fafc;
-        }
 
-        .button:active {
-            transform: translateY(1px);
+            background:
+                #f8fafc;
+
         }
 
         .button.primary {
-            background: var(--blue);
-            color: white;
-            border-color: var(--blue);
+
+            background:
+                var(--blue);
+
+            color:
+                white;
+
+            border-color:
+                var(--blue);
+
         }
 
         .button.primary:hover {
-            background: var(--blue-dark);
-            border-color: var(--blue-dark);
+
+            background:
+                var(--blue-dark);
+
+            border-color:
+                var(--blue-dark);
+
         }
 
-        /* =========================
+        /* =====================================================
            TABS
-        ========================== */
+        ====================================================== */
 
         .tabs {
+
             display: flex;
+
             gap: 4px;
-            background: white;
-            border: 1px solid var(--border);
-            padding: 5px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
-            overflow-x: auto;
-            margin-bottom: 16px;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            padding:
+                5px;
+
+            border-radius:
+                var(--radius-md);
+
+            box-shadow:
+                var(--shadow-sm);
+
+            overflow-x:
+                auto;
+
+            margin-bottom:
+                16px;
+
         }
 
         .tab {
-            flex: 0 0 auto;
+
+            flex:
+                0 0 auto;
+
             border: 0;
-            background: transparent;
-            color: var(--muted);
-            padding: 10px 15px;
-            border-radius: 9px;
-            font-weight: 750;
-            font-size: 13px;
+
+            background:
+                transparent;
+
+            color:
+                var(--muted);
+
+            padding:
+                10px
+                15px;
+
+            border-radius:
+                9px;
+
+            font-weight:
+                750;
+
+            font-size:
+                13px;
+
         }
 
         .tab:hover {
-            background: var(--surface-soft);
+
+            background:
+                var(--surface-soft);
+
         }
 
         .tab.active {
-            background: var(--text);
-            color: white;
+
+            background:
+                var(--text);
+
+            color:
+                white;
+
         }
 
-        /* =========================
+        /* =====================================================
            SEARCH / FILTERS
-        ========================== */
+        ====================================================== */
 
         .filters-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            margin-bottom:
+                18px;
+
+            flex-wrap:
+                wrap;
+
         }
 
         .search {
-            flex: 1;
-            min-width: 240px;
+
+            flex:
+                1;
+
+            min-width:
+                240px;
+
         }
 
         .search input {
-            width: 100%;
-            border: 1px solid var(--border);
-            background: white;
-            border-radius: 10px;
-            padding: 11px 13px;
-            outline: none;
-            color: var(--text);
+
+            width:
+                100%;
+
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                white;
+
+            border-radius:
+                10px;
+
+            padding:
+                11px
+                13px;
+
+            outline:
+                none;
+
+            color:
+                var(--text);
+
         }
 
         .search input:focus {
-            border-color: var(--blue);
+
+            border-color:
+                var(--blue);
+
             box-shadow:
-                0 0 0 3px rgba(37, 99, 235, 0.11);
+                0 0 0 3px
+                rgba(
+                    37,
+                    99,
+                    235,
+                    0.11
+                );
+
         }
 
         .filter-buttons {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
+
+            display:
+                flex;
+
+            gap:
+                6px;
+
+            flex-wrap:
+                wrap;
+
         }
 
         .filter-button {
-            border: 1px solid var(--border);
-            background: white;
-            color: var(--text-soft);
-            border-radius: 9px;
-            padding: 9px 12px;
-            font-size: 12px;
-            font-weight: 750;
+
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                white;
+
+            color:
+                var(--text-soft);
+
+            border-radius:
+                9px;
+
+            padding:
+                9px
+                12px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                750;
+
         }
 
         .filter-button.active {
-            background: var(--blue);
-            border-color: var(--blue);
-            color: white;
+
+            background:
+                var(--blue);
+
+            border-color:
+                var(--blue);
+
+            color:
+                white;
+
         }
 
-        /* =========================
+        /* =====================================================
            STATS
-        ========================== */
+        ====================================================== */
 
         .stats {
-            display: grid;
+
+            display:
+                grid;
+
             grid-template-columns:
-                repeat(4, minmax(0, 1fr));
-            gap: 12px;
-            margin-bottom: 18px;
+                repeat(
+                    4,
+                    minmax(0, 1fr)
+                );
+
+            gap:
+                12px;
+
+            margin-bottom:
+                18px;
+
         }
 
         .stat-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            box-shadow: var(--shadow-sm);
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-md);
+
+            padding:
+                16px;
+
+            box-shadow:
+                var(--shadow-sm);
+
         }
 
         .stat-label {
-            color: var(--muted);
-            font-size: 12px;
-            font-weight: 700;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
         }
 
         .stat-number {
-            margin-top: 7px;
-            font-size: 29px;
-            line-height: 1;
-            font-weight: 850;
+
+            margin-top:
+                7px;
+
+            font-size:
+                29px;
+
+            line-height:
+                1;
+
+            font-weight:
+                850;
+
         }
 
         .stat-subtitle {
-            margin-top: 6px;
-            color: var(--muted);
-            font-size: 11px;
+
+            margin-top:
+                6px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
         }
 
-        /* =========================
+        /* =====================================================
            VIEWS
-        ========================== */
+        ====================================================== */
 
         .view {
-            display: none;
+
+            display:
+                none;
+
         }
 
         .view.active {
-            display: block;
+
+            display:
+                block;
+
         }
 
-        /* =========================
-           TODAY LAYOUT
-        ========================== */
+        /* =====================================================
+           TODAY
+        ====================================================== */
 
         .today-layout {
-            display: grid;
+
+            display:
+                grid;
+
             grid-template-columns:
                 minmax(0, 1.55fr)
                 minmax(330px, 1fr);
-            gap: 16px;
-            align-items: start;
+
+            gap:
+                16px;
+
+            align-items:
+                start;
+
         }
 
         .planner-panel {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            padding: 18px;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-lg);
+
+            box-shadow:
+                var(--shadow-sm);
+
+            padding:
+                18px;
+
         }
 
         .planner-panel.tomorrow {
+
             background:
                 linear-gradient(
                     180deg,
                     #ffffff 0%,
                     #fcfcff 100%
                 );
+
         }
 
         .panel-heading {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 15px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
+            gap:
+                12px;
+
+            margin-bottom:
+                15px;
+
         }
 
         .panel-title {
-            font-size: 18px;
-            font-weight: 850;
+
+            font-size:
+                18px;
+
+            font-weight:
+                850;
+
         }
 
         .panel-subtitle {
-            margin-top: 4px;
-            color: var(--muted);
-            font-size: 12px;
-            line-height: 1.4;
+
+            margin-top:
+                4px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+            line-height:
+                1.4;
+
         }
 
         .time-indicator {
-            white-space: nowrap;
-            color: var(--orange);
-            background: var(--orange-soft);
-            border-radius: 999px;
-            padding: 5px 8px;
-            font-size: 10px;
-            font-weight: 800;
+
+            white-space:
+                nowrap;
+
+            color:
+                var(--orange);
+
+            background:
+                var(--orange-soft);
+
+            border-radius:
+                999px;
+
+            padding:
+                5px
+                8px;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
         }
 
         .tomorrow-indicator {
-            color: var(--purple);
-            background: var(--purple-soft);
+
+            color:
+                var(--purple);
+
+            background:
+                var(--purple-soft);
+
         }
 
         .today-subsection {
-            margin-top: 15px;
+
+            margin-top:
+                15px;
+
         }
 
         .today-subsection:first-of-type {
-            margin-top: 0;
+
+            margin-top:
+                0;
+
         }
 
         .today-subsection-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-soft);
-            font-size: 12px;
-            font-weight: 850;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                12px;
+
+            font-weight:
+                850;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                0.5px;
+
+            margin-bottom:
+                8px;
+
         }
 
         .subsection-line {
-            flex: 1;
-            height: 1px;
-            background: var(--border);
+
+            flex:
+                1;
+
+            height:
+                1px;
+
+            background:
+                var(--border);
+
         }
 
-        /* =========================
+        /* =====================================================
            EARLIER TODAY
-        ========================== */
+        ====================================================== */
 
         .past-today-panel {
-            margin-top: 16px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
+
+            margin-top:
+                16px;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-lg);
+
+            overflow:
+                hidden;
+
+            box-shadow:
+                var(--shadow-sm);
+
         }
 
         .past-today-header {
-            width: 100%;
-            border: 0;
-            background: white;
-            padding: 14px 17px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: var(--text);
-            text-align: left;
+
+            width:
+                100%;
+
+            border:
+                0;
+
+            background:
+                white;
+
+            padding:
+                14px
+                17px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            color:
+                var(--text);
+
+            text-align:
+                left;
+
         }
 
         .past-today-header:hover {
-            background: #fafafa;
+
+            background:
+                #fafafa;
+
         }
 
         .past-today-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
         }
 
         .past-icon {
-            width: 28px;
-            height: 28px;
-            display: grid;
-            place-items: center;
-            border-radius: 8px;
-            background: #f1f5f9;
-            color: #64748b;
-            font-size: 13px;
+
+            width:
+                28px;
+
+            height:
+                28px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border-radius:
+                8px;
+
+            background:
+                #f1f5f9;
+
+            color:
+                #64748b;
+
+            font-size:
+                13px;
+
         }
 
         .past-title {
-            font-weight: 800;
-            font-size: 13px;
+
+            font-weight:
+                800;
+
+            font-size:
+                13px;
+
         }
 
         .past-subtitle {
-            margin-top: 2px;
-            color: var(--muted);
-            font-size: 11px;
+
+            margin-top:
+                2px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
         }
 
         .past-chevron {
-            color: var(--muted);
-            font-size: 13px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
         }
 
         .past-today-content {
-            display: none;
-            border-top: 1px solid var(--border);
-            padding: 15px 17px 17px;
+
+            display:
+                none;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            padding:
+                15px
+                17px
+                17px;
+
         }
 
         .past-today-content.open {
-            display: block;
+
+            display:
+                block;
+
         }
 
-        /* =========================
+        /* =====================================================
            ASSIGNMENT CARDS
-        ========================== */
+        ====================================================== */
 
         .assignment-list {
-            display: grid;
-            gap: 8px;
+
+            display:
+                grid;
+
+            gap:
+                8px;
+
         }
 
         .assignment {
-            background: white;
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--blue);
-            border-radius: 10px;
-            padding: 11px 12px;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-left:
+                4px solid
+                var(--blue);
+
+            border-radius:
+                10px;
+
+            padding:
+                11px
+                12px;
+
             transition:
-                border-color 0.15s ease,
-                box-shadow 0.15s ease,
-                transform 0.12s ease;
-            cursor: pointer;
+                border-color
+                0.15s ease,
+                box-shadow
+                0.15s ease,
+                transform
+                0.12s ease;
+
+            cursor:
+                pointer;
+
         }
 
         .assignment:hover {
-            box-shadow: var(--shadow-sm);
-            transform: translateY(-1px);
+
+            box-shadow:
+                var(--shadow-sm);
+
+            transform:
+                translateY(
+                    -1px
+                );
+
         }
 
         .assignment.assessment {
-            border-left-color: var(--purple);
+
+            border-left-color:
+                var(--purple);
+
         }
 
         .assignment.today {
-            border-left-color: var(--orange);
+
+            border-left-color:
+                var(--orange);
+
         }
 
         .assignment.overdue {
-            border-left-color: var(--red);
+
+            border-left-color:
+                var(--red);
+
         }
 
         .assignment.past-today {
-            border-left-color: #94a3b8;
-            background: #fcfcfd;
+
+            border-left-color:
+                #94a3b8;
+
+            background:
+                #fcfcfd;
+
         }
 
         .assignment-main {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            gap:
+                12px;
+
         }
 
         .assignment-primary {
-            min-width: 0;
+
+            min-width:
+                0;
+
         }
 
         .assignment-title {
-            color: var(--text);
-            font-size: 14px;
-            line-height: 1.4;
-            font-weight: 800;
+
+            color:
+                var(--text);
+
+            font-size:
+                14px;
+
+            line-height:
+                1.4;
+
+            font-weight:
+                800;
+
         }
 
         .assignment-class {
-            margin-top: 3px;
-            color: var(--muted);
-            font-size: 11px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+
+            margin-top:
+                3px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
+            white-space:
+                nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+
         }
 
         .assignment-due {
-            flex: 0 0 auto;
-            white-space: nowrap;
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--text-soft);
+
+            flex:
+                0 0 auto;
+
+            white-space:
+                nowrap;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            color:
+                var(--text-soft);
+
         }
 
         .assignment-due.today-time {
-            color: var(--orange);
+
+            color:
+                var(--orange);
+
         }
 
         .assignment-due.tomorrow-time {
-            color: var(--purple);
+
+            color:
+                var(--purple);
+
         }
 
         .assignment-due.overdue-time {
-            color: var(--red);
+
+            color:
+                var(--red);
+
         }
 
         .assignment-due.past-time {
-            color: var(--muted);
+
+            color:
+                var(--muted);
+
         }
 
         .assignment-meta {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 8px;
-            flex-wrap: wrap;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                6px;
+
+            margin-top:
+                8px;
+
+            flex-wrap:
+                wrap;
+
         }
 
         .badge {
-            border-radius: 999px;
-            padding: 3px 7px;
-            font-size: 9px;
-            font-weight: 850;
+
+            border-radius:
+                999px;
+
+            padding:
+                3px
+                7px;
+
+            font-size:
+                9px;
+
+            font-weight:
+                850;
+
         }
 
         .badge-homework {
-            background: var(--blue-soft);
-            color: #1d4ed8;
+
+            background:
+                var(--blue-soft);
+
+            color:
+                #1d4ed8;
+
         }
 
         .badge-quiz {
-            background: var(--purple-soft);
-            color: #6d28d9;
+
+            background:
+                var(--purple-soft);
+
+            color:
+                #6d28d9;
+
         }
 
         .badge-test {
-            background: var(--red-soft);
-            color: #b91c1c;
+
+            background:
+                var(--red-soft);
+
+            color:
+                #b91c1c;
+
         }
 
         .badge-other {
-            background: #f1f5f9;
-            color: #475569;
+
+            background:
+                #f1f5f9;
+
+            color:
+                #475569;
+
         }
 
         .assignment-expand-hint {
-            margin-left: auto;
-            color: #94a3b8;
-            font-size: 10px;
+
+            margin-left:
+                auto;
+
+            color:
+                #94a3b8;
+
+            font-size:
+                10px;
+
         }
 
         .assignment-details {
-            display: none;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid var(--border);
-            color: var(--text-soft);
-            font-size: 11px;
-            line-height: 1.6;
+
+            display:
+                none;
+
+            margin-top:
+                10px;
+
+            padding-top:
+                10px;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                11px;
+
+            line-height:
+                1.65;
+
         }
 
-        .assignment.open .assignment-details {
-            display: block;
+        .assignment.open
+        .assignment-details {
+
+            display:
+                block;
+
+        }
+
+        .description-box {
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                9px;
+
+            padding:
+                10px;
+
+            margin-bottom:
+                10px;
+
+        }
+
+        .description-title {
+
+            color:
+                var(--text);
+
+            font-weight:
+                850;
+
+            font-size:
+                10px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                0.4px;
+
+            margin-bottom:
+                5px;
+
+        }
+
+        .description-text {
+
+            color:
+                var(--text-soft);
+
+            white-space:
+                normal;
+
+            word-break:
+                break-word;
+
         }
 
         .detail-row {
-            margin-bottom: 3px;
+
+            margin-bottom:
+                3px;
+
         }
 
         .detail-label {
-            font-weight: 800;
-            color: var(--text);
+
+            font-weight:
+                800;
+
+            color:
+                var(--text);
+
         }
 
-        /* =========================
+        /* =====================================================
            EMPTY
-        ========================== */
+        ====================================================== */
 
         .empty {
-            border: 1px dashed var(--border);
-            background: var(--surface-soft);
-            border-radius: 10px;
-            padding: 15px;
-            color: var(--muted);
-            font-size: 12px;
+
+            border:
+                1px dashed
+                var(--border);
+
+            background:
+                var(--surface-soft);
+
+            border-radius:
+                10px;
+
+            padding:
+                15px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
         }
 
-        /* =========================
+        /* =====================================================
            UPCOMING
-        ========================== */
+        ====================================================== */
 
         .upcoming-day {
-            margin-bottom: 17px;
+
+            margin-bottom:
+                17px;
+
         }
 
         .upcoming-day-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            margin-bottom:
+                8px;
+
         }
 
         .upcoming-day-date {
-            font-size: 14px;
-            font-weight: 850;
+
+            font-size:
+                14px;
+
+            font-weight:
+                850;
+
         }
 
         .upcoming-day-count {
-            color: var(--muted);
-            font-size: 11px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
         }
 
         .day-line {
-            flex: 1;
-            height: 1px;
-            background: var(--border);
+
+            flex:
+                1;
+
+            height:
+                1px;
+
+            background:
+                var(--border);
+
         }
 
         .overdue-panel {
-            margin-top: 24px;
-            background: white;
-            border: 1px solid #fecaca;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
+
+            margin-top:
+                24px;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                #fecaca;
+
+            border-radius:
+                var(--radius-lg);
+
+            overflow:
+                hidden;
+
         }
 
         .overdue-header {
-            padding: 14px 17px;
-            background: var(--red-soft);
-            border-bottom: 1px solid #fee2e2;
+
+            padding:
+                14px
+                17px;
+
+            background:
+                var(--red-soft);
+
+            border-bottom:
+                1px solid
+                #fee2e2;
+
         }
 
         .overdue-header h2 {
-            margin: 0;
-            color: #991b1b;
-            font-size: 17px;
+
+            margin:
+                0;
+
+            color:
+                #991b1b;
+
+            font-size:
+                17px;
+
         }
 
         .overdue-header p {
-            margin: 3px 0 0;
-            color: #b91c1c;
-            font-size: 11px;
+
+            margin:
+                3px
+                0
+                0;
+
+            color:
+                #b91c1c;
+
+            font-size:
+                11px;
+
         }
 
         .overdue-body {
-            padding: 14px;
+
+            padding:
+                14px;
+
         }
 
-        /* =========================
+        /* =====================================================
            BY CLASS
-        ========================== */
+        ====================================================== */
 
         .class-grid {
-            display: grid;
+
+            display:
+                grid;
+
             grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-            gap: 12px;
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap:
+                12px;
+
         }
 
         .class-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-lg);
+
+            overflow:
+                hidden;
+
+            box-shadow:
+                var(--shadow-sm);
+
         }
 
         .class-header {
-            width: 100%;
-            border: 0;
-            background: white;
-            padding: 15px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: left;
+
+            width:
+                100%;
+
+            border:
+                0;
+
+            background:
+                white;
+
+            padding:
+                15px
+                16px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            text-align:
+                left;
+
         }
 
         .class-header:hover {
-            background: #fafafa;
+
+            background:
+                #fafafa;
+
         }
 
         .class-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            min-width: 0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            min-width:
+                0;
+
         }
 
         .class-color {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            flex: 0 0 10px;
+
+            width:
+                10px;
+
+            height:
+                10px;
+
+            border-radius:
+                50%;
+
+            flex:
+                0 0 10px;
+
         }
 
         .class-name-wrap {
-            min-width: 0;
+
+            min-width:
+                0;
+
         }
 
         .class-name {
-            font-size: 14px;
-            font-weight: 850;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+
+            font-size:
+                14px;
+
+            font-weight:
+                850;
+
+            white-space:
+                nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+
         }
 
         .class-count {
-            margin-top: 2px;
-            color: var(--muted);
-            font-size: 11px;
+
+            margin-top:
+                2px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
         }
 
         .class-chevron {
-            color: var(--muted);
-            font-size: 12px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
         }
 
         .class-body {
-            display: none;
-            padding: 0 12px 12px;
+
+            display:
+                none;
+
+            padding:
+                0
+                12px
+                12px;
+
         }
 
         .class-body.open {
-            display: block;
+
+            display:
+                block;
+
         }
 
-        /* =========================
+        /* =====================================================
            CALENDAR
-        ========================== */
+        ====================================================== */
 
         .calendar-shell {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            overflow: hidden;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-lg);
+
+            box-shadow:
+                var(--shadow-sm);
+
+            overflow:
+                hidden;
+
         }
 
         .calendar-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 18px;
-            border-bottom: 1px solid var(--border);
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+            padding:
+                16px
+                18px;
+
+            border-bottom:
+                1px solid
+                var(--border);
+
         }
 
         .calendar-title {
-            font-size: 19px;
-            font-weight: 850;
+
+            font-size:
+                19px;
+
+            font-weight:
+                850;
+
         }
 
         .calendar-nav {
-            display: flex;
-            gap: 6px;
+
+            display:
+                flex;
+
+            gap:
+                6px;
+
         }
 
         .calendar-grid {
-            display: grid;
+
+            display:
+                grid;
+
             grid-template-columns:
-                repeat(7, minmax(0, 1fr));
+                repeat(
+                    7,
+                    minmax(0, 1fr)
+                );
+
         }
 
         .calendar-weekday {
-            padding: 10px 7px;
-            background: #f8fafc;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            color: var(--muted);
-            text-align: center;
-            font-size: 10px;
-            font-weight: 850;
-            text-transform: uppercase;
+
+            padding:
+                10px
+                7px;
+
+            background:
+                #f8fafc;
+
+            border-right:
+                1px solid
+                var(--border);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            color:
+                var(--muted);
+
+            text-align:
+                center;
+
+            font-size:
+                10px;
+
+            font-weight:
+                850;
+
+            text-transform:
+                uppercase;
+
         }
 
         .calendar-cell {
-            min-height: 120px;
-            padding: 7px;
-            background: white;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            overflow: hidden;
+
+            min-height:
+                120px;
+
+            padding:
+                7px;
+
+            background:
+                white;
+
+            border-right:
+                1px solid
+                var(--border);
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            overflow:
+                hidden;
+
         }
 
         .calendar-cell:nth-child(7n) {
-            border-right: 0;
+
+            border-right:
+                0;
+
         }
 
         .calendar-cell.muted {
-            background: #fafafa;
+
+            background:
+                #fafafa;
+
         }
 
         .calendar-cell.today {
+
             background:
                 linear-gradient(
                     180deg,
                     #f8fbff 0%,
                     #ffffff 100%
                 );
+
         }
 
         .calendar-date {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            margin-bottom: 5px;
-            border-radius: 50%;
-            font-size: 11px;
-            font-weight: 850;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                24px;
+
+            height:
+                24px;
+
+            margin-bottom:
+                5px;
+
+            border-radius:
+                50%;
+
+            font-size:
+                11px;
+
+            font-weight:
+                850;
+
         }
 
-        .calendar-cell.today .calendar-date {
-            background: var(--blue);
-            color: white;
+        .calendar-cell.today
+        .calendar-date {
+
+            background:
+                var(--blue);
+
+            color:
+                white;
+
         }
 
         .calendar-event {
-            display: block;
-            width: 100%;
-            border: 0;
-            margin-bottom: 4px;
-            padding: 5px 6px;
-            border-radius: 6px;
-            text-align: left;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-size: 9px;
-            font-weight: 750;
+
+            display:
+                block;
+
+            width:
+                100%;
+
+            border:
+                0;
+
+            margin-bottom:
+                4px;
+
+            padding:
+                5px
+                6px;
+
+            border-radius:
+                6px;
+
+            text-align:
+                left;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+
+            white-space:
+                nowrap;
+
+            font-size:
+                9px;
+
+            font-weight:
+                750;
+
         }
 
         .calendar-event.homework {
-            background: var(--blue-soft);
-            color: #1d4ed8;
+
+            background:
+                var(--blue-soft);
+
+            color:
+                #1d4ed8;
+
         }
 
         .calendar-event.assessment {
-            background: var(--purple-soft);
-            color: #6d28d9;
+
+            background:
+                var(--purple-soft);
+
+            color:
+                #6d28d9;
+
         }
 
-        .calendar-event:hover {
-            filter: brightness(0.98);
-        }
-
-        /* =========================
+        /* =====================================================
            CONNECTION
-        ========================== */
+        ====================================================== */
 
         .connection-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            margin-bottom: 18px;
-            box-shadow: var(--shadow-sm);
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-lg);
+
+            padding:
+                20px;
+
+            margin-bottom:
+                18px;
+
+            box-shadow:
+                var(--shadow-sm);
+
         }
 
         .connection-card h2 {
-            margin: 0;
-            font-size: 18px;
+
+            margin:
+                0;
+
+            font-size:
+                18px;
+
         }
 
         .connection-card p {
-            margin: 6px 0 0;
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.5;
+
+            margin:
+                6px
+                0
+                0;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.5;
+
         }
 
-        /* =========================
+        /* =====================================================
            SETTINGS
-        ========================== */
+        ====================================================== */
 
         .settings-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.28);
-            display: none;
-            z-index: 999;
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            background:
+                rgba(
+                    15,
+                    23,
+                    42,
+                    0.28
+                );
+
+            display:
+                none;
+
+            z-index:
+                999;
+
         }
 
         .settings-overlay.open {
-            display: block;
+
+            display:
+                block;
+
         }
 
         .settings-panel {
-            position: fixed;
-            top: 0;
-            right: -390px;
-            width: 370px;
-            max-width: 90vw;
-            height: 100vh;
-            background: white;
-            z-index: 1000;
+
+            position:
+                fixed;
+
+            top:
+                0;
+
+            right:
+                -390px;
+
+            width:
+                370px;
+
+            max-width:
+                90vw;
+
+            height:
+                100vh;
+
+            background:
+                white;
+
+            z-index:
+                1000;
+
             box-shadow:
-                -10px 0 30px rgba(15, 23, 42, 0.14);
+                -10px
+                0
+                30px
+                rgba(
+                    15,
+                    23,
+                    42,
+                    0.14
+                );
+
             transition:
-                right 0.24s ease;
-            overflow-y: auto;
-            padding: 22px;
+                right
+                0.24s
+                ease;
+
+            overflow-y:
+                auto;
+
+            padding:
+                22px;
+
         }
 
         .settings-panel.open {
-            right: 0;
+
+            right:
+                0;
+
         }
 
         .settings-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 18px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            margin-bottom:
+                18px;
+
         }
 
         .settings-top h2 {
-            margin: 0;
-            font-size: 20px;
+
+            margin:
+                0;
+
+            font-size:
+                20px;
+
         }
 
         .close-settings {
-            width: 34px;
-            height: 34px;
-            border: 0;
-            border-radius: 8px;
-            background: #f1f5f9;
-            color: #475569;
-            font-size: 20px;
+
+            width:
+                34px;
+
+            height:
+                34px;
+
+            border:
+                0;
+
+            border-radius:
+                8px;
+
+            background:
+                #f1f5f9;
+
+            color:
+                #475569;
+
+            font-size:
+                20px;
+
         }
 
         .setting {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
+
+            padding:
+                15px
+                0;
+
+            border-bottom:
+                1px solid
+                var(--border);
+
         }
 
         .setting-title {
-            font-size: 13px;
-            font-weight: 850;
+
+            font-size:
+                13px;
+
+            font-weight:
+                850;
+
         }
 
         .setting-description {
-            margin: 4px 0 10px;
-            color: var(--muted);
-            font-size: 11px;
-            line-height: 1.45;
+
+            margin:
+                4px
+                0
+                10px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
+            line-height:
+                1.45;
+
         }
 
         .setting-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
         }
 
         .toggle {
-            width: 44px;
-            height: 24px;
-            border: 0;
-            border-radius: 999px;
-            background: #cbd5e1;
-            padding: 3px;
+
+            width:
+                44px;
+
+            height:
+                24px;
+
+            border:
+                0;
+
+            border-radius:
+                999px;
+
+            background:
+                #cbd5e1;
+
+            padding:
+                3px;
+
         }
 
         .toggle::after {
-            content: "";
-            display: block;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: white;
+
+            content:
+                "";
+
+            display:
+                block;
+
+            width:
+                18px;
+
+            height:
+                18px;
+
+            border-radius:
+                50%;
+
+            background:
+                white;
+
             transition:
-                transform 0.15s ease;
+                transform
+                0.15s
+                ease;
+
         }
 
         .toggle.on {
-            background: var(--blue);
+
+            background:
+                var(--blue);
+
         }
 
         .toggle.on::after {
-            transform: translateX(20px);
+
+            transform:
+                translateX(
+                    20px
+                );
+
         }
 
         .setting-select {
-            width: 100%;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 9px;
-            background: white;
+
+            width:
+                100%;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                8px;
+
+            padding:
+                9px;
+
+            background:
+                white;
+
         }
 
-        /* =========================
+        /* =====================================================
            COMPACT
-        ========================== */
+        ====================================================== */
 
-        body.compact .assignment {
-            padding: 8px 10px;
+        body.compact
+        .assignment {
+
+            padding:
+                8px
+                10px;
+
         }
 
-        body.compact .assignment-meta {
-            margin-top: 5px;
+        body.compact
+        .assignment-meta {
+
+            margin-top:
+                5px;
+
         }
 
-        body.compact .calendar-cell {
-            min-height: 100px;
+        body.compact
+        .calendar-cell {
+
+            min-height:
+                100px;
+
         }
 
-        /* =========================
+        /* =====================================================
            RESPONSIVE
-        ========================== */
+        ====================================================== */
 
-        @media (max-width: 1050px) {
+        @media (
+            max-width: 1050px
+        ) {
 
             .today-layout {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
 
             .class-grid {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
 
         }
 
-        @media (max-width: 800px) {
+        @media (
+            max-width: 800px
+        ) {
 
             .stats {
+
                 grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+
             }
 
             .header-top {
-                flex-direction: column;
+
+                flex-direction:
+                    column;
+
             }
 
             .header-date {
-                text-align: left;
+
+                text-align:
+                    left;
+
             }
 
             .calendar-cell {
-                min-height: 90px;
+
+                min-height:
+                    90px;
+
             }
 
         }
 
-        @media (max-width: 600px) {
+        @media (
+            max-width: 600px
+        ) {
 
             main {
-                padding-left: 14px;
-                padding-right: 14px;
+
+                padding-left:
+                    14px;
+
+                padding-right:
+                    14px;
+
             }
 
             .header-inner {
-                padding-left: 16px;
-                padding-right: 16px;
+
+                padding-left:
+                    16px;
+
+                padding-right:
+                    16px;
+
             }
 
             .stats {
-                grid-template-columns: 1fr 1fr;
+
+                grid-template-columns:
+                    1fr 1fr;
+
             }
 
             .assignment-main {
-                flex-direction: column;
-                gap: 5px;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    5px;
+
             }
 
             .assignment-due {
-                white-space: normal;
+
+                white-space:
+                    normal;
+
             }
 
             .calendar-cell {
-                min-height: 72px;
-                padding: 4px;
+
+                min-height:
+                    72px;
+
+                padding:
+                    4px;
+
             }
 
             .calendar-weekday {
-                font-size: 8px;
-                padding: 8px 2px;
+
+                font-size:
+                    8px;
+
+                padding:
+                    8px
+                    2px;
+
             }
 
             .calendar-event {
-                font-size: 8px;
-                padding: 4px;
+
+                font-size:
+                    8px;
+
+                padding:
+                    4px;
+
             }
 
             .calendar-date {
-                width: 22px;
-                height: 22px;
+
+                width:
+                    22px;
+
+                height:
+                    22px;
+
             }
 
         }
+
     </style>
+
 </head>
 
 <body>
@@ -1222,8 +2553,13 @@
                 class="header-date"
                 id="headerDate"
             >
-                <strong>Today</strong>
+
+                <strong>
+                    Today
+                </strong>
+
                 Loading...
+
             </div>
 
         </div>
@@ -1234,9 +2570,9 @@
 
 <main>
 
-    <!-- =========================
+    <!-- =====================================================
          TOOLBAR
-    ========================== -->
+    ====================================================== -->
 
     <div class="toolbar">
 
@@ -1273,9 +2609,9 @@
 
     </div>
 
-    <!-- =========================
+    <!-- =====================================================
          CONNECTION
-    ========================== -->
+    ====================================================== -->
 
     <div
         class="connection-card"
@@ -1293,9 +2629,9 @@
 
     </div>
 
-    <!-- =========================
+    <!-- =====================================================
          TABS
-    ========================== -->
+    ====================================================== -->
 
     <div class="tabs">
 
@@ -1329,9 +2665,9 @@
 
     </div>
 
-    <!-- =========================
-         SEARCH / FILTERS
-    ========================== -->
+    <!-- =====================================================
+         FILTERS
+    ====================================================== -->
 
     <div class="filters-bar">
 
@@ -1348,7 +2684,10 @@
         <div class="filter-buttons">
 
             <button
-                class="filter-button active"
+                class="
+                    filter-button
+                    active
+                "
                 data-filter="all"
             >
                 All
@@ -1372,9 +2711,9 @@
 
     </div>
 
-    <!-- =========================
+    <!-- =====================================================
          STATS
-    ========================== -->
+    ====================================================== -->
 
     <div class="stats">
 
@@ -1467,7 +2806,7 @@
 
         <div class="today-layout">
 
-            <!-- STILL DUE TODAY -->
+            <!-- TODAY -->
 
             <div class="planner-panel">
 
@@ -1487,7 +2826,6 @@
 
                     <div
                         class="time-indicator"
-                        id="todayTimeIndicator"
                     >
                         Due later
                     </div>
@@ -1550,7 +2888,12 @@
 
             <!-- TOMORROW -->
 
-            <div class="planner-panel tomorrow">
+            <div
+                class="
+                    planner-panel
+                    tomorrow
+                "
+            >
 
                 <div class="panel-heading">
 
@@ -1741,7 +3084,7 @@
     </section>
 
     <!-- =====================================================
-         UPCOMING VIEW
+         UPCOMING
     ====================================================== -->
 
     <section
@@ -1749,7 +3092,9 @@
         id="view-upcoming"
     >
 
-        <div id="upcomingDays"></div>
+        <div
+            id="upcomingDays"
+        ></div>
 
         <div
             class="overdue-panel"
@@ -1778,7 +3123,7 @@
     </section>
 
     <!-- =====================================================
-         BY CLASS VIEW
+         BY CLASS
     ====================================================== -->
 
     <section
@@ -1794,7 +3139,7 @@
     </section>
 
     <!-- =====================================================
-         CALENDAR VIEW
+         CALENDAR
     ====================================================== -->
 
     <section
@@ -2021,31 +3366,45 @@
 
     /* =========================================================
        STATE
-       These declarations MUST exist before initialization.
     ========================================================== */
 
     let rawData = null;
+
     let assignments = [];
 
-    let currentFilter = "all";
-    let searchText = "";
+    let currentFilter =
+        "all";
+
+    let searchText =
+        "";
 
     let currentCalendarDate =
         new Date();
 
     const defaultSettings = {
-        compact: false,
-        showOverdue: true,
-        showPoints: true,
-        showPastToday: false,
-        defaultView: "today"
+
+        compact:
+            false,
+
+        showOverdue:
+            true,
+
+        showPoints:
+            true,
+
+        showPastToday:
+            false,
+
+        defaultView:
+            "today"
+
     };
 
     let settings =
         loadSettings();
 
     /* =========================================================
-       DOM REFERENCES
+       DOM
     ========================================================== */
 
     const statusElement =
@@ -2084,8 +3443,11 @@
                 );
 
             return {
+
                 ...defaultSettings,
+
                 ...(saved || {})
+
             };
 
         } catch {
@@ -2101,10 +3463,13 @@
     function saveSettings() {
 
         localStorage.setItem(
+
             "dexterDashboardSettings",
+
             JSON.stringify(
                 settings
             )
+
         );
 
     }
@@ -2164,7 +3529,9 @@
                 "overduePanel"
             );
 
-        if (overduePanel) {
+        if (
+            overduePanel
+        ) {
 
             overduePanel.style.display =
                 settings.showOverdue
@@ -2189,8 +3556,13 @@
                 "pastChevron"
             );
 
-        if (!content || !chevron) {
+        if (
+            !content ||
+            !chevron
+        ) {
+
             return;
+
         }
 
         content.classList.toggle(
@@ -2206,30 +3578,37 @@
     }
 
     /* =========================================================
-       BASIC HELPERS
+       HELPERS
     ========================================================== */
 
-    function escapeHtml(value) {
+    function escapeHtml(
+        value
+    ) {
 
         return String(
             value ?? ""
         )
+
             .replace(
                 /&/g,
                 "&amp;"
             )
+
             .replace(
                 /</g,
                 "&lt;"
             )
+
             .replace(
                 />/g,
                 "&gt;"
             )
+
             .replace(
                 /"/g,
                 "&quot;"
             )
+
             .replace(
                 /'/g,
                 "&#039;"
@@ -2237,31 +3616,120 @@
 
     }
 
-    function cleanText(value) {
+    function cleanText(
+        value
+    ) {
 
         return String(
             value || ""
         )
+
             .replace(
                 /&#160;/gi,
                 " "
             )
+
             .replace(
                 /\s+/g,
                 " "
             )
+
             .trim();
 
     }
 
+    function formatDescription(
+        value
+    ) {
+
+        if (
+            !value
+        ) {
+
+            return "";
+
+        }
+
+        let text =
+            String(
+                value
+            );
+
+        /*
+         * Handle common HTML line breaks
+         * that Blackbaud may include.
+         */
+
+        text =
+            text.replace(
+                /<br\s*\/?>/gi,
+                "\n"
+            );
+
+        text =
+            text.replace(
+                /<\/p>/gi,
+                "\n"
+            );
+
+        text =
+            text.replace(
+                /<\/li>/gi,
+                "\n"
+            );
+
+        /*
+         * Strip remaining HTML.
+         */
+
+        const temporary =
+            document.createElement(
+                "div"
+            );
+
+        temporary.innerHTML =
+            text;
+
+        text =
+            temporary.textContent ||
+            temporary.innerText ||
+            "";
+
+        text =
+            text
+                .replace(
+                    /\r\n/g,
+                    "\n"
+                )
+                .replace(
+                    /\n{3,}/g,
+                    "\n\n"
+                )
+                .trim();
+
+        return escapeHtml(
+            text
+        ).replace(
+            /\n/g,
+            "<br>"
+        );
+
+    }
+
     /* =========================================================
-       DATE HELPERS
+       DATES
     ========================================================== */
 
-    function getDateKey(value) {
+    function getDateKey(
+        value
+    ) {
 
-        if (!value) {
+        if (
+            !value
+        ) {
+
             return null;
+
         }
 
         const match =
@@ -2271,22 +3739,32 @@
                 /^(\d{1,2})\/(\d{1,2})\/(\d{4})/
             );
 
-        if (!match) {
+        if (
+            !match
+        ) {
+
             return null;
+
         }
 
         return (
+
             match[3] +
+
             "-" +
+
             match[1].padStart(
                 2,
                 "0"
             ) +
+
             "-" +
+
             match[2].padStart(
                 2,
                 "0"
             )
+
         );
 
     }
@@ -2299,11 +3777,19 @@
             new Intl.DateTimeFormat(
                 "en-US",
                 {
+
                     timeZone:
                         "America/New_York",
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit"
+
+                    year:
+                        "numeric",
+
+                    month:
+                        "2-digit",
+
+                    day:
+                        "2-digit"
+
                 }
             ).formatToParts(
                 date
@@ -2342,12 +3828,22 @@
             new Intl.DateTimeFormat(
                 "en-US",
                 {
+
                     timeZone:
                         "America/New_York",
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric",
-                    hour12: false
+
+                    hour:
+                        "numeric",
+
+                    minute:
+                        "numeric",
+
+                    second:
+                        "numeric",
+
+                    hour12:
+                        false
+
                 }
             ).formatToParts(
                 new Date()
@@ -2386,7 +3882,9 @@
 
     }
 
-    function keyToDate(key) {
+    function keyToDate(
+        key
+    ) {
 
         const [
             year,
@@ -2395,14 +3893,18 @@
         ] =
             key
                 .split("-")
-                .map(Number);
+                .map(
+                    Number
+                );
 
         return new Date(
+
             Date.UTC(
                 year,
                 month - 1,
                 day
             )
+
         );
 
     }
@@ -2423,16 +3925,19 @@
             );
 
         return Math.round(
+
             (
                 to.getTime() -
                 from.getTime()
             ) /
+
             (
                 1000 *
                 60 *
                 60 *
                 24
             )
+
         );
 
     }
@@ -2447,23 +3952,28 @@
             );
 
         date.setUTCDate(
-            date.getUTCDate() + 1
+            date.getUTCDate() +
+            1
         );
 
         return (
+
             `${date.getUTCFullYear()}-` +
+
             `${String(
                 date.getUTCMonth() + 1
             ).padStart(
                 2,
                 "0"
             )}-` +
+
             `${String(
                 date.getUTCDate()
             ).padStart(
                 2,
                 "0"
             )}`
+
         );
 
     }
@@ -2472,8 +3982,12 @@
         value
     ) {
 
-        if (!value) {
+        if (
+            !value
+        ) {
+
             return null;
+
         }
 
         const match =
@@ -2483,8 +3997,12 @@
                 /^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{2})\s*(AM|PM)?$/i
             );
 
-        if (!match) {
+        if (
+            !match
+        ) {
+
             return null;
+
         }
 
         let hour =
@@ -2507,7 +4025,8 @@
             hour < 12
         ) {
 
-            hour += 12;
+            hour +=
+                12;
 
         }
 
@@ -2516,15 +4035,12 @@
             hour === 12
         ) {
 
-            hour = 0;
+            hour =
+                0;
 
         }
 
         return {
-
-            hour,
-
-            minute,
 
             totalMinutes:
                 hour * 60 +
@@ -2550,13 +4066,17 @@
 
         }
 
-        const dueTime =
+        const due =
             getTimeFromBlackbaudDate(
                 assignment.DateDue
             );
 
-        if (!dueTime) {
+        if (
+            !due
+        ) {
+
             return false;
+
         }
 
         const now =
@@ -2567,7 +4087,7 @@
             now.minute;
 
         return (
-            dueTime.totalMinutes <
+            due.totalMinutes <
             nowMinutes
         );
 
@@ -2589,13 +4109,17 @@
 
         }
 
-        const dueTime =
+        const due =
             getTimeFromBlackbaudDate(
                 assignment.DateDue
             );
 
-        if (!dueTime) {
+        if (
+            !due
+        ) {
+
             return true;
+
         }
 
         const now =
@@ -2606,7 +4130,7 @@
             now.minute;
 
         return (
-            dueTime.totalMinutes >=
+            due.totalMinutes >=
             nowMinutes
         );
 
@@ -2616,8 +4140,12 @@
         value
     ) {
 
-        if (!value) {
+        if (
+            !value
+        ) {
+
             return "No due date";
+
         }
 
         const match =
@@ -2627,44 +4155,59 @@
                 /^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(.+)$/
             );
 
-        if (!match) {
+        if (
+            !match
+        ) {
+
             return value;
+
         }
 
         const date =
             new Date(
+
                 Date.UTC(
                     Number(
                         match[3]
                     ),
+
                     Number(
                         match[1]
                     ) - 1,
+
                     Number(
                         match[2]
                     )
                 )
+
             );
 
         const datePart =
             new Intl.DateTimeFormat(
                 "en-US",
                 {
+
                     timeZone:
                         "UTC",
+
                     weekday:
                         "short",
+
                     month:
                         "short",
+
                     day:
                         "numeric"
+
                 }
             ).format(
                 date
             );
 
         return (
+
             `${datePart} • ${match[4]}`
+
         );
 
     }
@@ -2681,14 +4224,19 @@
         return new Intl.DateTimeFormat(
             "en-US",
             {
+
                 timeZone:
                     "UTC",
+
                 weekday:
                     "long",
+
                 month:
                     "long",
+
                 day:
                     "numeric"
+
             }
         ).format(
             date
@@ -2702,16 +4250,22 @@
             new Intl.DateTimeFormat(
                 "en-US",
                 {
+
                     timeZone:
                         "America/New_York",
+
                     weekday:
                         "long",
+
                     month:
                         "long",
+
                     day:
                         "numeric",
+
                     year:
                         "numeric"
+
                 }
             ).format(
                 new Date()
@@ -2720,9 +4274,12 @@
         document.getElementById(
             "headerDate"
         ).innerHTML =
-            `<strong>Today</strong>${escapeHtml(
+
+            `<strong>Today</strong>` +
+
+            escapeHtml(
                 date
-            )}`;
+            );
 
     }
 
@@ -2804,12 +4361,16 @@
     ) {
 
         return (
+
             assignment.category ===
                 "quiz" ||
+
             assignment.category ===
                 "test" ||
+
             assignment.category ===
                 "assessment"
+
         );
 
     }
@@ -2879,7 +4440,7 @@
     }
 
     /* =========================================================
-       COLLECT ASSIGNMENTS
+       DATA
     ========================================================== */
 
     function collectAssignments(
@@ -2887,11 +4448,17 @@
     ) {
 
         const buckets = [
+
             "Overdue",
+
             "DueToday",
+
             "DueTomorrow",
+
             "DueThisWeek",
+
             "DueNextWeek"
+
         ];
 
         const map =
@@ -2922,10 +4489,13 @@
                 }
 
                 map.set(
+
                     String(
                         item.AssignmentId
                     ),
+
                     item
+
                 );
 
             }
@@ -2992,7 +4562,7 @@
     }
 
     /* =========================================================
-       FILTERING
+       FILTERS
     ========================================================== */
 
     function filteredAssignments(
@@ -3166,51 +4736,48 @@
                 ? `${assignment.MaxPoints} points`
                 : "No point value";
 
-        const details =
-            `
-                <div class="detail-row">
-                    <span class="detail-label">
-                        Assigned:
-                    </span>
-                    ${escapeHtml(
-                        formatDueDate(
-                            assignment.DateAssigned
-                        )
-                    )}
-                </div>
+        const description =
+            formatDescription(
+                assignment.LongDescription
+            );
 
-                ${
-                    settings.showPoints
-                        ? `
-                            <div class="detail-row">
-                                <span class="detail-label">
-                                    Points:
-                                </span>
-                                ${escapeHtml(
-                                    points
-                                )}
-                            </div>
-                          `
-                        : ""
-                }
+        const descriptionHtml =
+            description
 
-                <div class="detail-row">
-                    <span class="detail-label">
-                        Type:
-                    </span>
-                    ${escapeHtml(
-                        cleanText(
-                            assignment.AssignmentType
-                        ) ||
-                        getCategoryLabel(
-                            assignment
-                        )
-                    )}
-                </div>
-            `;
+                ? `
+
+                    <div
+                        class="
+                            description-box
+                        "
+                    >
+
+                        <div
+                            class="
+                                description-title
+                            "
+                        >
+                            Description
+                        </div>
+
+                        <div
+                            class="
+                                description-text
+                            "
+                        >
+                            ${description}
+                        </div>
+
+                    </div>
+
+                  `
+
+                : "";
 
         return `
+
             <div
+
                 class="
                     assignment
                     ${cardClass}
@@ -3222,14 +4789,25 @@
                             : ""
                     }
                 "
+
             >
 
-                <div class="assignment-main">
+                <div
+                    class="
+                        assignment-main
+                    "
+                >
 
-                    <div class="assignment-primary">
+                    <div
+                        class="
+                            assignment-primary
+                        "
+                    >
 
                         <div
-                            class="assignment-title"
+                            class="
+                                assignment-title
+                            "
                         >
                             ${escapeHtml(
                                 assignment.title
@@ -3237,7 +4815,9 @@
                         </div>
 
                         <div
-                            class="assignment-class"
+                            class="
+                                assignment-class
+                            "
                         >
                             ${escapeHtml(
                                 assignment.className
@@ -3261,7 +4841,11 @@
 
                 </div>
 
-                <div class="assignment-meta">
+                <div
+                    class="
+                        assignment-meta
+                    "
+                >
 
                     <span
                         class="
@@ -3278,21 +4862,33 @@
                         )}
                     </span>
 
-                    <span
-                        class="
-                            badge
-                            badge-other
-                        "
-                    >
-                        ${escapeHtml(
-                            cleanText(
-                                assignment.AssignmentType
-                            )
-                        )}
-                    </span>
+                    ${
+                        assignment.AssignmentType
+
+                            ? `
+
+                                <span
+                                    class="
+                                        badge
+                                        badge-other
+                                    "
+                                >
+                                    ${escapeHtml(
+                                        cleanText(
+                                            assignment.AssignmentType
+                                        )
+                                    )}
+                                </span>
+
+                              `
+
+                            : ""
+                    }
 
                     <span
-                        class="assignment-expand-hint"
+                        class="
+                            assignment-expand-hint
+                        "
                     >
                         Click for details
                     </span>
@@ -3300,12 +4896,122 @@
                 </div>
 
                 <div
-                    class="assignment-details"
+                    class="
+                        assignment-details
+                    "
                 >
-                    ${details}
+
+                    ${descriptionHtml}
+
+                    <div
+                        class="
+                            detail-row
+                        "
+                    >
+
+                        <span
+                            class="
+                                detail-label
+                            "
+                        >
+                            Assigned:
+                        </span>
+
+                        ${escapeHtml(
+                            formatDueDate(
+                                assignment.DateAssigned
+                            )
+                        )}
+
+                    </div>
+
+                    ${
+                        settings.showPoints
+
+                            ? `
+
+                                <div
+                                    class="
+                                        detail-row
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            detail-label
+                                        "
+                                    >
+                                        Points:
+                                    </span>
+
+                                    ${escapeHtml(
+                                        points
+                                    )}
+
+                                </div>
+
+                              `
+
+                            : ""
+                    }
+
+                    <div
+                        class="
+                            detail-row
+                        "
+                    >
+
+                        <span
+                            class="
+                                detail-label
+                            "
+                        >
+                            Type:
+                        </span>
+
+                        ${escapeHtml(
+                            cleanText(
+                                assignment.AssignmentType
+                            ) ||
+                            getCategoryLabel(
+                                assignment
+                            )
+                        )}
+
+                    </div>
+
+                    ${
+                        !description
+
+                            ? `
+
+                                <div
+                                    class="
+                                        detail-row
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            detail-label
+                                        "
+                                    >
+                                        Description:
+                                    </span>
+
+                                    No description provided.
+
+                                </div>
+
+                              `
+
+                            : ""
+                    }
+
                 </div>
 
             </div>
+
         `;
 
     }
@@ -3322,12 +5028,19 @@
         ) {
 
             container.innerHTML =
+
                 `
-                    <div class="empty">
+
+                    <div
+                        class="
+                            empty
+                        "
+                    >
                         ${escapeHtml(
                             emptyMessage
                         )}
                     </div>
+
                 `;
 
             return;
@@ -3479,57 +5192,85 @@
             );
 
         renderCards(
+
             document.getElementById(
                 "todayHomework"
             ),
+
             todayHomework,
+
             "Nothing else due later today."
+
         );
 
         renderCards(
+
             document.getElementById(
                 "todayAssessments"
             ),
+
             todayAssessments,
+
             "No assessments due later today."
+
         );
 
         renderCards(
+
             document.getElementById(
                 "tomorrowHomework"
             ),
+
             tomorrowHomework,
+
             "No homework or assignments due tomorrow."
+
         );
 
         renderCards(
+
             document.getElementById(
                 "tomorrowAssessments"
             ),
+
             tomorrowAssessments,
+
             "No assessments due tomorrow."
+
         );
 
         renderCards(
+
             document.getElementById(
                 "pastTodayHomework"
             ),
+
             pastHomework,
+
             "None earlier today.",
+
             {
-                pastToday: true
+                pastToday:
+                    true
             }
+
         );
 
         renderCards(
+
             document.getElementById(
                 "pastTodayAssessments"
             ),
+
             pastAssessments,
+
             "None earlier today.",
+
             {
-                pastToday: true
+                pastToday:
+                    true
             }
+
         );
 
         document.getElementById(
@@ -3565,12 +5306,15 @@
         document.getElementById(
             "pastTodaySummary"
         ).textContent =
+
             pastToday.length
+
                 ? `${pastToday.length} assignment${
                     pastToday.length === 1
                         ? ""
                         : "s"
                   } due earlier today.`
+
                 : "Nothing was due earlier today.";
 
     }
@@ -3631,7 +5375,7 @@
 
         }
 
-        const upcomingContainer =
+        const container =
             document.getElementById(
                 "upcomingDays"
             );
@@ -3640,25 +5384,35 @@
             !grouped.size
         ) {
 
-            upcomingContainer.innerHTML =
+            container.innerHTML =
+
                 `
-                    <div class="empty">
+
+                    <div
+                        class="
+                            empty
+                        "
+                    >
                         Nothing scheduled in the next 7 days.
                     </div>
+
                 `;
 
         } else {
 
-            upcomingContainer.innerHTML =
+            container.innerHTML =
+
                 Array.from(
                     grouped.entries()
                 )
+
                 .sort(
                     (a, b) =>
                         a[0].localeCompare(
                             b[0]
                         )
                 )
+
                 .map(
                     (
                         [
@@ -3667,14 +5421,12 @@
                         ]
                     ) => {
 
-                        const sorted =
-                            sortByDueDate(
-                                items
-                            );
-
                         return `
+
                             <div
-                                class="upcoming-day"
+                                class="
+                                    upcoming-day
+                                "
                             >
 
                                 <div
@@ -3709,26 +5461,34 @@
                                     </div>
 
                                     <div
-                                        class="day-line"
+                                        class="
+                                            day-line
+                                        "
                                     ></div>
 
                                 </div>
 
                                 <div
-                                    class="assignment-list"
+                                    class="
+                                        assignment-list
+                                    "
                                 >
-                                    ${sorted
-                                        .map(
-                                            assignment =>
-                                                assignmentCard(
-                                                    assignment
-                                                )
-                                        )
-                                        .join("")
-                                    }
+
+                                    ${sortByDueDate(
+                                        items
+                                    )
+                                    .map(
+                                        assignment =>
+                                            assignmentCard(
+                                                assignment
+                                            )
+                                    )
+                                    .join("")}
+
                                 </div>
 
                             </div>
+
                         `;
 
                     }
@@ -3736,33 +5496,23 @@
                 .join("");
 
             addAssignmentClickHandlers(
-                upcomingContainer
+                container
             );
-
-        }
-
-        const overduePanel =
-            document.getElementById(
-                "overduePanel"
-            );
-
-        if (overduePanel) {
-
-            overduePanel.style.display =
-                settings.showOverdue
-                    ? ""
-                    : "none";
 
         }
 
         renderCards(
+
             document.getElementById(
                 "overdueAssignments"
             ),
+
             sortByDueDate(
                 overdue
             ),
+
             "Nothing overdue."
+
         );
 
     }
@@ -3818,7 +5568,7 @@
 
         }
 
-        const sortedGroups =
+        const sorted =
             Array.from(
                 groups.entries()
             ).sort(
@@ -3834,14 +5584,21 @@
             );
 
         if (
-            !sortedGroups.length
+            !sorted.length
         ) {
 
             container.innerHTML =
+
                 `
-                    <div class="empty">
+
+                    <div
+                        class="
+                            empty
+                        "
+                    >
                         No assignments match your filters.
                     </div>
+
                 `;
 
             return;
@@ -3849,6 +5606,7 @@
         }
 
         const colors = [
+
             "#2563eb",
             "#7c3aed",
             "#059669",
@@ -3859,10 +5617,11 @@
             "#9333ea",
             "#dc2626",
             "#4f46e5"
+
         ];
 
         container.innerHTML =
-            sortedGroups
+            sorted
                 .map(
                     (
                         [
@@ -3879,15 +5638,19 @@
                             ];
 
                         return `
+
                             <div
-                                class="class-card"
+                                class="
+                                    class-card
+                                "
                             >
 
                                 <button
                                     class="
                                         class-header
                                         ${
-                                            index === 0
+                                            index ===
+                                            0
                                                 ? "open"
                                                 : ""
                                         }
@@ -3949,7 +5712,8 @@
                                         "
                                     >
                                         ${
-                                            index === 0
+                                            index ===
+                                            0
                                                 ? "▲"
                                                 : "▼"
                                         }
@@ -3961,7 +5725,8 @@
                                     class="
                                         class-body
                                         ${
-                                            index === 0
+                                            index ===
+                                            0
                                                 ? "open"
                                                 : ""
                                         }
@@ -3990,6 +5755,7 @@
                                 </div>
 
                             </div>
+
                         `;
 
                     }
@@ -4054,44 +5820,53 @@
         const month =
             currentCalendarDate.getMonth();
 
-        const monthTitle =
+        const title =
             new Intl.DateTimeFormat(
                 "en-US",
                 {
+
                     month:
                         "long",
+
                     year:
                         "numeric"
+
                 }
             ).format(
+
                 new Date(
                     year,
                     month,
                     1
                 )
+
             );
 
         document.getElementById(
             "calendarMonthTitle"
         ).textContent =
-            monthTitle;
+            title;
 
         const firstDay =
             new Date(
+
                 Date.UTC(
                     year,
                     month,
                     1
                 )
+
             );
 
         const daysInMonth =
             new Date(
+
                 Date.UTC(
                     year,
                     month + 1,
                     0
                 )
+
             ).getUTCDate();
 
         const firstWeekday =
@@ -4099,17 +5874,20 @@
 
         const previousMonthDays =
             new Date(
+
                 Date.UTC(
                     year,
                     month,
                     0
                 )
+
             ).getUTCDate();
 
         const todayKey =
             getSchoolDateKey();
 
         const weekdays = [
+
             "Sun",
             "Mon",
             "Tue",
@@ -4117,24 +5895,27 @@
             "Thu",
             "Fri",
             "Sat"
+
         ];
 
-        let html = "";
+        let html =
+            "";
 
         for (
             const weekday of weekdays
         ) {
 
-            html +=
-                `
-                    <div
-                        class="
-                            calendar-weekday
-                        "
-                    >
-                        ${weekday}
-                    </div>
-                `;
+            html += `
+
+                <div
+                    class="
+                        calendar-weekday
+                    "
+                >
+                    ${weekday}
+                </div>
+
+            `;
 
         }
 
@@ -4149,23 +5930,26 @@
                 previousMonthDays -
                 i;
 
-            html +=
-                `
+            html += `
+
+                <div
+                    class="
+                        calendar-cell
+                        muted
+                    "
+                >
+
                     <div
                         class="
-                            calendar-cell
-                            muted
+                            calendar-date
                         "
                     >
-
-                        <div
-                            class="calendar-date"
-                        >
-                            ${day}
-                        </div>
-
+                        ${day}
                     </div>
-                `;
+
+                </div>
+
+            `;
 
         }
 
@@ -4176,6 +5960,7 @@
         ) {
 
             const key =
+
                 `${year}-${String(
                     month + 1
                 ).padStart(
@@ -4197,62 +5982,65 @@
                     )
                 );
 
-            html +=
-                `
+            html += `
+
+                <div
+                    class="
+                        calendar-cell
+                        ${
+                            key ===
+                            todayKey
+                                ? "today"
+                                : ""
+                        }
+                    "
+                >
+
                     <div
                         class="
-                            calendar-cell
-                            ${
-                                key ===
-                                todayKey
-                                    ? "today"
-                                    : ""
-                            }
+                            calendar-date
                         "
                     >
-
-                        <div
-                            class="calendar-date"
-                        >
-                            ${day}
-                        </div>
-
-                        ${
-                            sortByDueDate(
-                                dayAssignments
-                            )
-                            .map(
-                                assignment =>
-                                    `
-                                        <button
-                                            class="
-                                                calendar-event
-                                                ${
-                                                    isAssessment(
-                                                        assignment
-                                                    )
-                                                        ? "assessment"
-                                                        : "homework"
-                                                }
-                                            "
-                                            title="${escapeHtml(
-                                                assignment.title
-                                            )}"
-                                            data-assignment-id="${escapeHtml(
-                                                assignment.AssignmentId
-                                            )}"
-                                        >
-                                            ${escapeHtml(
-                                                assignment.title
-                                            )}
-                                        </button>
-                                    `
-                            )
-                            .join("")
-                        }
-
+                        ${day}
                     </div>
-                `;
+
+                    ${sortByDueDate(
+                        dayAssignments
+                    )
+                    .map(
+                        assignment =>
+                            `
+
+                                <button
+                                    class="
+                                        calendar-event
+                                        ${
+                                            isAssessment(
+                                                assignment
+                                            )
+                                                ? "assessment"
+                                                : "homework"
+                                        }
+                                    "
+                                    title="${escapeHtml(
+                                        assignment.title
+                                    )}"
+                                    data-assignment-id="${escapeHtml(
+                                        assignment.AssignmentId
+                                    )}"
+                                >
+                                    ${escapeHtml(
+                                        assignment.title
+                                    )}
+                                </button>
+
+                            `
+                    )
+                    .join("")}
+
+                </div>
+
+            `;
 
         }
 
@@ -4261,8 +6049,11 @@
             daysInMonth;
 
         const trailing =
-            usedCells % 7 === 0
+            usedCells % 7 ===
+            0
+
                 ? 0
+
                 : 7 -
                     (
                         usedCells %
@@ -4275,25 +6066,26 @@
             day++
         ) {
 
-            html +=
-                `
+            html += `
+
+                <div
+                    class="
+                        calendar-cell
+                        muted
+                    "
+                >
+
                     <div
                         class="
-                            calendar-cell
-                            muted
+                            calendar-date
                         "
                     >
-
-                        <div
-                            class="
-                                calendar-date
-                            "
-                        >
-                            ${day}
-                        </div>
-
+                        ${day}
                     </div>
-                `;
+
+                </div>
+
+            `;
 
         }
 
@@ -4334,19 +6126,35 @@
                                         )
                                 );
 
-                            if (!assignment) {
+                            if (
+                                !assignment
+                            ) {
+
                                 return;
+
                             }
 
+                            const description =
+                                cleanText(
+                                    assignment.LongDescription
+                                );
+
                             alert(
+
                                 `${assignment.title}\n\n` +
+
                                 `${assignment.className}\n` +
+
                                 `${formatDueDate(
                                     assignment.DateDue
                                 )}\n\n` +
-                                `${getCategoryLabel(
-                                    assignment
-                                )}`
+
+                                `${
+                                    description
+                                        ? description
+                                        : "No description available."
+                                }`
+
                             );
 
                         }
@@ -4363,7 +6171,7 @@
 
     function updateStats() {
 
-        const stillToday =
+        const today =
             assignments.filter(
                 assignment =>
                     isStillDueToday(
@@ -4371,16 +6179,13 @@
                     )
             );
 
-        const tomorrowKey =
-            getTomorrowKey(
-                getSchoolDateKey()
-            );
-
         const tomorrow =
             assignments.filter(
                 assignment =>
                     assignment.dueKey ===
-                    tomorrowKey
+                    getTomorrowKey(
+                        getSchoolDateKey()
+                    )
             );
 
         const week =
@@ -4407,7 +6212,7 @@
         document.getElementById(
             "todayStat"
         ).textContent =
-            stillToday.length;
+            today.length;
 
         document.getElementById(
             "tomorrowStat"
@@ -4427,36 +6232,7 @@
     }
 
     /* =========================================================
-       RENDER ALL
-    ========================================================== */
-
-    function renderAll() {
-
-        if (!rawData) {
-            return;
-        }
-
-        assignments =
-            normalizeAssignments(
-                rawData
-            );
-
-        updateStats();
-
-        renderToday();
-
-        renderUpcoming();
-
-        renderClasses();
-
-        renderCalendar();
-
-        applySettings();
-
-    }
-
-    /* =========================================================
-       TABS
+       TAB SYSTEM
     ========================================================== */
 
     function showView(
@@ -4533,7 +6309,7 @@
         );
 
     /* =========================================================
-       FILTER BUTTONS
+       FILTERS
     ========================================================== */
 
     document
@@ -4607,11 +6383,15 @@
 
                 currentCalendarDate =
                     new Date(
+
                         currentCalendarDate
                             .getFullYear(),
+
                         currentCalendarDate
                             .getMonth() - 1,
+
                         1
+
                     );
 
                 renderCalendar();
@@ -4629,11 +6409,15 @@
 
                 currentCalendarDate =
                     new Date(
+
                         currentCalendarDate
                             .getFullYear(),
+
                         currentCalendarDate
                             .getMonth() + 1,
+
                         1
+
                     );
 
                 renderCalendar();
@@ -4658,7 +6442,7 @@
         );
 
     /* =========================================================
-       SETTINGS PANEL
+       SETTINGS
     ========================================================== */
 
     const settingsPanel =
@@ -4671,17 +6455,24 @@
             "settingsOverlay"
         );
 
-    function openSettings() {
+    document
+        .getElementById(
+            "settingsButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
 
-        settingsPanel.classList.add(
-            "open"
+                settingsPanel.classList.add(
+                    "open"
+                );
+
+                settingsOverlay.classList.add(
+                    "open"
+                );
+
+            }
         );
-
-        settingsOverlay.classList.add(
-            "open"
-        );
-
-    }
 
     function closeSettings() {
 
@@ -4697,15 +6488,6 @@
 
     document
         .getElementById(
-            "settingsButton"
-        )
-        .addEventListener(
-            "click",
-            openSettings
-        );
-
-    document
-        .getElementById(
             "closeSettings"
         )
         .addEventListener(
@@ -4717,10 +6499,6 @@
         "click",
         closeSettings
     );
-
-    /* =========================================================
-       SETTINGS TOGGLES
-    ========================================================== */
 
     document
         .getElementById(
@@ -4810,10 +6588,6 @@
             }
         );
 
-    /* =========================================================
-       EARLIER TODAY TOGGLE
-    ========================================================== */
-
     document
         .getElementById(
             "pastTodayHeader"
@@ -4833,13 +6607,13 @@
         );
 
     /* =========================================================
-       REFRESH FROM EXTENSION
+       REFRESH
     ========================================================== */
 
     function requestFreshData() {
 
         statusElement.textContent =
-            "Refreshing...";
+            "Refreshing assignments and descriptions...";
 
         statusDot.classList.remove(
             "connected",
@@ -4847,13 +6621,18 @@
         );
 
         window.postMessage(
+
             {
                 source:
                     "dexter-assignment-dashboard",
+
                 type:
                     "REQUEST_ASSIGNMENTS"
+
             },
+
             window.location.origin
+
         );
 
     }
@@ -4864,7 +6643,7 @@
     );
 
     /* =========================================================
-       RECEIVE DATA FROM EXTENSION
+       EXTENSION MESSAGE
     ========================================================== */
 
     window.addEventListener(
@@ -4875,14 +6654,18 @@
                 event.source !==
                 window
             ) {
+
                 return;
+
             }
 
             if (
                 event.origin !==
                 window.location.origin
             ) {
+
                 return;
+
             }
 
             if (
@@ -4890,14 +6673,18 @@
                 event.data.source !==
                     "dexter-assignment-extension"
             ) {
+
                 return;
+
             }
 
             if (
                 event.data.type !==
                     "BLACKBAUD_ASSIGNMENTS_DATA"
             ) {
+
                 return;
+
             }
 
             const result =
@@ -4948,6 +6735,7 @@
             ) {
 
                 statusElement.textContent =
+
                     `Connected • Last synced ${new Date(
                         result.syncedAt
                     ).toLocaleString()}`;
@@ -4963,6 +6751,39 @@
 
         }
     );
+
+    /* =========================================================
+       RENDER ALL
+    ========================================================== */
+
+    function renderAll() {
+
+        if (
+            !rawData
+        ) {
+
+            return;
+
+        }
+
+        assignments =
+            normalizeAssignments(
+                rawData
+            );
+
+        updateStats();
+
+        renderToday();
+
+        renderUpcoming();
+
+        renderClasses();
+
+        renderCalendar();
+
+        applySettings();
+
+    }
 
     /* =========================================================
        INITIALIZE
