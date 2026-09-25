@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Dexter Assignment Dashboard</title>
 
@@ -17,18 +20,26 @@
             --text: #172033;
             --muted: #6b7280;
             --border: #e5e7eb;
+
             --blue: #2563eb;
             --blue-dark: #1d4ed8;
             --blue-light: #eff6ff;
+
             --red: #dc2626;
             --red-light: #fef2f2;
+
             --orange: #ea580c;
             --orange-light: #fff7ed;
+
             --green: #16a34a;
             --green-light: #f0fdf4;
+
             --purple: #7c3aed;
             --purple-light: #f5f3ff;
-            --shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+
+            --shadow:
+                0 4px 18px rgba(0, 0, 0, 0.07);
+
             --radius: 14px;
         }
 
@@ -40,7 +51,10 @@
             margin: 0;
             background: var(--bg);
             color: var(--text);
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
         }
 
         header {
@@ -71,9 +85,9 @@
             padding: 0 20px 60px;
         }
 
-        /* -----------------------------
+        /* =========================
            TOP BAR
-        ----------------------------- */
+        ========================== */
 
         .topbar {
             display: flex;
@@ -131,9 +145,9 @@
             background: #f9fafb;
         }
 
-        /* -----------------------------
+        /* =========================
            TABS
-        ----------------------------- */
+        ========================== */
 
         .tabs {
             display: flex;
@@ -164,9 +178,9 @@
             color: white;
         }
 
-        /* -----------------------------
+        /* =========================
            SEARCH / FILTER BAR
-        ----------------------------- */
+        ========================== */
 
         .control-bar {
             display: flex;
@@ -192,7 +206,8 @@
 
         .search-input:focus {
             border-color: var(--blue);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+            box-shadow:
+                0 0 0 3px rgba(37, 99, 235, 0.12);
         }
 
         .filter-group {
@@ -213,9 +228,9 @@
             color: white;
         }
 
-        /* -----------------------------
-           DASHBOARD STATS
-        ----------------------------- */
+        /* =========================
+           STATS
+        ========================== */
 
         .stats {
             display: grid;
@@ -248,9 +263,9 @@
             color: var(--muted);
         }
 
-        /* -----------------------------
-           SECTIONS
-        ----------------------------- */
+        /* =========================
+           VIEWS
+        ========================== */
 
         .view {
             display: none;
@@ -266,10 +281,18 @@
 
         .section-title-row {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             justify-content: space-between;
             gap: 10px;
             margin-bottom: 11px;
+            flex-wrap: wrap;
+        }
+
+        .section-title-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .section-title-row h2 {
@@ -295,9 +318,39 @@
             color: var(--muted);
         }
 
-        /* -----------------------------
+        /* =========================
+           TODAY TOGGLE
+        ========================== */
+
+        .past-toggle {
+            padding: 8px 11px;
+            font-size: 12px;
+            background: white;
+            color: #374151;
+            border: 1px solid var(--border);
+        }
+
+        .past-toggle:hover {
+            background: #f9fafb;
+        }
+
+        .past-section {
+            margin-top: 30px;
+            padding-top: 24px;
+            border-top: 2px solid var(--border);
+        }
+
+        .past-section .section-title-row h2 {
+            color: #6b7280;
+        }
+
+        .past-section .assignment {
+            opacity: 0.9;
+        }
+
+        /* =========================
            ASSIGNMENT CARDS
-        ----------------------------- */
+        ========================== */
 
         .assignment-list {
             display: grid;
@@ -322,7 +375,8 @@
 
         .assignment:hover {
             transform: translateY(-1px);
-            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.1);
+            box-shadow:
+                0 7px 20px rgba(0, 0, 0, 0.1);
         }
 
         .assignment.assessment {
@@ -335,6 +389,10 @@
 
         .assignment.today {
             border-left-color: var(--orange);
+        }
+
+        .assignment.past-today {
+            border-left-color: #9ca3af;
         }
 
         .assignment-top {
@@ -368,6 +426,10 @@
 
         .assignment-due.overdue {
             color: var(--red);
+        }
+
+        .assignment-due.past {
+            color: #6b7280;
         }
 
         .badges {
@@ -419,9 +481,9 @@
             display: block;
         }
 
-        /* -----------------------------
+        /* =========================
            CLASS GROUPS
-        ----------------------------- */
+        ========================== */
 
         .class-group {
             background: white;
@@ -488,9 +550,9 @@
             display: block;
         }
 
-        /* -----------------------------
+        /* =========================
            CALENDAR
-        ----------------------------- */
+        ========================== */
 
         .calendar-toolbar {
             display: flex;
@@ -593,9 +655,9 @@
             color: #6d28d9;
         }
 
-        /* -----------------------------
+        /* =========================
            SETTINGS
-        ----------------------------- */
+        ========================== */
 
         .settings-panel {
             position: fixed;
@@ -605,7 +667,8 @@
             max-width: 90vw;
             height: 100vh;
             background: white;
-            box-shadow: -8px 0 25px rgba(0, 0, 0, 0.14);
+            box-shadow:
+                -8px 0 25px rgba(0, 0, 0, 0.14);
             z-index: 1000;
             transition: right 0.25s ease;
             padding: 22px;
@@ -646,6 +709,7 @@
             height: 36px;
             padding: 0;
             border-radius: 8px;
+            font-size: 20px;
         }
 
         .setting {
@@ -678,7 +742,8 @@
             padding: 3px;
             border-radius: 999px;
             background: #d1d5db;
-            transition: background 0.15s ease;
+            transition:
+                background 0.15s ease;
         }
 
         .toggle::after {
@@ -688,7 +753,8 @@
             height: 19px;
             border-radius: 50%;
             background: white;
-            transition: transform 0.15s ease;
+            transition:
+                transform 0.15s ease;
         }
 
         .toggle.on {
@@ -707,9 +773,9 @@
             background: white;
         }
 
-        /* -----------------------------
-           SETUP / ERROR
-        ----------------------------- */
+        /* =========================
+           CONNECTION CARD
+        ========================== */
 
         .connection-card {
             background: white;
@@ -728,13 +794,14 @@
             line-height: 1.5;
         }
 
-        /* -----------------------------
-           RESPONSIVE
-        ----------------------------- */
+        /* =========================
+           MOBILE
+        ========================== */
 
         @media (max-width: 900px) {
             .stats {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
             .calendar-cell {
@@ -748,7 +815,8 @@
             }
 
             .stats {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
             .assignment-top {
@@ -781,7 +849,9 @@
 <header>
     <div class="header-inner">
         <h1>Dexter Assignment Dashboard</h1>
-        <p>Homework, tests, quizzes, and upcoming work from Blackbaud.</p>
+        <p>
+            Homework, tests, quizzes, and upcoming work from Blackbaud.
+        </p>
     </div>
 </header>
 
@@ -791,11 +861,15 @@
 
     <div class="topbar">
 
-        <div class="status" id="status">
+        <div
+            class="status"
+            id="status"
+        >
             Waiting for Blackbaud...
         </div>
 
         <div class="top-actions">
+
             <button
                 class="secondary-btn"
                 id="settingsButton"
@@ -809,11 +883,12 @@
             >
                 ↻ Refresh
             </button>
+
         </div>
 
     </div>
 
-    <!-- CONNECTION MESSAGE -->
+    <!-- CONNECTION -->
 
     <div
         class="connection-card"
@@ -833,34 +908,50 @@
         class="tabs"
         id="tabs"
     >
-        <button class="tab active" data-view="today">
+
+        <button
+            class="tab active"
+            data-view="today"
+        >
             Today
         </button>
 
-        <button class="tab" data-view="upcoming">
+        <button
+            class="tab"
+            data-view="upcoming"
+        >
             Upcoming
         </button>
 
-        <button class="tab" data-view="classes">
+        <button
+            class="tab"
+            data-view="classes"
+        >
             By Class
         </button>
 
-        <button class="tab" data-view="calendar">
+        <button
+            class="tab"
+            data-view="calendar"
+        >
             Calendar
         </button>
+
     </div>
 
-    <!-- CONTROL BAR -->
+    <!-- SEARCH / FILTER -->
 
     <div class="control-bar">
 
         <div class="search-wrap">
+
             <input
                 class="search-input"
                 id="searchInput"
                 type="text"
                 placeholder="Search assignments or classes..."
             >
+
         </div>
 
         <div class="filter-group">
@@ -892,106 +983,135 @@
 
     <!-- STATS -->
 
-    <div
-        class="stats"
-        id="stats"
-    >
+    <div class="stats">
 
         <div class="stat">
-            <div class="stat-label">Due Today</div>
+
+            <div class="stat-label">
+                Still Due Today
+            </div>
+
             <div
                 class="stat-number"
                 id="todayStat"
             >
                 0
             </div>
+
             <div class="stat-description">
-                Everything due today
+                Due later today
             </div>
+
         </div>
 
         <div class="stat">
-            <div class="stat-label">Due Tomorrow</div>
+
+            <div class="stat-label">
+                Due Tomorrow
+            </div>
+
             <div
                 class="stat-number"
                 id="tomorrowStat"
             >
                 0
             </div>
+
             <div class="stat-description">
-                Next school day
+                Everything due tomorrow
             </div>
+
         </div>
 
         <div class="stat">
-            <div class="stat-label">Next 7 Days</div>
+
+            <div class="stat-label">
+                Next 7 Days
+            </div>
+
             <div
                 class="stat-number"
                 id="weekStat"
             >
                 0
             </div>
+
             <div class="stat-description">
                 Upcoming work
             </div>
+
         </div>
 
         <div class="stat">
-            <div class="stat-label">Assessments</div>
+
+            <div class="stat-label">
+                Assessments
+            </div>
+
             <div
                 class="stat-number"
                 id="assessmentStat"
             >
                 0
             </div>
+
             <div class="stat-description">
                 Tests and quizzes
             </div>
+
         </div>
 
     </div>
 
-    <!-- =========================
-         TODAY VIEW
-    ========================== -->
+    <!-- =====================================================
+         TODAY
+    ====================================================== -->
 
     <section
         class="view active"
         id="view-today"
     >
 
+        <!-- STILL DUE TODAY -->
+
         <div class="section">
 
             <div class="section-title-row">
 
-                <h2>Today's Homework & Assignments</h2>
+                <div class="section-title-left">
 
-                <span
-                    class="section-count"
-                    id="todayHomeworkCount"
-                ></span>
+                    <h2>
+                        Still Due Today
+                    </h2>
+
+                    <span
+                        class="section-count"
+                        id="todayTotalCount"
+                    ></span>
+
+                </div>
+
+                <button
+                    class="past-toggle"
+                    id="pastToggleButton"
+                >
+                    Show Earlier Today
+                </button>
 
             </div>
+
+            <h3 class="subsection-title">
+                Homework & Assignments
+            </h3>
 
             <div
                 class="assignment-list"
                 id="todayHomework"
             ></div>
 
-        </div>
-
-        <div class="section">
-
-            <div class="section-title-row">
-
-                <h2>Today's Assessments</h2>
-
-                <span
-                    class="section-count"
-                    id="todayAssessmentCount"
-                ></span>
-
-            </div>
+            <h3 class="subsection-title">
+                Assessments
+            </h3>
 
             <div
                 class="assignment-list"
@@ -1000,11 +1120,103 @@
 
         </div>
 
+        <!-- TOMORROW -->
+
+        <div class="section">
+
+            <div class="section-title-row">
+
+                <div class="section-title-left">
+
+                    <h2>
+                        Tomorrow
+                    </h2>
+
+                    <span
+                        class="section-count"
+                        id="tomorrowOnTodayCount"
+                    ></span>
+
+                </div>
+
+            </div>
+
+            <h3 class="subsection-title">
+                Homework & Assignments
+            </h3>
+
+            <div
+                class="assignment-list"
+                id="tomorrowHomeworkToday"
+            ></div>
+
+            <h3 class="subsection-title">
+                Assessments
+            </h3>
+
+            <div
+                class="assignment-list"
+                id="tomorrowAssessmentsToday"
+            ></div>
+
+        </div>
+
+        <!-- EARLIER TODAY -->
+
+        <div
+            class="past-section"
+            id="pastTodaySection"
+        >
+
+            <div class="section-title-row">
+
+                <div class="section-title-left">
+
+                    <h2>
+                        Earlier Today
+                    </h2>
+
+                    <span
+                        class="section-count"
+                        id="pastTodayCount"
+                    ></span>
+
+                </div>
+
+                <button
+                    class="past-toggle"
+                    id="pastToggleButton2"
+                >
+                    Hide Earlier Today
+                </button>
+
+            </div>
+
+            <h3 class="subsection-title">
+                Homework & Assignments
+            </h3>
+
+            <div
+                class="assignment-list"
+                id="pastTodayHomework"
+            ></div>
+
+            <h3 class="subsection-title">
+                Assessments
+            </h3>
+
+            <div
+                class="assignment-list"
+                id="pastTodayAssessments"
+            ></div>
+
+        </div>
+
     </section>
 
-    <!-- =========================
-         UPCOMING VIEW
-    ========================== -->
+    <!-- =====================================================
+         UPCOMING
+    ====================================================== -->
 
     <section
         class="view"
@@ -1015,7 +1227,9 @@
 
             <div class="section-title-row">
 
-                <h2>Next 7 Days</h2>
+                <h2>
+                    Next 7 Days
+                </h2>
 
                 <span
                     class="section-count"
@@ -1038,7 +1252,9 @@
 
             <div class="section-title-row">
 
-                <h2>Overdue</h2>
+                <h2>
+                    Overdue
+                </h2>
 
                 <span
                     class="section-count"
@@ -1056,24 +1272,22 @@
 
     </section>
 
-    <!-- =========================
-         BY CLASS VIEW
-    ========================== -->
+    <!-- =====================================================
+         BY CLASS
+    ====================================================== -->
 
     <section
         class="view"
         id="view-classes"
     >
 
-        <div
-            id="classGroups"
-        ></div>
+        <div id="classGroups"></div>
 
     </section>
 
-    <!-- =========================
-         CALENDAR VIEW
-    ========================== -->
+    <!-- =====================================================
+         CALENDAR
+    ====================================================== -->
 
     <section
         class="view"
@@ -1141,7 +1355,9 @@
 
     <div class="settings-header">
 
-        <h2>Customize Dashboard</h2>
+        <h2>
+            Customize Dashboard
+        </h2>
 
         <button
             class="close-button"
@@ -1151,6 +1367,8 @@
         </button>
 
     </div>
+
+    <!-- COMPACT -->
 
     <div class="setting">
 
@@ -1164,17 +1382,20 @@
 
         <div class="toggle-row">
 
-            <span>Compact layout</span>
+            <span>
+                Compact layout
+            </span>
 
             <button
                 class="toggle"
                 id="compactToggle"
-                aria-label="Toggle compact mode"
             ></button>
 
         </div>
 
     </div>
+
+    <!-- OVERDUE -->
 
     <div class="setting">
 
@@ -1188,17 +1409,20 @@
 
         <div class="toggle-row">
 
-            <span>Show overdue</span>
+            <span>
+                Show overdue
+            </span>
 
             <button
                 class="toggle on"
                 id="overdueToggle"
-                aria-label="Toggle overdue assignments"
             ></button>
 
         </div>
 
     </div>
+
+    <!-- POINTS -->
 
     <div class="setting">
 
@@ -1212,17 +1436,48 @@
 
         <div class="toggle-row">
 
-            <span>Show points</span>
+            <span>
+                Show points
+            </span>
 
             <button
                 class="toggle on"
                 id="pointsToggle"
-                aria-label="Toggle points"
             ></button>
 
         </div>
 
     </div>
+
+    <!-- PAST TODAY -->
+
+    <div class="setting">
+
+        <div class="setting-title">
+            Earlier Today
+        </div>
+
+        <div class="setting-description">
+            Show assignments on the Today tab after their due
+            time has passed.
+        </div>
+
+        <div class="toggle-row">
+
+            <span>
+                Show earlier today
+            </span>
+
+            <button
+                class="toggle"
+                id="pastTodayToggle"
+            ></button>
+
+        </div>
+
+    </div>
+
+    <!-- DEFAULT VIEW -->
 
     <div class="setting">
 
@@ -1238,10 +1493,23 @@
             class="setting-select"
             id="defaultViewSelect"
         >
-            <option value="today">Today</option>
-            <option value="upcoming">Upcoming</option>
-            <option value="classes">By Class</option>
-            <option value="calendar">Calendar</option>
+
+            <option value="today">
+                Today
+            </option>
+
+            <option value="upcoming">
+                Upcoming
+            </option>
+
+            <option value="classes">
+                By Class
+            </option>
+
+            <option value="calendar">
+                Calendar
+            </option>
+
         </select>
 
     </div>
@@ -1249,6 +1517,7 @@
 </aside>
 
 <script>
+
     /* =========================================================
        SETTINGS
     ========================================================== */
@@ -1257,11 +1526,14 @@
         compact: false,
         showOverdue: true,
         showPoints: true,
+        showPastToday: false,
         defaultView: "today"
     };
 
     function loadSettings() {
+
         try {
+
             const saved =
                 JSON.parse(
                     localStorage.getItem(
@@ -1275,17 +1547,25 @@
             };
 
         } catch {
-            return { ...defaultSettings };
+
+            return {
+                ...defaultSettings
+            };
+
         }
+
     }
 
-    let settings = loadSettings();
+    let settings =
+        loadSettings();
 
     function saveSettings() {
+
         localStorage.setItem(
             "dexterDashboardSettings",
             JSON.stringify(settings)
         );
+
     }
 
     function applySettings() {
@@ -1317,8 +1597,16 @@
             );
 
         document
+            .getElementById("pastTodayToggle")
+            .classList.toggle(
+                "on",
+                settings.showPastToday
+            );
+
+        document
             .getElementById("defaultViewSelect")
-            .value = settings.defaultView;
+            .value =
+                settings.defaultView;
 
         document
             .getElementById("overdueSection")
@@ -1326,6 +1614,48 @@
                 settings.showOverdue
                     ? ""
                     : "none";
+
+        document
+            .getElementById("pastTodaySection")
+            .style.display =
+                settings.showPastToday
+                    ? ""
+                    : "none";
+
+        updatePastToggleButton();
+
+    }
+
+    function updatePastToggleButton() {
+
+        const button1 =
+            document.getElementById(
+                "pastToggleButton"
+            );
+
+        const button2 =
+            document.getElementById(
+                "pastToggleButton2"
+            );
+
+        if (settings.showPastToday) {
+
+            button1.textContent =
+                "Hide Earlier Today";
+
+            button2.textContent =
+                "Hide Earlier Today";
+
+        } else {
+
+            button1.textContent =
+                "Show Earlier Today";
+
+            button2.textContent =
+                "Show Earlier Today";
+
+        }
+
     }
 
     /* =========================================================
@@ -1338,7 +1668,8 @@
     let currentFilter = "all";
     let searchText = "";
 
-    let currentCalendarDate = new Date();
+    let currentCalendarDate =
+        new Date();
 
     const classColors = [
         "#2563eb",
@@ -1358,13 +1689,19 @@
     ========================================================== */
 
     const statusElement =
-        document.getElementById("status");
+        document.getElementById(
+            "status"
+        );
 
     const connectionCard =
-        document.getElementById("connectionCard");
+        document.getElementById(
+            "connectionCard"
+        );
 
     const refreshButton =
-        document.getElementById("refreshButton");
+        document.getElementById(
+            "refreshButton"
+        );
 
     /* =========================================================
        HTML SAFETY
@@ -1378,14 +1715,22 @@
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
+
     }
 
     function cleanText(value) {
 
         return String(value || "")
-            .replace(/&#160;/gi, " ")
-            .replace(/\s+/g, " ")
+            .replace(
+                /&#160;/gi,
+                " "
+            )
+            .replace(
+                /\s+/g,
+                " "
+            )
             .trim();
+
     }
 
     /* =========================================================
@@ -1414,37 +1759,98 @@
             "-" +
             match[2].padStart(2, "0")
         );
+
     }
 
-    function getSchoolDateKey(date = new Date()) {
+    function getSchoolDateKey(
+        date = new Date()
+    ) {
 
         const parts =
             new Intl.DateTimeFormat(
                 "en-US",
                 {
-                    timeZone: "America/New_York",
+                    timeZone:
+                        "America/New_York",
                     year: "numeric",
                     month: "2-digit",
                     day: "2-digit"
                 }
-            ).formatToParts(date);
+            ).formatToParts(
+                date
+            );
 
         const year =
-            parts.find(p => p.type === "year").value;
+            parts.find(
+                p => p.type === "year"
+            ).value;
 
         const month =
-            parts.find(p => p.type === "month").value;
+            parts.find(
+                p => p.type === "month"
+            ).value;
 
         const day =
-            parts.find(p => p.type === "day").value;
+            parts.find(
+                p => p.type === "day"
+            ).value;
 
-        return `${year}-${month}-${day}`;
+        return (
+            `${year}-${month}-${day}`
+        );
+
+    }
+
+    function getCurrentEasternClock() {
+
+        const parts =
+            new Intl.DateTimeFormat(
+                "en-US",
+                {
+                    timeZone:
+                        "America/New_York",
+                    hour: "numeric",
+                    minute: "numeric",
+                    hour12: false
+                }
+            ).formatToParts(
+                new Date()
+            );
+
+        const hour =
+            Number(
+                parts.find(
+                    p => p.type === "hour"
+                ).value
+            );
+
+        const minute =
+            Number(
+                parts.find(
+                    p => p.type === "minute"
+                ).value
+            );
+
+        return {
+            hour,
+            minute,
+            totalMinutes:
+                (hour * 60) +
+                minute
+        };
+
     }
 
     function keyToDate(key) {
 
-        const [year, month, day] =
-            key.split("-").map(Number);
+        const [
+            year,
+            month,
+            day
+        ] =
+            key
+                .split("-")
+                .map(Number);
 
         return new Date(
             Date.UTC(
@@ -1453,20 +1859,174 @@
                 day
             )
         );
+
     }
 
-    function dayDifference(fromKey, toKey) {
+    function dayDifference(
+        fromKey,
+        toKey
+    ) {
 
-        const from = keyToDate(fromKey);
-        const to = keyToDate(toKey);
+        const from =
+            keyToDate(
+                fromKey
+            );
+
+        const to =
+            keyToDate(
+                toKey
+            );
 
         return Math.round(
             (
                 to.getTime() -
                 from.getTime()
             ) /
-            (1000 * 60 * 60 * 24)
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
         );
+
+    }
+
+    function getTomorrowKey(
+        todayKey
+    ) {
+
+        const date =
+            keyToDate(
+                todayKey
+            );
+
+        date.setUTCDate(
+            date.getUTCDate() + 1
+        );
+
+        return (
+            `${date.getUTCFullYear()}-` +
+            `${String(
+                date.getUTCMonth() + 1
+            ).padStart(2, "0")}-` +
+            `${String(
+                date.getUTCDate()
+            ).padStart(2, "0")}`
+        );
+
+    }
+
+    function getTimeFromBlackbaudDate(
+        value
+    ) {
+
+        if (!value) {
+            return null;
+        }
+
+        const match =
+            String(value).match(
+                /^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{2})\s*(AM|PM)?$/i
+            );
+
+        if (!match) {
+            return null;
+        }
+
+        let hour =
+            Number(match[4]);
+
+        const minute =
+            Number(match[5]);
+
+        const meridiem =
+            match[6]
+                ? match[6].toUpperCase()
+                : null;
+
+        if (
+            meridiem === "PM" &&
+            hour < 12
+        ) {
+            hour += 12;
+        }
+
+        if (
+            meridiem === "AM" &&
+            hour === 12
+        ) {
+            hour = 0;
+        }
+
+        return {
+            hour,
+            minute,
+            totalMinutes:
+                (hour * 60) +
+                minute
+        };
+
+    }
+
+    function isEarlierToday(
+        assignment
+    ) {
+
+        if (
+            assignment.dueKey !==
+            getSchoolDateKey()
+        ) {
+            return false;
+        }
+
+        const dueTime =
+            getTimeFromBlackbaudDate(
+                assignment.DateDue
+            );
+
+        if (!dueTime) {
+            return false;
+        }
+
+        const now =
+            getCurrentEasternClock();
+
+        return (
+            dueTime.totalMinutes <
+            now.totalMinutes
+        );
+
+    }
+
+    function isStillDueToday(
+        assignment
+    ) {
+
+        if (
+            assignment.dueKey !==
+            getSchoolDateKey()
+        ) {
+            return false;
+        }
+
+        const dueTime =
+            getTimeFromBlackbaudDate(
+                assignment.DateDue
+            );
+
+        if (!dueTime) {
+            return true;
+        }
+
+        const now =
+            getCurrentEasternClock();
+
+        return (
+            dueTime.totalMinutes >=
+            now.totalMinutes
+        );
+
     }
 
     function formatDueDate(value) {
@@ -1502,67 +2062,103 @@
                     month: "short",
                     day: "numeric"
                 }
-            ).format(date);
+            ).format(
+                date
+            );
 
-        return `${datePart} • ${match[4]}`;
+        return (
+            `${datePart} • ${match[4]}`
+        );
+
     }
 
     /* =========================================================
        ASSIGNMENT CLASSIFICATION
     ========================================================== */
 
-    function getCategory(assignment) {
+    function getCategory(
+        assignment
+    ) {
 
         const type =
             String(
-                assignment.AssignmentType || ""
+                assignment.AssignmentType ||
+                ""
             ).toLowerCase();
 
         const title =
             String(
-                assignment.ShortDescription || ""
+                assignment.ShortDescription ||
+                ""
             ).toLowerCase();
 
         const combined =
             `${type} ${title}`;
 
-        if (/\bquiz\b/.test(combined)) {
+        if (
+            /\bquiz\b/.test(
+                combined
+            )
+        ) {
             return "quiz";
         }
 
         if (
-            /\btest\b/.test(combined) ||
-            /\bexam\b/.test(combined)
+            /\btest\b/.test(
+                combined
+            ) ||
+            /\bexam\b/.test(
+                combined
+            )
         ) {
             return "test";
         }
 
         if (
-            type.includes("assessment") ||
-            Number(assignment.Major) === 1
+            type.includes(
+                "assessment"
+            ) ||
+            Number(
+                assignment.Major
+            ) === 1
         ) {
             return "assessment";
         }
 
-        if (type.includes("homework")) {
+        if (
+            type.includes(
+                "homework"
+            )
+        ) {
             return "homework";
         }
 
         return "assignment";
+
     }
 
-    function isAssessment(assignment) {
+    function isAssessment(
+        assignment
+    ) {
 
         return (
-            assignment.category === "quiz" ||
-            assignment.category === "test" ||
-            assignment.category === "assessment"
+            assignment.category ===
+                "quiz" ||
+            assignment.category ===
+                "test" ||
+            assignment.category ===
+                "assessment"
         );
+
     }
 
-    function categoryLabel(assignment) {
+    function categoryLabel(
+        assignment
+    ) {
 
-        switch (assignment.category) {
+        switch (
+            assignment.category
+        ) {
 
             case "quiz":
                 return "Quiz";
@@ -1578,38 +2174,49 @@
 
             default:
                 return "Assignment";
+
         }
+
     }
 
-    function categoryBadgeClass(assignment) {
+    function categoryBadgeClass(
+        assignment
+    ) {
 
         if (
-            assignment.category === "quiz"
+            assignment.category ===
+            "quiz"
         ) {
             return "badge-quiz";
         }
 
         if (
-            assignment.category === "test" ||
-            assignment.category === "assessment"
+            assignment.category ===
+                "test" ||
+            assignment.category ===
+                "assessment"
         ) {
             return "badge-test";
         }
 
         if (
-            assignment.category === "homework"
+            assignment.category ===
+            "homework"
         ) {
             return "badge-homework";
         }
 
         return "badge-other";
+
     }
 
     /* =========================================================
        COLLECT + NORMALIZE
     ========================================================== */
 
-    function collectAssignments(data) {
+    function collectAssignments(
+        data
+    ) {
 
         const buckets = [
             "Overdue",
@@ -1619,16 +2226,23 @@
             "DueNextWeek"
         ];
 
-        const map = new Map();
+        const map =
+            new Map();
 
-        for (const bucket of buckets) {
+        for (
+            const bucket of buckets
+        ) {
 
             const list =
-                Array.isArray(data?.[bucket])
+                Array.isArray(
+                    data?.[bucket]
+                )
                     ? data[bucket]
                     : [];
 
-            for (const item of list) {
+            for (
+                const item of list
+            ) {
 
                 if (
                     !item ||
@@ -1638,117 +2252,155 @@
                 }
 
                 map.set(
-                    String(item.AssignmentId),
+                    String(
+                        item.AssignmentId
+                    ),
                     item
                 );
+
             }
+
         }
 
-        return Array.from(map.values());
+        return Array.from(
+            map.values()
+        );
+
     }
 
-    function normalizeAssignments(data) {
+    function normalizeAssignments(
+        data
+    ) {
 
         const today =
             getSchoolDateKey();
 
-        return collectAssignments(data)
-            .map(item => {
+        return collectAssignments(
+            data
+        ).map(item => {
 
-                const dueKey =
-                    getDateKey(
-                        item.DateDue
-                    );
+            const dueKey =
+                getDateKey(
+                    item.DateDue
+                );
 
-                const difference =
-                    dueKey
-                        ? dayDifference(
-                            today,
-                            dueKey
-                        )
-                        : null;
+            const difference =
+                dueKey
+                    ? dayDifference(
+                        today,
+                        dueKey
+                    )
+                    : null;
 
-                return {
-                    ...item,
+            return {
 
-                    title:
-                        cleanText(
-                            item.ShortDescription
-                        ),
+                ...item,
 
-                    className:
-                        cleanText(
-                            item.GroupName
-                        ),
+                title:
+                    cleanText(
+                        item.ShortDescription
+                    ),
 
-                    category:
-                        getCategory(item),
+                className:
+                    cleanText(
+                        item.GroupName
+                    ),
 
-                    dueKey,
+                category:
+                    getCategory(
+                        item
+                    ),
 
-                    dayDifference:
-                        difference
-                };
+                dueKey,
 
-            });
+                dayDifference:
+                    difference
+
+            };
+
+        });
+
     }
 
     /* =========================================================
        FILTERING
     ========================================================== */
 
-    function filteredAssignments(list) {
+    function filteredAssignments(
+        list
+    ) {
 
-        return list.filter(item => {
-
-            if (
-                currentFilter === "homework" &&
-                isAssessment(item)
-            ) {
-                return false;
-            }
-
-            if (
-                currentFilter === "assessment" &&
-                !isAssessment(item)
-            ) {
-                return false;
-            }
-
-            if (searchText) {
-
-                const combined =
-                    (
-                        item.title +
-                        " " +
-                        item.className +
-                        " " +
-                        item.AssignmentType
-                    ).toLowerCase();
+        return list.filter(
+            assignment => {
 
                 if (
-                    !combined.includes(
-                        searchText.toLowerCase()
+                    currentFilter ===
+                    "homework" &&
+                    isAssessment(
+                        assignment
                     )
                 ) {
                     return false;
                 }
-            }
 
-            return true;
-        });
+                if (
+                    currentFilter ===
+                    "assessment" &&
+                    !isAssessment(
+                        assignment
+                    )
+                ) {
+                    return false;
+                }
+
+                if (
+                    searchText
+                ) {
+
+                    const combined =
+                        (
+                            assignment.title +
+                            " " +
+                            assignment.className +
+                            " " +
+                            (
+                                assignment.AssignmentType ||
+                                ""
+                            )
+                        ).toLowerCase();
+
+                    if (
+                        !combined.includes(
+                            searchText.toLowerCase()
+                        )
+                    ) {
+                        return false;
+                    }
+
+                }
+
+                return true;
+
+            }
+        );
+
     }
 
-    function sortByDueDate(list) {
+    function sortByDueDate(
+        list
+    ) {
 
         return [...list].sort(
             (a, b) => {
 
                 const dateCompare =
-                    String(a.dueKey || "")
-                        .localeCompare(
-                            String(b.dueKey || "")
-                        );
+                    String(
+                        a.dueKey || ""
+                    ).localeCompare(
+                        String(
+                            b.dueKey || ""
+                        )
+                    );
 
                 if (
                     dateCompare !== 0
@@ -1766,6 +2418,7 @@
 
             }
         );
+
     }
 
     /* =========================================================
@@ -1777,22 +2430,45 @@
         options = {}
     ) {
 
-        const category =
-            assignment.category;
+        const isPast =
+            Boolean(
+                options.pastToday
+            );
 
-        const dueClass =
-            assignment.dayDifference < 0
-                ? "overdue"
-                : assignment.dayDifference === 1
-                    ? "tomorrow"
-                    : "";
+        let dueClass = "";
+
+        if (
+            assignment.dayDifference <
+            0
+        ) {
+
+            dueClass = "overdue";
+
+        } else if (
+            isPast
+        ) {
+
+            dueClass = "past";
+
+        } else if (
+            assignment.dayDifference ===
+            1
+        ) {
+
+            dueClass = "tomorrow";
+
+        }
 
         const extraClass =
-            assignment.dayDifference < 0
+            assignment.dayDifference <
+            0
                 ? "overdue"
-                : assignment.dayDifference === 0
-                    ? "today"
-                    : "";
+                : isPast
+                    ? "past-today"
+                    : assignment.dayDifference ===
+                      0
+                        ? "today"
+                        : "";
 
         const points =
             Number(
@@ -1804,9 +2480,45 @@
         const detailsPoints =
             settings.showPoints
                 ? `
-                    <strong>Points:</strong>
-                    ${escapeHtml(points)}
+                    <strong>
+                        Points:
+                    </strong>
+                    ${escapeHtml(
+                        points
+                    )}
                     <br>
+                  `
+                : "";
+
+        /*
+         * Blackbaud's assignment-center
+         * response can sometimes include
+         * a description field. Show it
+         * automatically when available.
+         */
+        const possibleDescription =
+            assignment.Description ||
+            assignment.DescriptionText ||
+            assignment.LongDescription ||
+            assignment.AssignmentDescription ||
+            "";
+
+        const description =
+            cleanText(
+                possibleDescription
+            );
+
+        const descriptionHtml =
+            description
+                ? `
+                    <strong>
+                        Description:
+                    </strong>
+                    <br>
+                    ${escapeHtml(
+                        description
+                    )}
+                    <br><br>
                   `
                 : "";
 
@@ -1815,9 +2527,13 @@
                 class="
                     assignment
                     ${extraClass}
-                    ${isAssessment(assignment)
-                        ? "assessment"
-                        : ""}
+                    ${
+                        isAssessment(
+                            assignment
+                        )
+                            ? "assessment"
+                            : ""
+                    }
                 "
             >
 
@@ -1825,13 +2541,17 @@
 
                     <div>
 
-                        <div class="assignment-title">
+                        <div
+                            class="assignment-title"
+                        >
                             ${escapeHtml(
                                 assignment.title
                             )}
                         </div>
 
-                        <div class="assignment-class">
+                        <div
+                            class="assignment-class"
+                        >
                             ${escapeHtml(
                                 assignment.className
                             )}
@@ -1840,7 +2560,10 @@
                     </div>
 
                     <div
-                        class="assignment-due ${dueClass}"
+                        class="
+                            assignment-due
+                            ${dueClass}
+                        "
                     >
                         ${escapeHtml(
                             formatDueDate(
@@ -1891,7 +2614,11 @@
 
                 <div class="details">
 
-                    <strong>Assigned:</strong>
+                    ${descriptionHtml}
+
+                    <strong>
+                        Assigned:
+                    </strong>
                     ${escapeHtml(
                         formatDueDate(
                             assignment.DateAssigned
@@ -1901,13 +2628,17 @@
 
                     ${detailsPoints}
 
-                    <strong>Class:</strong>
+                    <strong>
+                        Class:
+                    </strong>
                     ${escapeHtml(
                         assignment.className
                     )}
                     <br>
 
-                    <strong>Assignment ID:</strong>
+                    <strong>
+                        Assignment ID:
+                    </strong>
                     ${escapeHtml(
                         assignment.AssignmentId
                     )}
@@ -1916,12 +2647,14 @@
 
             </div>
         `;
+
     }
 
     function renderCards(
         container,
         list,
-        emptyMessage
+        emptyMessage,
+        options = {}
     ) {
 
         if (!list.length) {
@@ -1935,19 +2668,24 @@
             `;
 
             return;
+
         }
 
         container.innerHTML =
             list
                 .map(
-                    item =>
-                        assignmentCard(item)
+                    assignment =>
+                        assignmentCard(
+                            assignment,
+                            options
+                        )
                 )
                 .join("");
 
         addAssignmentClickHandlers(
             container
         );
+
     }
 
     function addAssignmentClickHandlers(
@@ -1958,18 +2696,23 @@
             .querySelectorAll(
                 ".assignment"
             )
-            .forEach(card => {
+            .forEach(
+                card => {
 
-                card.addEventListener(
-                    "click",
-                    () => {
-                        card.classList.toggle(
-                            "open"
-                        );
-                    }
-                );
+                    card.addEventListener(
+                        "click",
+                        () => {
 
-            });
+                            card.classList.toggle(
+                                "open"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
     }
 
     /* =========================================================
@@ -1978,59 +2721,190 @@
 
     function renderToday() {
 
-        const today =
-            sortByDueDate(
-                filteredAssignments(
-                    assignments.filter(
-                        a =>
-                            a.dayDifference === 0
+        const todayKey =
+            getSchoolDateKey();
+
+        const tomorrowKey =
+            getTomorrowKey(
+                todayKey
+            );
+
+        const todayAssignments =
+            assignments.filter(
+                assignment =>
+                    assignment.dueKey ===
+                    todayKey
+            );
+
+        const tomorrowAssignments =
+            assignments.filter(
+                assignment =>
+                    assignment.dueKey ===
+                    tomorrowKey
+            );
+
+        const stillToday =
+            filteredAssignments(
+                sortByDueDate(
+                    todayAssignments.filter(
+                        assignment =>
+                            isStillDueToday(
+                                assignment
+                            )
                     )
                 )
             );
 
-        const homework =
-            today.filter(
-                a => !isAssessment(a)
+        const pastToday =
+            filteredAssignments(
+                sortByDueDate(
+                    todayAssignments.filter(
+                        assignment =>
+                            isEarlierToday(
+                                assignment
+                            )
+                    )
+                )
             );
 
-        const assessments =
-            today.filter(
-                a => isAssessment(a)
+        const tomorrow =
+            filteredAssignments(
+                sortByDueDate(
+                    tomorrowAssignments
+                )
+            );
+
+        const todayHomework =
+            stillToday.filter(
+                assignment =>
+                    !isAssessment(
+                        assignment
+                    )
+            );
+
+        const todayAssessments =
+            stillToday.filter(
+                assignment =>
+                    isAssessment(
+                        assignment
+                    )
+            );
+
+        const tomorrowHomework =
+            tomorrow.filter(
+                assignment =>
+                    !isAssessment(
+                        assignment
+                    )
+            );
+
+        const tomorrowAssessments =
+            tomorrow.filter(
+                assignment =>
+                    isAssessment(
+                        assignment
+                    )
+            );
+
+        const pastHomework =
+            pastToday.filter(
+                assignment =>
+                    !isAssessment(
+                        assignment
+                    )
+            );
+
+        const pastAssessments =
+            pastToday.filter(
+                assignment =>
+                    isAssessment(
+                        assignment
+                    )
             );
 
         renderCards(
             document.getElementById(
                 "todayHomework"
             ),
-            homework,
-            "Nothing due today."
+            todayHomework,
+            "Nothing else due today."
         );
 
         renderCards(
             document.getElementById(
                 "todayAssessments"
             ),
-            assessments,
-            "No tests or quizzes due today."
+            todayAssessments,
+            "No assessments due later today."
+        );
+
+        renderCards(
+            document.getElementById(
+                "tomorrowHomeworkToday"
+            ),
+            tomorrowHomework,
+            "No homework or assignments due tomorrow."
+        );
+
+        renderCards(
+            document.getElementById(
+                "tomorrowAssessmentsToday"
+            ),
+            tomorrowAssessments,
+            "No assessments due tomorrow."
+        );
+
+        renderCards(
+            document.getElementById(
+                "pastTodayHomework"
+            ),
+            pastHomework,
+            "No homework or assignments were due earlier today.",
+            {
+                pastToday: true
+            }
+        );
+
+        renderCards(
+            document.getElementById(
+                "pastTodayAssessments"
+            ),
+            pastAssessments,
+            "No assessments were due earlier today.",
+            {
+                pastToday: true
+            }
         );
 
         document.getElementById(
-            "todayHomeworkCount"
+            "todayTotalCount"
         ).textContent =
-            `${homework.length} item${
-                homework.length === 1
+            `${stillToday.length} item${
+                stillToday.length === 1
                     ? ""
                     : "s"
             }`;
 
         document.getElementById(
-            "todayAssessmentCount"
+            "tomorrowOnTodayCount"
         ).textContent =
-            `${assessments.length} item${
-                assessments.length === 1
+            `${tomorrow.length} item${
+                tomorrow.length === 1
                     ? ""
                     : "s"
             }`;
+
+        document.getElementById(
+            "pastTodayCount"
+        ).textContent =
+            `${pastToday.length} item${
+                pastToday.length === 1
+                    ? ""
+                    : "s"
+            }`;
+
+        updatePastToggleButton();
+
     }
 
     /* =========================================================
@@ -2043,9 +2917,11 @@
             sortByDueDate(
                 filteredAssignments(
                     assignments.filter(
-                        a =>
-                            a.dayDifference >= 1 &&
-                            a.dayDifference <= 7
+                        assignment =>
+                            assignment.dayDifference >=
+                                1 &&
+                            assignment.dayDifference <=
+                                7
                     )
                 )
             );
@@ -2054,8 +2930,9 @@
             sortByDueDate(
                 filteredAssignments(
                     assignments.filter(
-                        a =>
-                            a.dayDifference < 0
+                        assignment =>
+                            assignment.dayDifference <
+                            0
                     )
                 )
             );
@@ -2093,10 +2970,11 @@
                     ? ""
                     : "s"
             }`;
+
     }
 
     /* =========================================================
-       BY CLASS VIEW
+       BY CLASS
     ========================================================== */
 
     function renderClasses() {
@@ -2104,30 +2982,40 @@
         const filtered =
             filteredAssignments(
                 assignments.filter(
-                    a =>
-                        a.dayDifference >= 0 &&
-                        a.dayDifference <= 7
+                    assignment =>
+                        assignment.dayDifference >=
+                            0 &&
+                        assignment.dayDifference <=
+                            7
                 )
             );
 
-        const groups = new Map();
+        const groups =
+            new Map();
 
         for (
-            const assignment of
-            filtered
+            const assignment of filtered
         ) {
 
             const name =
                 assignment.className ||
                 "Unknown Class";
 
-            if (!groups.has(name)) {
-                groups.set(name, []);
+            if (
+                !groups.has(name)
+            ) {
+                groups.set(
+                    name,
+                    []
+                );
             }
 
             groups
                 .get(name)
-                .push(assignment);
+                .push(
+                    assignment
+                );
+
         }
 
         const sortedGroups =
@@ -2145,7 +3033,9 @@
                 "classGroups"
             );
 
-        if (!sortedGroups.length) {
+        if (
+            !sortedGroups.length
+        ) {
 
             container.innerHTML = `
                 <div class="empty">
@@ -2154,12 +3044,19 @@
             `;
 
             return;
+
         }
 
         container.innerHTML =
             sortedGroups
                 .map(
-                    ([className, items], index) => {
+                    (
+                        [
+                            className,
+                            items
+                        ],
+                        index
+                    ) => {
 
                         const color =
                             classColors[
@@ -2178,17 +3075,24 @@
                             >
 
                                 <button
-                                    class="class-header ${
-                                        index === 0
-                                            ? "open"
-                                            : ""
-                                    }"
+                                    class="
+                                        class-header
+                                        ${
+                                            index === 0
+                                                ? "open"
+                                                : ""
+                                        }
+                                    "
                                 >
 
-                                    <div class="class-left">
+                                    <div
+                                        class="class-left"
+                                    >
 
                                         <span
-                                            class="class-color"
+                                            class="
+                                                class-color
+                                            "
                                             style="
                                                 background:${color};
                                             "
@@ -2207,7 +3111,8 @@
                                         >
                                             ${items.length}
                                             item${
-                                                items.length === 1
+                                                items.length ===
+                                                1
                                                     ? ""
                                                     : "s"
                                             }
@@ -2228,16 +3133,20 @@
                                 </button>
 
                                 <div
-                                    class="class-content ${
-                                        index === 0
-                                            ? "open"
-                                            : ""
-                                    }"
+                                    class="
+                                        class-content
+                                        ${
+                                            index === 0
+                                                ? "open"
+                                                : ""
+                                        }
+                                    "
                                 >
 
                                     <div
                                         class="assignment-list"
                                     >
+
                                         ${sorted
                                             .map(
                                                 assignment =>
@@ -2247,12 +3156,14 @@
                                             )
                                             .join("")
                                         }
+
                                     </div>
 
                                 </div>
 
                             </div>
                         `;
+
                     }
                 )
                 .join("");
@@ -2261,42 +3172,46 @@
             .querySelectorAll(
                 ".class-header"
             )
-            .forEach(header => {
+            .forEach(
+                header => {
 
-                header.addEventListener(
-                    "click",
-                    () => {
+                    header.addEventListener(
+                        "click",
+                        () => {
 
-                        const content =
-                            header.nextElementSibling;
+                            const content =
+                                header.nextElementSibling;
 
-                        const arrow =
-                            header.querySelector(
-                                ".class-arrow"
+                            const arrow =
+                                header.querySelector(
+                                    ".class-arrow"
+                                );
+
+                            const open =
+                                content.classList.toggle(
+                                    "open"
+                                );
+
+                            header.classList.toggle(
+                                "open",
+                                open
                             );
 
-                        const open =
-                            content.classList.toggle(
-                                "open"
-                            );
+                            arrow.textContent =
+                                open
+                                    ? "▲"
+                                    : "▼";
 
-                        header.classList.toggle(
-                            "open",
-                            open
-                        );
+                        }
+                    );
 
-                        arrow.textContent =
-                            open
-                                ? "▲"
-                                : "▼";
-                    }
-                );
-
-            });
+                }
+            );
 
         addAssignmentClickHandlers(
             container
         );
+
     }
 
     /* =========================================================
@@ -2389,16 +3304,19 @@
                     ${dayName}
                 </div>
             `;
+
         }
 
         for (
-            let i = firstWeekday - 1;
+            let i =
+                firstWeekday - 1;
             i >= 0;
             i--
         ) {
 
             const day =
-                previousMonthDays - i;
+                previousMonthDays -
+                i;
 
             html += `
                 <div
@@ -2407,11 +3325,16 @@
                         muted-day
                     "
                 >
-                    <div class="calendar-date">
+
+                    <div
+                        class="calendar-date"
+                    >
                         ${day}
                     </div>
+
                 </div>
             `;
+
         }
 
         const todayKey =
@@ -2424,22 +3347,42 @@
         ) {
 
             const key =
-                `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+                `${year}-${String(
+                    month + 1
+                ).padStart(
+                    2,
+                    "0"
+                )}-${String(
+                    day
+                ).padStart(
+                    2,
+                    "0"
+                )}`;
 
             const dayAssignments =
                 sortByDueDate(
                     assignments.filter(
-                        a =>
-                            a.dueKey === key &&
+                        assignment =>
+                            assignment.dueKey ===
+                                key &&
                             (
-                                currentFilter === "all" ||
+                                currentFilter ===
+                                    "all" ||
+
                                 (
-                                    currentFilter === "homework" &&
-                                    !isAssessment(a)
+                                    currentFilter ===
+                                        "homework" &&
+                                    !isAssessment(
+                                        assignment
+                                    )
                                 ) ||
+
                                 (
-                                    currentFilter === "assessment" &&
-                                    isAssessment(a)
+                                    currentFilter ===
+                                        "assessment" &&
+                                    isAssessment(
+                                        assignment
+                                    )
                                 )
                             )
                     )
@@ -2457,7 +3400,9 @@
                     "
                 >
 
-                    <div class="calendar-date">
+                    <div
+                        class="calendar-date"
+                    >
                         ${day}
                     </div>
 
@@ -2494,6 +3439,7 @@
 
                 </div>
             `;
+
         }
 
         const totalCells =
@@ -2504,7 +3450,10 @@
             totalCells % 7 === 0
                 ? 0
                 : 7 -
-                    (totalCells % 7);
+                  (
+                      totalCells %
+                      7
+                  );
 
         for (
             let day = 1;
@@ -2519,58 +3468,69 @@
                         muted-day
                     "
                 >
-                    <div class="calendar-date">
+
+                    <div
+                        class="calendar-date"
+                    >
                         ${day}
                     </div>
+
                 </div>
             `;
+
         }
 
-        grid.innerHTML = html;
+        grid.innerHTML =
+            html;
 
         grid
             .querySelectorAll(
                 ".calendar-assignment"
             )
-            .forEach(button => {
+            .forEach(
+                button => {
 
-                button.addEventListener(
-                    "click",
-                    event => {
+                    button.addEventListener(
+                        "click",
+                        event => {
 
-                        event.stopPropagation();
+                            event.stopPropagation();
 
-                        const id =
-                            button.dataset
-                                .assignmentId;
+                            const id =
+                                button
+                                    .dataset
+                                    .assignmentId;
 
-                        const assignment =
-                            assignments.find(
-                                a =>
-                                    String(
-                                        a.AssignmentId
-                                    ) ===
-                                    String(id)
+                            const assignment =
+                                assignments.find(
+                                    item =>
+                                        String(
+                                            item.AssignmentId
+                                        ) ===
+                                        String(id)
+                                );
+
+                            if (!assignment) {
+                                return;
+                            }
+
+                            alert(
+                                `${assignment.title}\n\n` +
+                                `${assignment.className}\n` +
+                                `${formatDueDate(
+                                    assignment.DateDue
+                                )}\n\n` +
+                                `${categoryLabel(
+                                    assignment
+                                )}`
                             );
 
-                        if (!assignment) {
-                            return;
                         }
+                    );
 
-                        alert(
-                            `${assignment.title}\n\n` +
-                            `${assignment.className}\n` +
-                            `${formatDueDate(
-                                assignment.DateDue
-                            )}\n\n` +
-                            `${categoryLabel(
-                                assignment
-                            )}`
-                        );
-                    }
-                );
+                }
+            );
 
-            });
     }
 
     /* =========================================================
@@ -2579,37 +3539,51 @@
 
     function updateStats() {
 
-        const today =
+        const stillToday =
             assignments.filter(
-                a =>
-                    a.dayDifference === 0
+                assignment =>
+                    isStillDueToday(
+                        assignment
+                    )
+            );
+
+        const tomorrowKey =
+            getTomorrowKey(
+                getSchoolDateKey()
             );
 
         const tomorrow =
             assignments.filter(
-                a =>
-                    a.dayDifference === 1
+                assignment =>
+                    assignment.dueKey ===
+                    tomorrowKey
             );
 
         const week =
             assignments.filter(
-                a =>
-                    a.dayDifference >= 1 &&
-                    a.dayDifference <= 7
+                assignment =>
+                    assignment.dayDifference >=
+                        1 &&
+                    assignment.dayDifference <=
+                        7
             );
 
         const assessments =
             assignments.filter(
-                a =>
-                    a.dayDifference >= 0 &&
-                    a.dayDifference <= 7 &&
-                    isAssessment(a)
+                assignment =>
+                    assignment.dayDifference >=
+                        0 &&
+                    assignment.dayDifference <=
+                        7 &&
+                    isAssessment(
+                        assignment
+                    )
             );
 
         document.getElementById(
             "todayStat"
         ).textContent =
-            today.length;
+            stillToday.length;
 
         document.getElementById(
             "tomorrowStat"
@@ -2625,6 +3599,7 @@
             "assessmentStat"
         ).textContent =
             assessments.length;
+
     }
 
     /* =========================================================
@@ -2639,46 +3614,62 @@
             );
 
         updateStats();
+
         renderToday();
+
         renderUpcoming();
+
         renderClasses();
+
         renderCalendar();
 
         applySettings();
+
     }
 
     /* =========================================================
-       TAB SYSTEM
+       TABS
     ========================================================== */
 
-    function showView(viewName) {
+    function showView(
+        viewName
+    ) {
 
         document
-            .querySelectorAll(".tab")
-            .forEach(tab => {
+            .querySelectorAll(
+                ".tab"
+            )
+            .forEach(
+                tab => {
 
-                tab.classList.toggle(
-                    "active",
-                    tab.dataset.view ===
-                        viewName
-                );
+                    tab.classList.toggle(
+                        "active",
+                        tab.dataset.view ===
+                            viewName
+                    );
 
-            });
+                }
+            );
 
         document
-            .querySelectorAll(".view")
-            .forEach(view => {
+            .querySelectorAll(
+                ".view"
+            )
+            .forEach(
+                view => {
 
-                view.classList.toggle(
-                    "active",
-                    view.id ===
-                        `view-${viewName}`
-                );
+                    view.classList.toggle(
+                        "active",
+                        view.id ===
+                            `view-${viewName}`
+                    );
 
-            });
+                }
+            );
 
         if (
-            viewName === "calendar"
+            viewName ===
+            "calendar"
         ) {
             renderCalendar();
         }
@@ -2687,80 +3678,94 @@
             "dexterCurrentView",
             viewName
         );
+
     }
 
     document
-        .querySelectorAll(".tab")
-        .forEach(tab => {
+        .querySelectorAll(
+            ".tab"
+        )
+        .forEach(
+            tab => {
 
-            tab.addEventListener(
-                "click",
-                () => {
+                tab.addEventListener(
+                    "click",
+                    () => {
 
-                    showView(
-                        tab.dataset.view
-                    );
+                        showView(
+                            tab.dataset.view
+                        );
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
     /* =========================================================
-       FILTERS
+       FILTER BUTTONS
     ========================================================== */
 
     document
-        .querySelectorAll(".small-filter")
-        .forEach(button => {
+        .querySelectorAll(
+            ".small-filter"
+        )
+        .forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    document
-                        .querySelectorAll(
-                            ".small-filter"
-                        )
-                        .forEach(item => {
-
-                            item.classList.remove(
-                                "active"
+                        document
+                            .querySelectorAll(
+                                ".small-filter"
+                            )
+                            .forEach(
+                                item => {
+                                    item.classList.remove(
+                                        "active"
+                                    );
+                                }
                             );
 
-                        });
+                        button.classList.add(
+                            "active"
+                        );
 
-                    button.classList.add(
-                        "active"
-                    );
+                        currentFilter =
+                            button.dataset.filter;
 
-                    currentFilter =
-                        button.dataset.filter;
+                        if (
+                            rawData
+                        ) {
+                            renderAll();
+                        }
 
-                    if (rawData) {
-                        renderAll();
                     }
+                );
 
-                }
-            );
-
-        });
+            }
+        );
 
     /* =========================================================
        SEARCH
     ========================================================== */
 
     document
-        .getElementById("searchInput")
+        .getElementById(
+            "searchInput"
+        )
         .addEventListener(
             "input",
             event => {
 
                 searchText =
-                    event.target.value
-                        .trim();
+                    event.target.value.trim();
 
-                if (rawData) {
+                if (
+                    rawData
+                ) {
                     renderAll();
                 }
 
@@ -2768,11 +3773,13 @@
         );
 
     /* =========================================================
-       CALENDAR BUTTONS
+       CALENDAR NAVIGATION
     ========================================================== */
 
     document
-        .getElementById("previousMonth")
+        .getElementById(
+            "previousMonth"
+        )
         .addEventListener(
             "click",
             () => {
@@ -2792,7 +3799,9 @@
         );
 
     document
-        .getElementById("nextMonth")
+        .getElementById(
+            "nextMonth"
+        )
         .addEventListener(
             "click",
             () => {
@@ -2812,7 +3821,9 @@
         );
 
     document
-        .getElementById("todayMonth")
+        .getElementById(
+            "todayMonth"
+        )
         .addEventListener(
             "click",
             () => {
@@ -2823,6 +3834,45 @@
                 renderCalendar();
 
             }
+        );
+
+    /* =========================================================
+       PAST TODAY TOGGLE
+    ========================================================== */
+
+    function togglePastToday() {
+
+        settings.showPastToday =
+            !settings.showPastToday;
+
+        saveSettings();
+
+        applySettings();
+
+        if (
+            rawData
+        ) {
+            renderToday();
+        }
+
+    }
+
+    document
+        .getElementById(
+            "pastToggleButton"
+        )
+        .addEventListener(
+            "click",
+            togglePastToday
+        );
+
+    document
+        .getElementById(
+            "pastToggleButton2"
+        )
+        .addEventListener(
+            "click",
+            togglePastToday
         );
 
     /* =========================================================
@@ -2864,14 +3914,18 @@
     }
 
     document
-        .getElementById("settingsButton")
+        .getElementById(
+            "settingsButton"
+        )
         .addEventListener(
             "click",
             openSettings
         );
 
     document
-        .getElementById("closeSettings")
+        .getElementById(
+            "closeSettings"
+        )
         .addEventListener(
             "click",
             closeSettingsPanel
@@ -2882,8 +3936,14 @@
         closeSettingsPanel
     );
 
+    /* =========================================================
+       COMPACT SETTING
+    ========================================================== */
+
     document
-        .getElementById("compactToggle")
+        .getElementById(
+            "compactToggle"
+        )
         .addEventListener(
             "click",
             () => {
@@ -2892,17 +3952,26 @@
                     !settings.compact;
 
                 saveSettings();
+
                 applySettings();
 
-                if (rawData) {
+                if (
+                    rawData
+                ) {
                     renderAll();
                 }
 
             }
         );
 
+    /* =========================================================
+       OVERDUE SETTING
+    ========================================================== */
+
     document
-        .getElementById("overdueToggle")
+        .getElementById(
+            "overdueToggle"
+        )
         .addEventListener(
             "click",
             () => {
@@ -2911,13 +3980,20 @@
                     !settings.showOverdue;
 
                 saveSettings();
+
                 applySettings();
 
             }
         );
 
+    /* =========================================================
+       POINTS SETTING
+    ========================================================== */
+
     document
-        .getElementById("pointsToggle")
+        .getElementById(
+            "pointsToggle"
+        )
         .addEventListener(
             "click",
             () => {
@@ -2927,12 +4003,46 @@
 
                 saveSettings();
 
-                if (rawData) {
+                if (
+                    rawData
+                ) {
                     renderAll();
                 }
 
             }
         );
+
+    /* =========================================================
+       PAST TODAY SETTING
+    ========================================================== */
+
+    document
+        .getElementById(
+            "pastTodayToggle"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.showPastToday =
+                    !settings.showPastToday;
+
+                saveSettings();
+
+                applySettings();
+
+                if (
+                    rawData
+                ) {
+                    renderToday();
+                }
+
+            }
+        );
+
+    /* =========================================================
+       DEFAULT VIEW
+    ========================================================== */
 
     document
         .getElementById(
@@ -2951,7 +4061,7 @@
         );
 
     /* =========================================================
-       REFRESH FROM BLACKBAUD
+       REFRESH
     ========================================================== */
 
     function requestFreshData() {
@@ -2985,7 +4095,8 @@
         event => {
 
             if (
-                event.source !== window
+                event.source !==
+                window
             ) {
                 return;
             }
@@ -3034,6 +4145,7 @@
                     `;
 
                 return;
+
             }
 
             rawData =
@@ -3042,9 +4154,12 @@
             connectionCard.style.display =
                 "none";
 
-            statusElement.innerHTML =
+            if (
                 result.syncedAt
-                    ? `
+            ) {
+
+                statusElement.innerHTML =
+                    `
                         <strong>
                             Connected.
                         </strong>
@@ -3052,13 +4167,19 @@
                         ${new Date(
                             result.syncedAt
                         ).toLocaleString()}
-                      `
-                    : `
+                    `;
+
+            } else {
+
+                statusElement.innerHTML =
+                    `
                         <strong>
                             Connected.
                         </strong>
                         Blackbaud data loaded.
-                      `;
+                    `;
+
+            }
 
             renderAll();
 
@@ -3074,13 +4195,15 @@
     const savedView =
         localStorage.getItem(
             "dexterCurrentView"
-        ) || settings.defaultView;
+        ) ||
+        settings.defaultView;
 
     showView(
         savedView
     );
 
     requestFreshData();
+
 </script>
 
 </body>
