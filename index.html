@@ -41,20 +41,18 @@
             --green: #16a34a;
             --green-soft: #f0fdf4;
 
-            --shadow-sm:
-                0 2px 8px rgba(15, 23, 42, 0.05);
-
-            --shadow-md:
-                0 6px 20px rgba(15, 23, 42, 0.07);
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.07);
 
             --radius-sm: 9px;
             --radius-md: 13px;
             --radius-lg: 18px;
         }
 
-        /* =========================
-           GLOBAL
-        ========================== */
+        body.compact {
+            --radius-md: 10px;
+            --radius-lg: 14px;
+        }
 
         body {
             margin: 0;
@@ -79,10 +77,6 @@
             cursor: pointer;
         }
 
-        .hidden {
-            display: none !important;
-        }
-
         /* =========================
            HEADER
         ========================== */
@@ -94,7 +88,6 @@
                     #172033 0%,
                     #202c42 100%
                 );
-
             color: white;
         }
 
@@ -258,7 +251,7 @@
         }
 
         /* =========================
-           SEARCH
+           SEARCH / FILTERS
         ========================== */
 
         .filters-bar {
@@ -272,7 +265,6 @@
         .search {
             flex: 1;
             min-width: 240px;
-            position: relative;
         }
 
         .search input {
@@ -365,43 +357,6 @@
         }
 
         /* =========================
-           SECTION HEADERS
-        ========================== */
-
-        .section-heading {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .section-heading-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .section-heading h2 {
-            margin: 0;
-            font-size: 20px;
-            letter-spacing: -0.2px;
-        }
-
-        .section-count {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .section-note {
-            margin-top: -5px;
-            margin-bottom: 12px;
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        /* =========================
            TODAY LAYOUT
         ========================== */
 
@@ -448,6 +403,7 @@
             margin-top: 4px;
             color: var(--muted);
             font-size: 12px;
+            line-height: 1.4;
         }
 
         .time-indicator {
@@ -492,7 +448,7 @@
         }
 
         /* =========================
-           PAST TODAY
+           EARLIER TODAY
         ========================== */
 
         .past-today-panel {
@@ -513,6 +469,7 @@
             align-items: center;
             justify-content: space-between;
             color: var(--text);
+            text-align: left;
         }
 
         .past-today-header:hover {
@@ -537,7 +494,6 @@
         }
 
         .past-title {
-            text-align: left;
             font-weight: 800;
             font-size: 13px;
         }
@@ -573,7 +529,7 @@
         }
 
         .assignment {
-            background: #fff;
+            background: white;
             border: 1px solid var(--border);
             border-left: 4px solid var(--blue);
             border-radius: 10px;
@@ -802,10 +758,7 @@
         .class-grid {
             display: grid;
             grid-template-columns:
-                repeat(
-                    2,
-                    minmax(0, 1fr)
-                );
+                repeat(2, minmax(0, 1fr));
             gap: 12px;
         }
 
@@ -1144,7 +1097,7 @@
         }
 
         /* =========================
-           COMPACT MODE
+           COMPACT
         ========================== */
 
         body.compact .assignment {
@@ -1164,6 +1117,7 @@
         ========================== */
 
         @media (max-width: 1050px) {
+
             .today-layout {
                 grid-template-columns: 1fr;
             }
@@ -1171,9 +1125,11 @@
             .class-grid {
                 grid-template-columns: 1fr;
             }
+
         }
 
         @media (max-width: 800px) {
+
             .stats {
                 grid-template-columns:
                     repeat(2, minmax(0, 1fr));
@@ -1190,9 +1146,11 @@
             .calendar-cell {
                 min-height: 90px;
             }
+
         }
 
         @media (max-width: 600px) {
+
             main {
                 padding-left: 14px;
                 padding-right: 14px;
@@ -1235,6 +1193,7 @@
                 width: 22px;
                 height: 22px;
             }
+
         }
     </style>
 </head>
@@ -1242,11 +1201,13 @@
 <body>
 
 <header>
+
     <div class="header-inner">
 
         <div class="header-top">
 
             <div class="header-title">
+
                 <h1>
                     Dexter Assignment Dashboard
                 </h1>
@@ -1254,21 +1215,21 @@
                 <p>
                     Your Blackbaud work, organized for you.
                 </p>
+
             </div>
 
             <div
                 class="header-date"
                 id="headerDate"
             >
-                <strong>
-                    Today
-                </strong>
+                <strong>Today</strong>
                 Loading...
             </div>
 
         </div>
 
     </div>
+
 </header>
 
 <main>
@@ -1313,7 +1274,7 @@
     </div>
 
     <!-- =========================
-         CONNECTION CARD
+         CONNECTION
     ========================== -->
 
     <div
@@ -1506,9 +1467,7 @@
 
         <div class="today-layout">
 
-            <!-- =========================
-                 STILL DUE TODAY
-            ========================== -->
+            <!-- STILL DUE TODAY -->
 
             <div class="planner-panel">
 
@@ -1535,8 +1494,6 @@
 
                 </div>
 
-                <!-- HOMEWORK -->
-
                 <div class="today-subsection">
 
                     <div class="today-subsection-title">
@@ -1562,8 +1519,6 @@
                     ></div>
 
                 </div>
-
-                <!-- ASSESSMENTS -->
 
                 <div class="today-subsection">
 
@@ -1593,13 +1548,9 @@
 
             </div>
 
-            <!-- =========================
-                 TOMORROW
-            ========================== -->
+            <!-- TOMORROW -->
 
-            <div
-                class="planner-panel tomorrow"
-            >
+            <div class="planner-panel tomorrow">
 
                 <div class="panel-heading">
 
@@ -1626,8 +1577,6 @@
 
                 </div>
 
-                <!-- TOMORROW HOMEWORK -->
-
                 <div class="today-subsection">
 
                     <div class="today-subsection-title">
@@ -1653,8 +1602,6 @@
                     ></div>
 
                 </div>
-
-                <!-- TOMORROW ASSESSMENTS -->
 
                 <div class="today-subsection">
 
@@ -1686,9 +1633,7 @@
 
         </div>
 
-        <!-- =========================
-             EARLIER TODAY
-        ========================== -->
+        <!-- EARLIER TODAY -->
 
         <div
             class="past-today-panel"
@@ -1804,9 +1749,7 @@
         id="view-upcoming"
     >
 
-        <div
-            id="upcomingDays"
-        ></div>
+        <div id="upcomingDays"></div>
 
         <div
             class="overdue-panel"
@@ -1937,8 +1880,6 @@
 
     </div>
 
-    <!-- COMPACT -->
-
     <div class="setting">
 
         <div class="setting-title">
@@ -1963,8 +1904,6 @@
         </div>
 
     </div>
-
-    <!-- OVERDUE -->
 
     <div class="setting">
 
@@ -1991,8 +1930,6 @@
 
     </div>
 
-    <!-- POINTS -->
-
     <div class="setting">
 
         <div class="setting-title">
@@ -2018,8 +1955,6 @@
 
     </div>
 
-    <!-- PAST TODAY -->
-
     <div class="setting">
 
         <div class="setting-title">
@@ -2027,7 +1962,7 @@
         </div>
 
         <div class="setting-description">
-            Choose whether the Earlier Today section starts open.
+            Choose whether Earlier Today starts expanded.
         </div>
 
         <div class="setting-row">
@@ -2044,8 +1979,6 @@
         </div>
 
     </div>
-
-    <!-- DEFAULT VIEW -->
 
     <div class="setting">
 
@@ -2087,8 +2020,18 @@
 <script>
 
     /* =========================================================
-       SETTINGS
+       STATE
+       These declarations MUST exist before initialization.
     ========================================================== */
+
+    let rawData = null;
+    let assignments = [];
+
+    let currentFilter = "all";
+    let searchText = "";
+
+    let currentCalendarDate =
+        new Date();
 
     const defaultSettings = {
         compact: false,
@@ -2097,6 +2040,37 @@
         showPastToday: false,
         defaultView: "today"
     };
+
+    let settings =
+        loadSettings();
+
+    /* =========================================================
+       DOM REFERENCES
+    ========================================================== */
+
+    const statusElement =
+        document.getElementById(
+            "status"
+        );
+
+    const statusDot =
+        document.getElementById(
+            "statusDot"
+        );
+
+    const connectionCard =
+        document.getElementById(
+            "connectionCard"
+        );
+
+    const refreshButton =
+        document.getElementById(
+            "refreshButton"
+        );
+
+    /* =========================================================
+       SETTINGS
+    ========================================================== */
 
     function loadSettings() {
 
@@ -2124,9 +2098,6 @@
 
     }
 
-    let settings =
-        loadSettings();
-
     function saveSettings() {
 
         localStorage.setItem(
@@ -2138,13 +2109,111 @@
 
     }
 
+    function applySettings() {
+
+        document.body.classList.toggle(
+            "compact",
+            settings.compact
+        );
+
+        document
+            .getElementById(
+                "compactToggle"
+            )
+            .classList.toggle(
+                "on",
+                settings.compact
+            );
+
+        document
+            .getElementById(
+                "overdueToggle"
+            )
+            .classList.toggle(
+                "on",
+                settings.showOverdue
+            );
+
+        document
+            .getElementById(
+                "pointsToggle"
+            )
+            .classList.toggle(
+                "on",
+                settings.showPoints
+            );
+
+        document
+            .getElementById(
+                "pastTodayToggle"
+            )
+            .classList.toggle(
+                "on",
+                settings.showPastToday
+            );
+
+        document
+            .getElementById(
+                "defaultViewSelect"
+            )
+            .value =
+                settings.defaultView;
+
+        const overduePanel =
+            document.getElementById(
+                "overduePanel"
+            );
+
+        if (overduePanel) {
+
+            overduePanel.style.display =
+                settings.showOverdue
+                    ? ""
+                    : "none";
+
+        }
+
+        updatePastTodayVisibility();
+
+    }
+
+    function updatePastTodayVisibility() {
+
+        const content =
+            document.getElementById(
+                "pastTodayContent"
+            );
+
+        const chevron =
+            document.getElementById(
+                "pastChevron"
+            );
+
+        if (!content || !chevron) {
+            return;
+        }
+
+        content.classList.toggle(
+            "open",
+            settings.showPastToday
+        );
+
+        chevron.textContent =
+            settings.showPastToday
+                ? "▲"
+                : "▼";
+
+    }
+
     /* =========================================================
        BASIC HELPERS
     ========================================================== */
 
     function escapeHtml(value) {
 
-        return String(value ?? "")
+        return String(
+            value ?? ""
+        )
             .replace(
                 /&/g,
                 "&amp;"
@@ -2437,22 +2506,30 @@
             meridiem === "PM" &&
             hour < 12
         ) {
+
             hour += 12;
+
         }
 
         if (
             meridiem === "AM" &&
             hour === 12
         ) {
+
             hour = 0;
+
         }
 
         return {
+
             hour,
+
             minute,
+
             totalMinutes:
                 hour * 60 +
                 minute
+
         };
 
     }
@@ -2461,11 +2538,16 @@
         assignment
     ) {
 
+        const todayKey =
+            getSchoolDateKey();
+
         if (
             assignment.dueKey !==
-            getSchoolDateKey()
+            todayKey
         ) {
+
             return false;
+
         }
 
         const dueTime =
@@ -2495,11 +2577,16 @@
         assignment
     ) {
 
+        const todayKey =
+            getSchoolDateKey();
+
         if (
             assignment.dueKey !==
-            getSchoolDateKey()
+            todayKey
         ) {
+
             return false;
+
         }
 
         const dueTime =
@@ -2563,10 +2650,14 @@
             new Intl.DateTimeFormat(
                 "en-US",
                 {
-                    timeZone: "UTC",
-                    weekday: "short",
-                    month: "short",
-                    day: "numeric"
+                    timeZone:
+                        "UTC",
+                    weekday:
+                        "short",
+                    month:
+                        "short",
+                    day:
+                        "numeric"
                 }
             ).format(
                 date
@@ -2590,10 +2681,14 @@
         return new Intl.DateTimeFormat(
             "en-US",
             {
-                timeZone: "UTC",
-                weekday: "long",
-                month: "long",
-                day: "numeric"
+                timeZone:
+                    "UTC",
+                weekday:
+                    "long",
+                month:
+                    "long",
+                day:
+                    "numeric"
             }
         ).format(
             date
@@ -2609,10 +2704,14 @@
                 {
                     timeZone:
                         "America/New_York",
-                    weekday: "long",
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric"
+                    weekday:
+                        "long",
+                    month:
+                        "long",
+                    day:
+                        "numeric",
+                    year:
+                        "numeric"
                 }
             ).format(
                 new Date()
@@ -2621,7 +2720,9 @@
         document.getElementById(
             "headerDate"
         ).innerHTML =
-            `<strong>Today</strong>${escapeHtml(date)}`;
+            `<strong>Today</strong>${escapeHtml(
+                date
+            )}`;
 
     }
 
@@ -2653,7 +2754,9 @@
                 combined
             )
         ) {
+
             return "quiz";
+
         }
 
         if (
@@ -2664,7 +2767,9 @@
                 combined
             )
         ) {
+
             return "test";
+
         }
 
         if (
@@ -2675,7 +2780,9 @@
                 assignment.Major
             ) === 1
         ) {
+
             return "assessment";
+
         }
 
         if (
@@ -2683,7 +2790,9 @@
                 "homework"
             )
         ) {
+
             return "homework";
+
         }
 
         return "assignment";
@@ -2740,7 +2849,9 @@
             assignment.category ===
             "quiz"
         ) {
+
             return "badge-quiz";
+
         }
 
         if (
@@ -2749,14 +2860,18 @@
             assignment.category ===
                 "assessment"
         ) {
+
             return "badge-test";
+
         }
 
         if (
             assignment.category ===
             "homework"
         ) {
+
             return "badge-homework";
+
         }
 
         return "badge-other";
@@ -2764,7 +2879,7 @@
     }
 
     /* =========================================================
-       ASSIGNMENT DATA
+       COLLECT ASSIGNMENTS
     ========================================================== */
 
     function collectAssignments(
@@ -2801,7 +2916,9 @@
                     !item ||
                     !item.AssignmentId
                 ) {
+
                     continue;
+
                 }
 
                 map.set(
@@ -2875,7 +2992,7 @@
     }
 
     /* =========================================================
-       FILTERS
+       FILTERING
     ========================================================== */
 
     function filteredAssignments(
@@ -2892,7 +3009,9 @@
                         assignment
                     )
                 ) {
+
                     return false;
+
                 }
 
                 if (
@@ -2902,7 +3021,9 @@
                         assignment
                     )
                 ) {
+
                     return false;
+
                 }
 
                 if (
@@ -2926,7 +3047,9 @@
                             searchText.toLowerCase()
                         )
                     ) {
+
                         return false;
+
                     }
 
                 }
@@ -2957,7 +3080,9 @@
                 if (
                     dateCompare !== 0
                 ) {
+
                     return dateCompare;
+
                 }
 
                 return String(
@@ -3192,7 +3317,9 @@
         options = {}
     ) {
 
-        if (!list.length) {
+        if (
+            !list.length
+        ) {
 
             container.innerHTML =
                 `
@@ -3614,6 +3741,20 @@
 
         }
 
+        const overduePanel =
+            document.getElementById(
+                "overduePanel"
+            );
+
+        if (overduePanel) {
+
+            overduePanel.style.display =
+                settings.showOverdue
+                    ? ""
+                    : "none";
+
+        }
+
         renderCards(
             document.getElementById(
                 "overdueAssignments"
@@ -3623,13 +3764,6 @@
             ),
             "Nothing overdue."
         );
-
-        document.getElementById(
-            "overduePanel"
-        ).style.display =
-            settings.showOverdue
-                ? ""
-                : "none";
 
     }
 
@@ -3744,11 +3878,6 @@
                                 colors.length
                             ];
 
-                        const sorted =
-                            sortByDueDate(
-                                items
-                            );
-
                         return `
                             <div
                                 class="class-card"
@@ -3844,15 +3973,18 @@
                                             assignment-list
                                         "
                                     >
-                                        ${sorted
-                                            .map(
-                                                assignment =>
-                                                    assignmentCard(
-                                                        assignment
-                                                    )
-                                            )
-                                            .join("")
-                                        }
+
+                                        ${sortByDueDate(
+                                            items
+                                        )
+                                        .map(
+                                            assignment =>
+                                                assignmentCard(
+                                                    assignment
+                                                )
+                                        )
+                                        .join("")}
+
                                     </div>
 
                                 </div>
@@ -3914,9 +4046,6 @@
        CALENDAR
     ========================================================== */
 
-    let currentCalendarDate =
-        new Date();
-
     function renderCalendar() {
 
         const year =
@@ -3929,8 +4058,10 @@
             new Intl.DateTimeFormat(
                 "en-US",
                 {
-                    month: "long",
-                    year: "numeric"
+                    month:
+                        "long",
+                    year:
+                        "numeric"
                 }
             ).format(
                 new Date(
@@ -3978,8 +4109,6 @@
         const todayKey =
             getSchoolDateKey();
 
-        let html = "";
-
         const weekdays = [
             "Sun",
             "Mon",
@@ -3989,6 +4118,8 @@
             "Fri",
             "Sat"
         ];
+
+        let html = "";
 
         for (
             const weekday of weekdays
@@ -4028,9 +4159,7 @@
                     >
 
                         <div
-                            class="
-                                calendar-date
-                            "
+                            class="calendar-date"
                         >
                             ${day}
                         </div>
@@ -4083,9 +4212,7 @@
                     >
 
                         <div
-                            class="
-                                calendar-date
-                            "
+                            class="calendar-date"
                         >
                             ${day}
                         </div>
@@ -4300,282 +4427,33 @@
     }
 
     /* =========================================================
-       SETTINGS UI
+       RENDER ALL
     ========================================================== */
 
-    function applySettings() {
+    function renderAll() {
 
-        document.body.classList.toggle(
-            "compact",
-            settings.compact
-        );
-
-        document
-            .getElementById(
-                "compactToggle"
-            )
-            .classList.toggle(
-                "on",
-                settings.compact
-            );
-
-        document
-            .getElementById(
-                "overdueToggle"
-            )
-            .classList.toggle(
-                "on",
-                settings.showOverdue
-            );
-
-        document
-            .getElementById(
-                "pointsToggle"
-            )
-            .classList.toggle(
-                "on",
-                settings.showPoints
-            );
-
-        document
-            .getElementById(
-                "pastTodayToggle"
-            )
-            .classList.toggle(
-                "on",
-                settings.showPastToday
-            );
-
-        document
-            .getElementById(
-                "defaultViewSelect"
-            )
-            .value =
-                settings.defaultView;
-
-        if (
-            rawData
-        ) {
-            document
-                .getElementById(
-                    "overduePanel"
-                )
-                .style.display =
-                    settings.showOverdue
-                        ? ""
-                        : "none";
-
-            updatePastTodayVisibility();
+        if (!rawData) {
+            return;
         }
 
-    }
-
-    function updatePastTodayVisibility() {
-
-        const content =
-            document.getElementById(
-                "pastTodayContent"
+        assignments =
+            normalizeAssignments(
+                rawData
             );
 
-        const chevron =
-            document.getElementById(
-                "pastChevron"
-            );
+        updateStats();
 
-        content.classList.toggle(
-            "open",
-            settings.showPastToday
-        );
+        renderToday();
 
-        chevron.textContent =
-            settings.showPastToday
-                ? "▲"
-                : "▼";
+        renderUpcoming();
+
+        renderClasses();
+
+        renderCalendar();
+
+        applySettings();
 
     }
-
-    /* =========================================================
-       SETTINGS PANEL
-    ========================================================== */
-
-    const settingsPanel =
-        document.getElementById(
-            "settingsPanel"
-        );
-
-    const settingsOverlay =
-        document.getElementById(
-            "settingsOverlay"
-        );
-
-    function openSettings() {
-
-        settingsPanel.classList.add(
-            "open"
-        );
-
-        settingsOverlay.classList.add(
-            "open"
-        );
-
-    }
-
-    function closeSettings() {
-
-        settingsPanel.classList.remove(
-            "open"
-        );
-
-        settingsOverlay.classList.remove(
-            "open"
-        );
-
-    }
-
-    document
-        .getElementById(
-            "settingsButton"
-        )
-        .addEventListener(
-            "click",
-            openSettings
-        );
-
-    document
-        .getElementById(
-            "closeSettings"
-        )
-        .addEventListener(
-            "click",
-            closeSettings
-        );
-
-    settingsOverlay.addEventListener(
-        "click",
-        closeSettings
-    );
-
-    /* =========================================================
-       SETTING TOGGLES
-    ========================================================== */
-
-    document
-        .getElementById(
-            "compactToggle"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                settings.compact =
-                    !settings.compact;
-
-                saveSettings();
-                applySettings();
-
-            }
-        );
-
-    document
-        .getElementById(
-            "overdueToggle"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                settings.showOverdue =
-                    !settings.showOverdue;
-
-                saveSettings();
-                applySettings();
-
-                if (
-                    rawData
-                ) {
-                    renderUpcoming();
-                }
-
-            }
-        );
-
-    document
-        .getElementById(
-            "pointsToggle"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                settings.showPoints =
-                    !settings.showPoints;
-
-                saveSettings();
-
-                if (
-                    rawData
-                ) {
-                    renderAll();
-                }
-
-            }
-        );
-
-    document
-        .getElementById(
-            "pastTodayToggle"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                settings.showPastToday =
-                    !settings.showPastToday;
-
-                saveSettings();
-
-                applySettings();
-
-            }
-        );
-
-    document
-        .getElementById(
-            "defaultViewSelect"
-        )
-        .addEventListener(
-            "change",
-            event => {
-
-                settings.defaultView =
-                    event.target.value;
-
-                saveSettings();
-
-            }
-        );
-
-    /* =========================================================
-       PAST TODAY HEADER
-    ========================================================== */
-
-    document
-        .getElementById(
-            "pastTodayHeader"
-        )
-        .addEventListener(
-            "click",
-            () => {
-
-                settings.showPastToday =
-                    !settings.showPastToday;
-
-                saveSettings();
-
-                updatePastTodayVisibility();
-
-            }
-        );
 
     /* =========================================================
        TABS
@@ -4621,7 +4499,9 @@
             viewName ===
             "calendar"
         ) {
+
             renderCalendar();
+
         }
 
         localStorage.setItem(
@@ -4653,14 +4533,8 @@
         );
 
     /* =========================================================
-       FILTERS
+       FILTER BUTTONS
     ========================================================== */
-
-    let currentFilter =
-        "all";
-
-    let searchText =
-        "";
 
     document
         .querySelectorAll(
@@ -4691,17 +4565,17 @@
                         currentFilter =
                             button.dataset.filter;
 
-                        if (
-                            rawData
-                        ) {
-                            renderAll();
-                        }
+                        renderAll();
 
                     }
                 );
 
             }
         );
+
+    /* =========================================================
+       SEARCH
+    ========================================================== */
 
     document
         .getElementById(
@@ -4712,20 +4586,15 @@
             event => {
 
                 searchText =
-                    event.target.value
-                        .trim();
+                    event.target.value.trim();
 
-                if (
-                    rawData
-                ) {
-                    renderAll();
-                }
+                renderAll();
 
             }
         );
 
     /* =========================================================
-       CALENDAR NAVIGATION
+       CALENDAR CONTROLS
     ========================================================== */
 
     document
@@ -4789,20 +4658,190 @@
         );
 
     /* =========================================================
-       REFRESH
+       SETTINGS PANEL
+    ========================================================== */
+
+    const settingsPanel =
+        document.getElementById(
+            "settingsPanel"
+        );
+
+    const settingsOverlay =
+        document.getElementById(
+            "settingsOverlay"
+        );
+
+    function openSettings() {
+
+        settingsPanel.classList.add(
+            "open"
+        );
+
+        settingsOverlay.classList.add(
+            "open"
+        );
+
+    }
+
+    function closeSettings() {
+
+        settingsPanel.classList.remove(
+            "open"
+        );
+
+        settingsOverlay.classList.remove(
+            "open"
+        );
+
+    }
+
+    document
+        .getElementById(
+            "settingsButton"
+        )
+        .addEventListener(
+            "click",
+            openSettings
+        );
+
+    document
+        .getElementById(
+            "closeSettings"
+        )
+        .addEventListener(
+            "click",
+            closeSettings
+        );
+
+    settingsOverlay.addEventListener(
+        "click",
+        closeSettings
+    );
+
+    /* =========================================================
+       SETTINGS TOGGLES
+    ========================================================== */
+
+    document
+        .getElementById(
+            "compactToggle"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.compact =
+                    !settings.compact;
+
+                saveSettings();
+
+                applySettings();
+
+            }
+        );
+
+    document
+        .getElementById(
+            "overdueToggle"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.showOverdue =
+                    !settings.showOverdue;
+
+                saveSettings();
+
+                applySettings();
+
+            }
+        );
+
+    document
+        .getElementById(
+            "pointsToggle"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.showPoints =
+                    !settings.showPoints;
+
+                saveSettings();
+
+                renderAll();
+
+            }
+        );
+
+    document
+        .getElementById(
+            "pastTodayToggle"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.showPastToday =
+                    !settings.showPastToday;
+
+                saveSettings();
+
+                applySettings();
+
+            }
+        );
+
+    document
+        .getElementById(
+            "defaultViewSelect"
+        )
+        .addEventListener(
+            "change",
+            event => {
+
+                settings.defaultView =
+                    event.target.value;
+
+                saveSettings();
+
+            }
+        );
+
+    /* =========================================================
+       EARLIER TODAY TOGGLE
+    ========================================================== */
+
+    document
+        .getElementById(
+            "pastTodayHeader"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                settings.showPastToday =
+                    !settings.showPastToday;
+
+                saveSettings();
+
+                updatePastTodayVisibility();
+
+            }
+        );
+
+    /* =========================================================
+       REFRESH FROM EXTENSION
     ========================================================== */
 
     function requestFreshData() {
 
-        statusElement.innerHTML =
+        statusElement.textContent =
             "Refreshing...";
 
-        const dot =
-            document.getElementById(
-                "statusDot"
-            );
-
-        dot.classList.remove(
+        statusDot.classList.remove(
             "connected",
             "error"
         );
@@ -4819,17 +4858,13 @@
 
     }
 
-    document
-        .getElementById(
-            "refreshButton"
-        )
-        .addEventListener(
-            "click",
-            requestFreshData
-        );
+    refreshButton.addEventListener(
+        "click",
+        requestFreshData
+    );
 
     /* =========================================================
-       MESSAGE FROM EXTENSION
+       RECEIVE DATA FROM EXTENSION
     ========================================================== */
 
     window.addEventListener(
@@ -4868,22 +4903,17 @@
             const result =
                 event.data.payload;
 
-            const dot =
-                document.getElementById(
-                    "statusDot"
-                );
-
             if (
                 !result ||
                 !result.ok ||
                 !result.assignments
             ) {
 
-                dot.classList.remove(
+                statusDot.classList.remove(
                     "connected"
                 );
 
-                dot.classList.add(
+                statusDot.classList.add(
                     "error"
                 );
 
@@ -4899,11 +4929,11 @@
 
             }
 
-            dot.classList.remove(
+            statusDot.classList.remove(
                 "error"
             );
 
-            dot.classList.add(
+            statusDot.classList.add(
                 "connected"
             );
 
@@ -4933,31 +4963,6 @@
 
         }
     );
-
-    /* =========================================================
-       RENDER ALL
-    ========================================================== */
-
-    function renderAll() {
-
-        assignments =
-            normalizeAssignments(
-                rawData
-            );
-
-        updateStats();
-
-        renderToday();
-
-        renderUpcoming();
-
-        renderClasses();
-
-        renderCalendar();
-
-        applySettings();
-
-    }
 
     /* =========================================================
        INITIALIZE
