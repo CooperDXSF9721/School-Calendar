@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My School Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        header {
+            background: #1f2937;
+            color: white;
+            padding: 24px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 6px 0 0;
+            color: #d1d5db;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            margin-top: 0;
+        }
+
+        .status {
+            padding: 14px;
+            border-radius: 8px;
+            background: #eef2ff;
+            margin-top: 15px;
+        }
+
+        button {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .assignment {
+            border-left: 4px solid #2563eb;
+            background: #f9fafb;
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 6px;
+        }
+
+        .assignment strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .muted {
+            color: #6b7280;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>My School Dashboard</h1>
+    <p>Blackbaud assignment dashboard</p>
+</header>
+
+<main>
+
+    <div class="card">
+        <h2>Blackbaud Connection</h2>
+
+        <p>
+            We're going to connect this dashboard to your Blackbaud
+            calendar feed.
+        </p>
+
+        <button onclick="testConnection()">
+            Test Connection
+        </button>
+
+        <div id="status" class="status">
+            Waiting to test the Blackbaud connection...
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Upcoming Assignments</h2>
+
+        <div id="assignments">
+
+            <div class="assignment">
+                <strong>Example Assignment</strong>
+                <span class="muted">
+                    Your Blackbaud assignments will appear here.
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<script>
+
+function testConnection() {
+
+    const status = document.getElementById("status");
+
+    status.innerHTML =
+        "The dashboard is working. Next we'll connect your private Blackbaud calendar feed.";
+
+}
+
+</script>
+
+</body>
+</html>
